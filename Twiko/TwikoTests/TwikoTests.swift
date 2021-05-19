@@ -5,8 +5,8 @@
 //  Created by Goran Tokovic on 19.5.21..
 //
 
-import XCTest
 @testable import Twiko
+import XCTest
 
 class TwikoTests: XCTestCase {
 
@@ -29,5 +29,4 @@ class TwikoTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-
 }

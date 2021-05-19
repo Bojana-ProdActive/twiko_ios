@@ -107,6 +107,7 @@
 			buildConfigurationList = 2B6D0AE92655405100729E75 /* Build configuration list for PBXNativeTarget "Twiko" */;
 			buildPhases = (
 				2B6D0ABB2655404B00729E75 /* Sources */,
+				2B6D0AF5265544F300729E75 /* SwiftLint */,
 				2B6D0ABC2655404B00729E75 /* Frameworks */,
 				2B6D0ABD2655404B00729E75 /* Resources */,
 			);
@@ -193,6 +194,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2B6D0AF5265544F300729E75 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint --config ../.swiftlint.yml\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2B6D0ABB2655404B00729E75 /* Sources */ = {
