@@ -7,6 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B55C19226564E6A0056CB21 /* Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C19126564E6A0056CB21 /* Decodable.swift */; };
+		2B55C19426564E810056CB21 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C19326564E810056CB21 /* Encodable.swift */; };
+		2B55C19626564E940056CB21 /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C19526564E940056CB21 /* UITableViewCell.swift */; };
+		2B55C19A26564EF10056CB21 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C19926564EF10056CB21 /* UIView.swift */; };
+		2B55C19C26564F090056CB21 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C19B26564F090056CB21 /* Collection.swift */; };
+		2B55C19E26564FDE0056CB21 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C19D26564FDE0056CB21 /* Dictionary.swift */; };
+		2B55C1A02656510D0056CB21 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C19F2656510D0056CB21 /* Error.swift */; };
+		2B55C1A2265651730056CB21 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C1A1265651730056CB21 /* UIButton.swift */; };
+		2B55C1A4265652050056CB21 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C1A3265652050056CB21 /* UICollectionView.swift */; };
+		2B55C1A6265652CD0056CB21 /* UICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C1A5265652CD0056CB21 /* UICollectionViewCell.swift */; };
+		2B55C1A8265652FD0056CB21 /* UIEdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C1A7265652FD0056CB21 /* UIEdgeInsets.swift */; };
+		2B55C1AA2656553D0056CB21 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C1A92656553D0056CB21 /* UITableView.swift */; };
+		2B55C1AC2656556D0056CB21 /* UITableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C1AB2656556D0056CB21 /* UITableViewHeaderFooterView.swift */; };
+		2B55C1AE265657B40056CB21 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C1AD265657B40056CB21 /* Constants.swift */; };
 		2B6D0AC32655404B00729E75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D0AC22655404B00729E75 /* AppDelegate.swift */; };
 		2B6D0AC52655404B00729E75 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D0AC42655404B00729E75 /* SceneDelegate.swift */; };
 		2B6D0AC72655404B00729E75 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D0AC62655404B00729E75 /* ViewController.swift */; };
@@ -14,6 +28,8 @@
 		2B6D0ACC2655405000729E75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B6D0ACB2655405000729E75 /* Assets.xcassets */; };
 		2B6D0ACF2655405000729E75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B6D0ACD2655405000729E75 /* LaunchScreen.storyboard */; };
 		2B6D0ADA2655405100729E75 /* TwikoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D0AD92655405100729E75 /* TwikoTests.swift */; };
+		2B6D0AFE26554A1400729E75 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D0AFD26554A1400729E75 /* BaseViewController.swift */; };
+		2B6D0B0026554AB900729E75 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D0AFF26554AB900729E75 /* BaseNavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +43,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2B55C19126564E6A0056CB21 /* Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decodable.swift; sourceTree = "<group>"; };
+		2B55C19326564E810056CB21 /* Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encodable.swift; sourceTree = "<group>"; };
+		2B55C19526564E940056CB21 /* UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
+		2B55C19926564EF10056CB21 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		2B55C19B26564F090056CB21 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
+		2B55C19D26564FDE0056CB21 /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
+		2B55C19F2656510D0056CB21 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		2B55C1A1265651730056CB21 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		2B55C1A3265652050056CB21 /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
+		2B55C1A5265652CD0056CB21 /* UICollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewCell.swift; sourceTree = "<group>"; };
+		2B55C1A7265652FD0056CB21 /* UIEdgeInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEdgeInsets.swift; sourceTree = "<group>"; };
+		2B55C1A92656553D0056CB21 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		2B55C1AB2656556D0056CB21 /* UITableViewHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewHeaderFooterView.swift; sourceTree = "<group>"; };
+		2B55C1AD265657B40056CB21 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2B6D0ABF2655404B00729E75 /* Twiko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twiko.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B6D0AC22655404B00729E75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2B6D0AC42655404B00729E75 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +68,8 @@
 		2B6D0AD52655405100729E75 /* TwikoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwikoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B6D0AD92655405100729E75 /* TwikoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwikoTests.swift; sourceTree = "<group>"; };
 		2B6D0ADB2655405100729E75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2B6D0AFD26554A1400729E75 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		2B6D0AFF26554AB900729E75 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +90,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B55C19026564CE50056CB21 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				2B6D0AC42655404B00729E75 /* SceneDelegate.swift */,
+				2B6D0AC22655404B00729E75 /* AppDelegate.swift */,
+				2B55C1AD265657B40056CB21 /* Constants.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		2B55C1AF265659A90056CB21 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		2B6D0AB62655404B00729E75 = {
 			isa = PBXGroup;
 			children = (
@@ -79,13 +128,13 @@
 		2B6D0AC12655404B00729E75 /* Twiko */ = {
 			isa = PBXGroup;
 			children = (
-				2B6D0AC22655404B00729E75 /* AppDelegate.swift */,
-				2B6D0AC42655404B00729E75 /* SceneDelegate.swift */,
+				2B55C19026564CE50056CB21 /* App */,
+				2B6D0AF62655464100729E75 /* Controllers */,
+				2B6D0AF72655464D00729E75 /* Extensions */,
+				2B6D0AF92655467000729E75 /* Models */,
+				2B6D0AFA2655468900729E75 /* Supporting Files */,
+				2B6D0AF82655465500729E75 /* Views */,
 				2B6D0AC62655404B00729E75 /* ViewController.swift */,
-				2B6D0AC82655404B00729E75 /* Main.storyboard */,
-				2B6D0ACB2655405000729E75 /* Assets.xcassets */,
-				2B6D0ACD2655405000729E75 /* LaunchScreen.storyboard */,
-				2B6D0AD02655405000729E75 /* Info.plist */,
 			);
 			path = Twiko;
 			sourceTree = "<group>";
@@ -97,6 +146,61 @@
 				2B6D0ADB2655405100729E75 /* Info.plist */,
 			);
 			path = TwikoTests;
+			sourceTree = "<group>";
+		};
+		2B6D0AF62655464100729E75 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2B6D0AFD26554A1400729E75 /* BaseViewController.swift */,
+				2B6D0AFF26554AB900729E75 /* BaseNavigationController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		2B6D0AF72655464D00729E75 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2B55C19126564E6A0056CB21 /* Decodable.swift */,
+				2B55C19326564E810056CB21 /* Encodable.swift */,
+				2B55C19526564E940056CB21 /* UITableViewCell.swift */,
+				2B55C19926564EF10056CB21 /* UIView.swift */,
+				2B55C19B26564F090056CB21 /* Collection.swift */,
+				2B55C19D26564FDE0056CB21 /* Dictionary.swift */,
+				2B55C19F2656510D0056CB21 /* Error.swift */,
+				2B55C1A1265651730056CB21 /* UIButton.swift */,
+				2B55C1A3265652050056CB21 /* UICollectionView.swift */,
+				2B55C1A5265652CD0056CB21 /* UICollectionViewCell.swift */,
+				2B55C1A7265652FD0056CB21 /* UIEdgeInsets.swift */,
+				2B55C1A92656553D0056CB21 /* UITableView.swift */,
+				2B55C1AB2656556D0056CB21 /* UITableViewHeaderFooterView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		2B6D0AF82655465500729E75 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2B6D0AF92655467000729E75 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2B6D0AFA2655468900729E75 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2B55C1AF265659A90056CB21 /* Fonts */,
+				2B6D0ACB2655405000729E75 /* Assets.xcassets */,
+				2B6D0ACD2655405000729E75 /* LaunchScreen.storyboard */,
+				2B6D0AC82655404B00729E75 /* Main.storyboard */,
+				2B6D0AD02655405000729E75 /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,7 +326,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B6D0AC72655404B00729E75 /* ViewController.swift in Sources */,
+				2B55C1AE265657B40056CB21 /* Constants.swift in Sources */,
+				2B55C1A2265651730056CB21 /* UIButton.swift in Sources */,
+				2B55C1A6265652CD0056CB21 /* UICollectionViewCell.swift in Sources */,
+				2B55C1A4265652050056CB21 /* UICollectionView.swift in Sources */,
+				2B55C19C26564F090056CB21 /* Collection.swift in Sources */,
+				2B55C19626564E940056CB21 /* UITableViewCell.swift in Sources */,
+				2B55C1A8265652FD0056CB21 /* UIEdgeInsets.swift in Sources */,
+				2B55C19426564E810056CB21 /* Encodable.swift in Sources */,
+				2B55C1A02656510D0056CB21 /* Error.swift in Sources */,
+				2B55C19E26564FDE0056CB21 /* Dictionary.swift in Sources */,
+				2B55C1AC2656556D0056CB21 /* UITableViewHeaderFooterView.swift in Sources */,
+				2B6D0AFE26554A1400729E75 /* BaseViewController.swift in Sources */,
+				2B55C1AA2656553D0056CB21 /* UITableView.swift in Sources */,
 				2B6D0AC32655404B00729E75 /* AppDelegate.swift in Sources */,
+				2B55C19226564E6A0056CB21 /* Decodable.swift in Sources */,
+				2B6D0B0026554AB900729E75 /* BaseNavigationController.swift in Sources */,
+				2B55C19A26564EF10056CB21 /* UIView.swift in Sources */,
 				2B6D0AC52655404B00729E75 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -388,7 +508,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y5A2X83345;
-				INFOPLIST_FILE = Twiko/Info.plist;
+				INFOPLIST_FILE = "Twiko/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -407,7 +527,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y5A2X83345;
-				INFOPLIST_FILE = Twiko/Info.plist;
+				INFOPLIST_FILE = "Twiko/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
