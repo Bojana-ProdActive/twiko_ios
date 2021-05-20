@@ -21,6 +21,8 @@
 		2B55C1AA2656553D0056CB21 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C1A92656553D0056CB21 /* UITableView.swift */; };
 		2B55C1AC2656556D0056CB21 /* UITableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C1AB2656556D0056CB21 /* UITableViewHeaderFooterView.swift */; };
 		2B55C1AE265657B40056CB21 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C1AD265657B40056CB21 /* Constants.swift */; };
+		2B55C1B8265671000056CB21 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C1B7265671000056CB21 /* Assets.swift */; };
+		2B55C1BD26567E620056CB21 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C1BC26567E620056CB21 /* Fonts.swift */; };
 		2B6D0AC32655404B00729E75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D0AC22655404B00729E75 /* AppDelegate.swift */; };
 		2B6D0AC52655404B00729E75 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D0AC42655404B00729E75 /* SceneDelegate.swift */; };
 		2B6D0AC72655404B00729E75 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D0AC62655404B00729E75 /* ViewController.swift */; };
@@ -57,6 +59,8 @@
 		2B55C1A92656553D0056CB21 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		2B55C1AB2656556D0056CB21 /* UITableViewHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewHeaderFooterView.swift; sourceTree = "<group>"; };
 		2B55C1AD265657B40056CB21 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		2B55C1B7265671000056CB21 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		2B55C1BC26567E620056CB21 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		2B6D0ABF2655404B00729E75 /* Twiko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twiko.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B6D0AC22655404B00729E75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2B6D0AC42655404B00729E75 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -107,6 +111,15 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		2B55C1B626566C1B0056CB21 /* SwiftGen */ = {
+			isa = PBXGroup;
+			children = (
+				2B55C1B7265671000056CB21 /* Assets.swift */,
+				2B55C1BC26567E620056CB21 /* Fonts.swift */,
+			);
+			path = SwiftGen;
+			sourceTree = "<group>";
+		};
 		2B6D0AB62655404B00729E75 = {
 			isa = PBXGroup;
 			children = (
@@ -129,11 +142,12 @@
 			isa = PBXGroup;
 			children = (
 				2B55C19026564CE50056CB21 /* App */,
-				2B6D0AF62655464100729E75 /* Controllers */,
+				2B55C1B626566C1B0056CB21 /* SwiftGen */,
 				2B6D0AF72655464D00729E75 /* Extensions */,
+				2B6D0AF62655464100729E75 /* Controllers */,
+				2B6D0AF82655465500729E75 /* Views */,
 				2B6D0AF92655467000729E75 /* Models */,
 				2B6D0AFA2655468900729E75 /* Supporting Files */,
-				2B6D0AF82655465500729E75 /* Views */,
 				2B6D0AC62655404B00729E75 /* ViewController.swift */,
 			);
 			path = Twiko;
@@ -210,6 +224,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2B6D0AE92655405100729E75 /* Build configuration list for PBXNativeTarget "Twiko" */;
 			buildPhases = (
+				2B55C1B9265671AB0056CB21 /* SwiftGen */,
 				2B6D0ABB2655404B00729E75 /* Sources */,
 				2B6D0AF5265544F300729E75 /* SwiftLint */,
 				2B6D0ABC2655404B00729E75 /* Frameworks */,
@@ -300,6 +315,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2B55C1B9265671AB0056CB21 /* SwiftGen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftGen;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftgen >/dev/null; then\n  swiftgen\nelse\n  echo \"warning: SwiftGen not installed, download it from https://github.com/SwiftGen/SwiftGen\"\nfi\n";
+		};
 		2B6D0AF5265544F300729E75 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -332,6 +365,7 @@
 				2B55C1A4265652050056CB21 /* UICollectionView.swift in Sources */,
 				2B55C19C26564F090056CB21 /* Collection.swift in Sources */,
 				2B55C19626564E940056CB21 /* UITableViewCell.swift in Sources */,
+				2B55C1BD26567E620056CB21 /* Fonts.swift in Sources */,
 				2B55C1A8265652FD0056CB21 /* UIEdgeInsets.swift in Sources */,
 				2B55C19426564E810056CB21 /* Encodable.swift in Sources */,
 				2B55C1A02656510D0056CB21 /* Error.swift in Sources */,
@@ -343,6 +377,7 @@
 				2B55C19226564E6A0056CB21 /* Decodable.swift in Sources */,
 				2B6D0B0026554AB900729E75 /* BaseNavigationController.swift in Sources */,
 				2B55C19A26564EF10056CB21 /* UIView.swift in Sources */,
+				2B55C1B8265671000056CB21 /* Assets.swift in Sources */,
 				2B6D0AC52655404B00729E75 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

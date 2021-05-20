@@ -1,0 +1,17 @@
+# Assets
+xcassets:
+   inputs:
+     - ./Twiko/Supporting Files/Assets.xcassets
+   outputs:
+     - templateName: swift5
+       params:
+         forceProvidesNamespaces: true
+       output: ./Twiko/SwiftGen/Assets.swift
+
+# Fonts
+fonts:
+  inputs:
+       - ./Twiko/Supporting Files/Fonts/
+  outputs:
+    templateName: swift5
+    output: ./Twiko/SwiftGen/Fonts.swift
