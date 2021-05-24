@@ -2,10 +2,9 @@
 //  TwikoTests.swift
 //  TwikoTests
 //
-//  Created by Goran Tokovic on 19.5.21..
+//  Created by Goran Tokovic on 24.5.21..
 //
 
-@testable import Twiko
 import XCTest
 
 class TwikoTests: XCTestCase {

@@ -11,6 +11,7 @@
 		2B10CEA1265BAAEE00DC2771 /* NDBluetoothLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2B10CE9F265BAAEE00DC2771 /* NDBluetoothLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2B10CEA4265BAC4C00DC2771 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B10CEA3265BAC4C00DC2771 /* Button.swift */; };
 		2B10CEA6265BAFA700DC2771 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B10CEA5265BAFA700DC2771 /* Label.swift */; };
+		2B46C83C265BB62D00A2581E /* TwikoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B46C83A265BB62C00A2581E /* TwikoTests.swift */; };
 		2B55C19226564E6A0056CB21 /* Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C19126564E6A0056CB21 /* Decodable.swift */; };
 		2B55C19426564E810056CB21 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C19326564E810056CB21 /* Encodable.swift */; };
 		2B55C19626564E940056CB21 /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C19526564E940056CB21 /* UITableViewCell.swift */; };
@@ -33,13 +34,12 @@
 		2B6D0ACA2655404B00729E75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B6D0AC82655404B00729E75 /* Main.storyboard */; };
 		2B6D0ACC2655405000729E75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B6D0ACB2655405000729E75 /* Assets.xcassets */; };
 		2B6D0ACF2655405000729E75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B6D0ACD2655405000729E75 /* LaunchScreen.storyboard */; };
-		2B6D0ADA2655405100729E75 /* TwikoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D0AD92655405100729E75 /* TwikoTests.swift */; };
 		2B6D0AFE26554A1400729E75 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D0AFD26554A1400729E75 /* BaseViewController.swift */; };
 		2B6D0B0026554AB900729E75 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D0AFF26554AB900729E75 /* BaseNavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2B6D0AD62655405100729E75 /* PBXContainerItemProxy */ = {
+		2B46C835265BB5FB00A2581E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2B6D0AB72655404B00729E75 /* Project object */;
 			proxyType = 1;
@@ -66,6 +66,9 @@
 		2B10CE9F265BAAEE00DC2771 /* NDBluetoothLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NDBluetoothLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B10CEA3265BAC4C00DC2771 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		2B10CEA5265BAFA700DC2771 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
+		2B46C830265BB5FB00A2581E /* TwikoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwikoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B46C83A265BB62C00A2581E /* TwikoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwikoTests.swift; sourceTree = "<group>"; };
+		2B46C83B265BB62D00A2581E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B55C19126564E6A0056CB21 /* Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decodable.swift; sourceTree = "<group>"; };
 		2B55C19326564E810056CB21 /* Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encodable.swift; sourceTree = "<group>"; };
 		2B55C19526564E940056CB21 /* UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
@@ -91,14 +94,18 @@
 		2B6D0ACB2655405000729E75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2B6D0ACE2655405000729E75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2B6D0AD02655405000729E75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2B6D0AD52655405100729E75 /* TwikoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwikoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2B6D0AD92655405100729E75 /* TwikoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwikoTests.swift; sourceTree = "<group>"; };
-		2B6D0ADB2655405100729E75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B6D0AFD26554A1400729E75 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		2B6D0AFF26554AB900729E75 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2B46C82D265BB5FB00A2581E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2B6D0ABC2655404B00729E75 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -107,16 +114,32 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2B6D0AD22655405100729E75 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B46C831265BB5FB00A2581E /* TwikoTests */ = {
+			isa = PBXGroup;
+			children = (
+				2B46C83B265BB62D00A2581E /* Info.plist */,
+				2B46C83A265BB62C00A2581E /* TwikoTests.swift */,
+			);
+			path = TwikoTests;
+			sourceTree = "<group>";
+		};
+		2B46C83E265BB64E00A2581E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		2B46C83F265BB65500A2581E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		2B55C19026564CE50056CB21 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,13 +148,6 @@
 				2B55C1AD265657B40056CB21 /* Constants.swift */,
 			);
 			path = App;
-			sourceTree = "<group>";
-		};
-		2B55C1AF265659A90056CB21 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Fonts;
 			sourceTree = "<group>";
 		};
 		2B55C1B626566C1B0056CB21 /* SwiftGen */ = {
@@ -156,7 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				2B6D0AC12655404B00729E75 /* Twiko */,
-				2B6D0AD82655405100729E75 /* TwikoTests */,
+				2B46C831265BB5FB00A2581E /* TwikoTests */,
 				2B6D0AC02655404B00729E75 /* Products */,
 				2B55C1E82656A39B0056CB21 /* Frameworks */,
 			);
@@ -166,7 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				2B6D0ABF2655404B00729E75 /* Twiko.app */,
-				2B6D0AD52655405100729E75 /* TwikoTests.xctest */,
+				2B46C830265BB5FB00A2581E /* TwikoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -179,20 +195,11 @@
 				2B6D0AF72655464D00729E75 /* Extensions */,
 				2B6D0AF62655464100729E75 /* Controllers */,
 				2B6D0AF82655465500729E75 /* Views */,
-				2B6D0AF92655467000729E75 /* Models */,
+				2B46C83F265BB65500A2581E /* Models */,
 				2B6D0AFA2655468900729E75 /* Supporting Files */,
 				2B6D0AC62655404B00729E75 /* ViewController.swift */,
 			);
 			path = Twiko;
-			sourceTree = "<group>";
-		};
-		2B6D0AD82655405100729E75 /* TwikoTests */ = {
-			isa = PBXGroup;
-			children = (
-				2B6D0AD92655405100729E75 /* TwikoTests.swift */,
-				2B6D0ADB2655405100729E75 /* Info.plist */,
-			);
-			path = TwikoTests;
 			sourceTree = "<group>";
 		};
 		2B6D0AF62655464100729E75 /* Controllers */ = {
@@ -233,17 +240,10 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		2B6D0AF92655467000729E75 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		2B6D0AFA2655468900729E75 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				2B55C1AF265659A90056CB21 /* Fonts */,
+				2B46C83E265BB64E00A2581E /* Fonts */,
 				2B6D0ACB2655405000729E75 /* Assets.xcassets */,
 				2B6D0ACD2655405000729E75 /* LaunchScreen.storyboard */,
 				2B6D0AC82655404B00729E75 /* Main.storyboard */,
@@ -255,6 +255,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2B46C82F265BB5FB00A2581E /* TwikoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2B46C837265BB5FB00A2581E /* Build configuration list for PBXNativeTarget "TwikoTests" */;
+			buildPhases = (
+				2B46C82C265BB5FB00A2581E /* Sources */,
+				2B46C82D265BB5FB00A2581E /* Frameworks */,
+				2B46C82E265BB5FB00A2581E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2B46C836265BB5FB00A2581E /* PBXTargetDependency */,
+			);
+			name = TwikoTests;
+			productName = TwikoTests;
+			productReference = 2B46C830265BB5FB00A2581E /* TwikoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		2B6D0ABE2655404B00729E75 /* Twiko */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2B6D0AE92655405100729E75 /* Build configuration list for PBXNativeTarget "Twiko" */;
@@ -275,24 +293,6 @@
 			productReference = 2B6D0ABF2655404B00729E75 /* Twiko.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2B6D0AD42655405100729E75 /* TwikoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2B6D0AEC2655405100729E75 /* Build configuration list for PBXNativeTarget "TwikoTests" */;
-			buildPhases = (
-				2B6D0AD12655405100729E75 /* Sources */,
-				2B6D0AD22655405100729E75 /* Frameworks */,
-				2B6D0AD32655405100729E75 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				2B6D0AD72655405100729E75 /* PBXTargetDependency */,
-			);
-			name = TwikoTests;
-			productName = TwikoTests;
-			productReference = 2B6D0AD52655405100729E75 /* TwikoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -302,12 +302,13 @@
 				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
+					2B46C82F265BB5FB00A2581E = {
+						CreatedOnToolsVersion = 12.5;
+						LastSwiftMigration = 1250;
+						TestTargetID = 2B6D0ABE2655404B00729E75;
+					};
 					2B6D0ABE2655404B00729E75 = {
 						CreatedOnToolsVersion = 12.5;
-					};
-					2B6D0AD42655405100729E75 = {
-						CreatedOnToolsVersion = 12.5;
-						TestTargetID = 2B6D0ABE2655404B00729E75;
 					};
 				};
 			};
@@ -325,12 +326,19 @@
 			projectRoot = "";
 			targets = (
 				2B6D0ABE2655404B00729E75 /* Twiko */,
-				2B6D0AD42655405100729E75 /* TwikoTests */,
+				2B46C82F265BB5FB00A2581E /* TwikoTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2B46C82E265BB5FB00A2581E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2B6D0ABD2655404B00729E75 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -338,13 +346,6 @@
 				2B6D0ACF2655405000729E75 /* LaunchScreen.storyboard in Resources */,
 				2B6D0ACC2655405000729E75 /* Assets.xcassets in Resources */,
 				2B6D0ACA2655404B00729E75 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2B6D0AD32655405100729E75 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,6 +391,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2B46C82C265BB5FB00A2581E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2B46C83C265BB62D00A2581E /* TwikoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2B6D0ABB2655404B00729E75 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -420,21 +429,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2B6D0AD12655405100729E75 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2B6D0ADA2655405100729E75 /* TwikoTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2B6D0AD72655405100729E75 /* PBXTargetDependency */ = {
+		2B46C836265BB5FB00A2581E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2B6D0ABE2655404B00729E75 /* Twiko */;
-			targetProxy = 2B6D0AD62655405100729E75 /* PBXContainerItemProxy */;
+			targetProxy = 2B46C835265BB5FB00A2581E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -458,6 +459,51 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2B46C838265BB5FB00A2581E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y5A2X83345;
+				INFOPLIST_FILE = TwikoTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.goran.test.TwikoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Twiko.app/Twiko";
+			};
+			name = Debug;
+		};
+		2B46C839265BB5FB00A2581E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y5A2X83345;
+				INFOPLIST_FILE = TwikoTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.goran.test.TwikoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Twiko.app/Twiko";
+			};
+			name = Release;
+		};
 		2B6D0AE72655405100729E75 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -612,53 +658,18 @@
 			};
 			name = Release;
 		};
-		2B6D0AED2655405100729E75 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Y5A2X83345;
-				INFOPLIST_FILE = TwikoTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.goran.test.TwikoTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Twiko.app/Twiko";
-			};
-			name = Debug;
-		};
-		2B6D0AEE2655405100729E75 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Y5A2X83345;
-				INFOPLIST_FILE = TwikoTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.goran.test.TwikoTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Twiko.app/Twiko";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2B46C837265BB5FB00A2581E /* Build configuration list for PBXNativeTarget "TwikoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2B46C838265BB5FB00A2581E /* Debug */,
+				2B46C839265BB5FB00A2581E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2B6D0ABA2655404B00729E75 /* Build configuration list for PBXProject "Twiko" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -673,15 +684,6 @@
 			buildConfigurations = (
 				2B6D0AEA2655405100729E75 /* Debug */,
 				2B6D0AEB2655405100729E75 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2B6D0AEC2655405100729E75 /* Build configuration list for PBXNativeTarget "TwikoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2B6D0AED2655405100729E75 /* Debug */,
-				2B6D0AEE2655405100729E75 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
