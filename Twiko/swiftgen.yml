@@ -1,7 +1,8 @@
 # Assets
 xcassets:
    inputs:
-     - ./Twiko/Supporting Files/Assets.xcassets
+     - ./Twiko/Supporting Files/Images.xcassets
+     - ./Twiko/Supporting Files/Colors.xcassets
    outputs:
      - templateName: swift5
        params:

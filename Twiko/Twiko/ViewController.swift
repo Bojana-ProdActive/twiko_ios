@@ -5,6 +5,7 @@
 //  Created by Goran Tokovic on 19.5.21..
 //
 
+import NDBluetoothLibrary
 import UIKit
 
 class ViewController: UIViewController {

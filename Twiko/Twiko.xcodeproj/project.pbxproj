@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2B10CEA0265BAAEE00DC2771 /* NDBluetoothLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B10CE9F265BAAEE00DC2771 /* NDBluetoothLibrary.framework */; };
-		2B10CEA1265BAAEE00DC2771 /* NDBluetoothLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2B10CE9F265BAAEE00DC2771 /* NDBluetoothLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2B10CEA4265BAC4C00DC2771 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B10CEA3265BAC4C00DC2771 /* Button.swift */; };
 		2B10CEA6265BAFA700DC2771 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B10CEA5265BAFA700DC2771 /* Label.swift */; };
 		2B46C83C265BB62D00A2581E /* TwikoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B46C83A265BB62C00A2581E /* TwikoTests.swift */; };
+		2B46C841265BBB1B00A2581E /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B46C840265BBB1B00A2581E /* Colors.xcassets */; };
+		2B46C845265BBD0A00A2581E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B46C844265BBD0A00A2581E /* Images.xcassets */; };
 		2B55C19226564E6A0056CB21 /* Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C19126564E6A0056CB21 /* Decodable.swift */; };
 		2B55C19426564E810056CB21 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C19326564E810056CB21 /* Encodable.swift */; };
 		2B55C19626564E940056CB21 /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C19526564E940056CB21 /* UITableViewCell.swift */; };
@@ -32,7 +32,6 @@
 		2B6D0AC52655404B00729E75 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D0AC42655404B00729E75 /* SceneDelegate.swift */; };
 		2B6D0AC72655404B00729E75 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D0AC62655404B00729E75 /* ViewController.swift */; };
 		2B6D0ACA2655404B00729E75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B6D0AC82655404B00729E75 /* Main.storyboard */; };
-		2B6D0ACC2655405000729E75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B6D0ACB2655405000729E75 /* Assets.xcassets */; };
 		2B6D0ACF2655405000729E75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B6D0ACD2655405000729E75 /* LaunchScreen.storyboard */; };
 		2B6D0AFE26554A1400729E75 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D0AFD26554A1400729E75 /* BaseViewController.swift */; };
 		2B6D0B0026554AB900729E75 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D0AFF26554AB900729E75 /* BaseNavigationController.swift */; };
@@ -55,7 +54,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2B10CEA1265BAAEE00DC2771 /* NDBluetoothLibrary.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -63,12 +61,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2B10CE9F265BAAEE00DC2771 /* NDBluetoothLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NDBluetoothLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B10CEA3265BAC4C00DC2771 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		2B10CEA5265BAFA700DC2771 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		2B46C830265BB5FB00A2581E /* TwikoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwikoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B46C83A265BB62C00A2581E /* TwikoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwikoTests.swift; sourceTree = "<group>"; };
 		2B46C83B265BB62D00A2581E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2B46C840265BBB1B00A2581E /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		2B46C844265BBD0A00A2581E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2B55C19126564E6A0056CB21 /* Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decodable.swift; sourceTree = "<group>"; };
 		2B55C19326564E810056CB21 /* Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encodable.swift; sourceTree = "<group>"; };
 		2B55C19526564E940056CB21 /* UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
@@ -85,13 +84,11 @@
 		2B55C1AD265657B40056CB21 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2B55C1B7265671000056CB21 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		2B55C1BC26567E620056CB21 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
-		2B55C1E92656A39B0056CB21 /* NDBluetoothPump.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NDBluetoothPump.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B6D0ABF2655404B00729E75 /* Twiko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twiko.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B6D0AC22655404B00729E75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2B6D0AC42655404B00729E75 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2B6D0AC62655404B00729E75 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2B6D0AC92655404B00729E75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		2B6D0ACB2655405000729E75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2B6D0ACE2655405000729E75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2B6D0AD02655405000729E75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B6D0AFD26554A1400729E75 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -110,7 +107,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B10CEA0265BAAEE00DC2771 /* NDBluetoothLibrary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,8 +158,6 @@
 		2B55C1E82656A39B0056CB21 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2B10CE9F265BAAEE00DC2771 /* NDBluetoothLibrary.framework */,
-				2B55C1E92656A39B0056CB21 /* NDBluetoothPump.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -244,10 +238,11 @@
 			isa = PBXGroup;
 			children = (
 				2B46C83E265BB64E00A2581E /* Fonts */,
-				2B6D0ACB2655405000729E75 /* Assets.xcassets */,
 				2B6D0ACD2655405000729E75 /* LaunchScreen.storyboard */,
 				2B6D0AC82655404B00729E75 /* Main.storyboard */,
 				2B6D0AD02655405000729E75 /* Info.plist */,
+				2B46C840265BBB1B00A2581E /* Colors.xcassets */,
+				2B46C844265BBD0A00A2581E /* Images.xcassets */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -344,7 +339,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B6D0ACF2655405000729E75 /* LaunchScreen.storyboard in Resources */,
-				2B6D0ACC2655405000729E75 /* Assets.xcassets in Resources */,
+				2B46C845265BBD0A00A2581E /* Images.xcassets in Resources */,
+				2B46C841265BBB1B00A2581E /* Colors.xcassets in Resources */,
 				2B6D0ACA2655404B00729E75 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
