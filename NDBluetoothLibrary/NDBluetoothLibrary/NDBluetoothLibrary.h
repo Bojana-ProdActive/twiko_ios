@@ -6,7 +6,7 @@
 // Proprietary and Confidential - Not for Distribution
 // Written by NeuroDerm.
 //
-// NDBluetoothPump.h
+// NDBluetoothLibrary.h
 //
 // AUTHOR IDENTITY:
 //        Goran Tokovic        20.5.21.
@@ -16,9 +16,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 //! Project version number for NDBluetoothPump.
-FOUNDATION_EXPORT double NDBluetoothPumpVersionNumber;
+FOUNDATION_EXPORT double NDBluetoothLibraryVersionNumber;
 
 //! Project version string for NDBluetoothPump.
-FOUNDATION_EXPORT const unsigned char NDBluetoothPumpVersionString[];
+FOUNDATION_EXPORT const unsigned char NDBluetoothLibraryVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <NDBluetoothPump/PublicHeader.h>
+// In this header, you should import all the public headers of your framework using statements like #import <NDBluetoothLibrary/PublicHeader.h>

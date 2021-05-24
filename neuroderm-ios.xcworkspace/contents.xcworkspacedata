@@ -5,6 +5,6 @@
       location = "group:Twiko/Twiko.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:NDBluetoothPump/NDBluetoothPump.xcodeproj">
+      location = "group:NDBluetoothLibrary/NDBluetoothLibrary.xcodeproj">
    </FileRef>
 </Workspace>

@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2B55C1D72656A1240056CB21 /* NDBluetoothPump.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B55C1CD2656A1240056CB21 /* NDBluetoothPump.framework */; };
-		2B55C1DC2656A1240056CB21 /* NDBluetoothPumpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C1DB2656A1240056CB21 /* NDBluetoothPumpTests.swift */; };
-		2B55C1DE2656A1240056CB21 /* NDBluetoothPump.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B55C1D02656A1240056CB21 /* NDBluetoothPump.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2B55C1D72656A1240056CB21 /* NDBluetoothLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B55C1CD2656A1240056CB21 /* NDBluetoothLibrary.framework */; };
+		2B55C1DC2656A1240056CB21 /* NDBluetoothLibraryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C1DB2656A1240056CB21 /* NDBluetoothLibraryTests.swift */; };
+		2B55C1DE2656A1240056CB21 /* NDBluetoothLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B55C1D02656A1240056CB21 /* NDBluetoothLibrary.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,11 +23,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2B55C1CD2656A1240056CB21 /* NDBluetoothPump.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NDBluetoothPump.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2B55C1D02656A1240056CB21 /* NDBluetoothPump.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDBluetoothPump.h; sourceTree = "<group>"; };
+		2B55C1CD2656A1240056CB21 /* NDBluetoothLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NDBluetoothLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B55C1D02656A1240056CB21 /* NDBluetoothLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDBluetoothLibrary.h; sourceTree = "<group>"; };
 		2B55C1D12656A1240056CB21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2B55C1D62656A1240056CB21 /* NDBluetoothPumpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NDBluetoothPumpTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2B55C1DB2656A1240056CB21 /* NDBluetoothPumpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDBluetoothPumpTests.swift; sourceTree = "<group>"; };
+		2B55C1D62656A1240056CB21 /* NDBluetoothLibraryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NDBluetoothLibraryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B55C1DB2656A1240056CB21 /* NDBluetoothLibraryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDBluetoothLibraryTests.swift; sourceTree = "<group>"; };
 		2B55C1DD2656A1240056CB21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -43,7 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B55C1D72656A1240056CB21 /* NDBluetoothPump.framework in Frameworks */,
+				2B55C1D72656A1240056CB21 /* NDBluetoothLibrary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,8 +53,8 @@
 		2B55C1C32656A1240056CB21 = {
 			isa = PBXGroup;
 			children = (
-				2B55C1CF2656A1240056CB21 /* NDBluetoothPump */,
-				2B55C1DA2656A1240056CB21 /* NDBluetoothPumpTests */,
+				2B55C1CF2656A1240056CB21 /* NDBluetoothLibrary */,
+				2B55C1DA2656A1240056CB21 /* NDBluetoothLibraryTests */,
 				2B55C1CE2656A1240056CB21 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -62,28 +62,28 @@
 		2B55C1CE2656A1240056CB21 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2B55C1CD2656A1240056CB21 /* NDBluetoothPump.framework */,
-				2B55C1D62656A1240056CB21 /* NDBluetoothPumpTests.xctest */,
+				2B55C1CD2656A1240056CB21 /* NDBluetoothLibrary.framework */,
+				2B55C1D62656A1240056CB21 /* NDBluetoothLibraryTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2B55C1CF2656A1240056CB21 /* NDBluetoothPump */ = {
+		2B55C1CF2656A1240056CB21 /* NDBluetoothLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				2B55C1D02656A1240056CB21 /* NDBluetoothPump.h */,
+				2B55C1D02656A1240056CB21 /* NDBluetoothLibrary.h */,
 				2B55C1D12656A1240056CB21 /* Info.plist */,
 			);
-			path = NDBluetoothPump;
+			path = NDBluetoothLibrary;
 			sourceTree = "<group>";
 		};
-		2B55C1DA2656A1240056CB21 /* NDBluetoothPumpTests */ = {
+		2B55C1DA2656A1240056CB21 /* NDBluetoothLibraryTests */ = {
 			isa = PBXGroup;
 			children = (
-				2B55C1DB2656A1240056CB21 /* NDBluetoothPumpTests.swift */,
+				2B55C1DB2656A1240056CB21 /* NDBluetoothLibraryTests.swift */,
 				2B55C1DD2656A1240056CB21 /* Info.plist */,
 			);
-			path = NDBluetoothPumpTests;
+			path = NDBluetoothLibraryTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -93,16 +93,16 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B55C1DE2656A1240056CB21 /* NDBluetoothPump.h in Headers */,
+				2B55C1DE2656A1240056CB21 /* NDBluetoothLibrary.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		2B55C1CC2656A1240056CB21 /* NDBluetoothPump */ = {
+		2B55C1CC2656A1240056CB21 /* NDBluetoothLibrary */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2B55C1E12656A1240056CB21 /* Build configuration list for PBXNativeTarget "NDBluetoothPump" */;
+			buildConfigurationList = 2B55C1E12656A1240056CB21 /* Build configuration list for PBXNativeTarget "NDBluetoothLibrary" */;
 			buildPhases = (
 				2B55C1C82656A1240056CB21 /* Headers */,
 				2B55C1C92656A1240056CB21 /* Sources */,
@@ -114,14 +114,14 @@
 			);
 			dependencies = (
 			);
-			name = NDBluetoothPump;
+			name = NDBluetoothLibrary;
 			productName = NDBluetoothPump;
-			productReference = 2B55C1CD2656A1240056CB21 /* NDBluetoothPump.framework */;
+			productReference = 2B55C1CD2656A1240056CB21 /* NDBluetoothLibrary.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		2B55C1D52656A1240056CB21 /* NDBluetoothPumpTests */ = {
+		2B55C1D52656A1240056CB21 /* NDBluetoothLibraryTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2B55C1E42656A1240056CB21 /* Build configuration list for PBXNativeTarget "NDBluetoothPumpTests" */;
+			buildConfigurationList = 2B55C1E42656A1240056CB21 /* Build configuration list for PBXNativeTarget "NDBluetoothLibraryTests" */;
 			buildPhases = (
 				2B55C1D22656A1240056CB21 /* Sources */,
 				2B55C1D32656A1240056CB21 /* Frameworks */,
@@ -132,9 +132,9 @@
 			dependencies = (
 				2B55C1D92656A1240056CB21 /* PBXTargetDependency */,
 			);
-			name = NDBluetoothPumpTests;
+			name = NDBluetoothLibraryTests;
 			productName = NDBluetoothPumpTests;
-			productReference = 2B55C1D62656A1240056CB21 /* NDBluetoothPumpTests.xctest */;
+			productReference = 2B55C1D62656A1240056CB21 /* NDBluetoothLibraryTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -154,7 +154,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2B55C1C72656A1240056CB21 /* Build configuration list for PBXProject "NDBluetoothPump" */;
+			buildConfigurationList = 2B55C1C72656A1240056CB21 /* Build configuration list for PBXProject "NDBluetoothLibrary" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -167,8 +167,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2B55C1CC2656A1240056CB21 /* NDBluetoothPump */,
-				2B55C1D52656A1240056CB21 /* NDBluetoothPumpTests */,
+				2B55C1CC2656A1240056CB21 /* NDBluetoothLibrary */,
+				2B55C1D52656A1240056CB21 /* NDBluetoothLibraryTests */,
 			);
 		};
 /* End PBXProject section */
@@ -223,7 +223,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B55C1DC2656A1240056CB21 /* NDBluetoothPumpTests.swift in Sources */,
+				2B55C1DC2656A1240056CB21 /* NDBluetoothLibraryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,7 +232,7 @@
 /* Begin PBXTargetDependency section */
 		2B55C1D92656A1240056CB21 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2B55C1CC2656A1240056CB21 /* NDBluetoothPump */;
+			target = 2B55C1CC2656A1240056CB21 /* NDBluetoothLibrary */;
 			targetProxy = 2B55C1D82656A1240056CB21 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -369,7 +369,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = NDBluetoothPump/Info.plist;
+				INFOPLIST_FILE = NDBluetoothLibrary/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -395,7 +395,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = NDBluetoothPump/Info.plist;
+				INFOPLIST_FILE = NDBluetoothLibrary/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -417,7 +417,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y5A2X83345;
-				INFOPLIST_FILE = NDBluetoothPumpTests/Info.plist;
+				INFOPLIST_FILE = NDBluetoothLibraryTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -435,7 +435,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y5A2X83345;
-				INFOPLIST_FILE = NDBluetoothPumpTests/Info.plist;
+				INFOPLIST_FILE = NDBluetoothLibraryTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -451,7 +451,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2B55C1C72656A1240056CB21 /* Build configuration list for PBXProject "NDBluetoothPump" */ = {
+		2B55C1C72656A1240056CB21 /* Build configuration list for PBXProject "NDBluetoothLibrary" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2B55C1DF2656A1240056CB21 /* Debug */,
@@ -460,7 +460,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2B55C1E12656A1240056CB21 /* Build configuration list for PBXNativeTarget "NDBluetoothPump" */ = {
+		2B55C1E12656A1240056CB21 /* Build configuration list for PBXNativeTarget "NDBluetoothLibrary" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2B55C1E22656A1240056CB21 /* Debug */,
@@ -469,7 +469,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2B55C1E42656A1240056CB21 /* Build configuration list for PBXNativeTarget "NDBluetoothPumpTests" */ = {
+		2B55C1E42656A1240056CB21 /* Build configuration list for PBXNativeTarget "NDBluetoothLibraryTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2B55C1E52656A1240056CB21 /* Debug */,

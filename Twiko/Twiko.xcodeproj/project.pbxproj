@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B10CEA0265BAAEE00DC2771 /* NDBluetoothLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B10CE9F265BAAEE00DC2771 /* NDBluetoothLibrary.framework */; };
+		2B10CEA1265BAAEE00DC2771 /* NDBluetoothLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2B10CE9F265BAAEE00DC2771 /* NDBluetoothLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2B55C19226564E6A0056CB21 /* Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C19126564E6A0056CB21 /* Decodable.swift */; };
 		2B55C19426564E810056CB21 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C19326564E810056CB21 /* Encodable.swift */; };
 		2B55C19626564E940056CB21 /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C19526564E940056CB21 /* UITableViewCell.swift */; };
@@ -23,8 +25,6 @@
 		2B55C1AE265657B40056CB21 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C1AD265657B40056CB21 /* Constants.swift */; };
 		2B55C1B8265671000056CB21 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C1B7265671000056CB21 /* Assets.swift */; };
 		2B55C1BD26567E620056CB21 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C1BC26567E620056CB21 /* Fonts.swift */; };
-		2B55C1EA2656A39B0056CB21 /* NDBluetoothPump.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B55C1E92656A39B0056CB21 /* NDBluetoothPump.framework */; };
-		2B55C1EB2656A39B0056CB21 /* NDBluetoothPump.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2B55C1E92656A39B0056CB21 /* NDBluetoothPump.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2B6D0AC32655404B00729E75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D0AC22655404B00729E75 /* AppDelegate.swift */; };
 		2B6D0AC52655404B00729E75 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D0AC42655404B00729E75 /* SceneDelegate.swift */; };
 		2B6D0AC72655404B00729E75 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D0AC62655404B00729E75 /* ViewController.swift */; };
@@ -47,13 +47,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		2B55C1EC2656A39B0056CB21 /* Embed Frameworks */ = {
+		2B10CEA2265BAAEF00DC2771 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2B55C1EB2656A39B0056CB21 /* NDBluetoothPump.framework in Embed Frameworks */,
+				2B10CEA1265BAAEE00DC2771 /* NDBluetoothLibrary.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -61,6 +61,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2B10CE9F265BAAEE00DC2771 /* NDBluetoothLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NDBluetoothLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B55C19126564E6A0056CB21 /* Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decodable.swift; sourceTree = "<group>"; };
 		2B55C19326564E810056CB21 /* Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encodable.swift; sourceTree = "<group>"; };
 		2B55C19526564E940056CB21 /* UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
@@ -98,7 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B55C1EA2656A39B0056CB21 /* NDBluetoothPump.framework in Frameworks */,
+				2B10CEA0265BAAEE00DC2771 /* NDBluetoothLibrary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +142,7 @@
 		2B55C1E82656A39B0056CB21 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2B10CE9F265BAAEE00DC2771 /* NDBluetoothLibrary.framework */,
 				2B55C1E92656A39B0056CB21 /* NDBluetoothPump.framework */,
 			);
 			name = Frameworks;
@@ -256,7 +258,7 @@
 				2B6D0AF5265544F300729E75 /* SwiftLint */,
 				2B6D0ABC2655404B00729E75 /* Frameworks */,
 				2B6D0ABD2655404B00729E75 /* Resources */,
-				2B55C1EC2656A39B0056CB21 /* Embed Frameworks */,
+				2B10CEA2265BAAEF00DC2771 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
