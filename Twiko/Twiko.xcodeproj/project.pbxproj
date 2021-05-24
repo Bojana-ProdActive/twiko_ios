@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2B10CEA0265BAAEE00DC2771 /* NDBluetoothLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B10CE9F265BAAEE00DC2771 /* NDBluetoothLibrary.framework */; };
 		2B10CEA1265BAAEE00DC2771 /* NDBluetoothLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2B10CE9F265BAAEE00DC2771 /* NDBluetoothLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2B10CEA4265BAC4C00DC2771 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B10CEA3265BAC4C00DC2771 /* Button.swift */; };
+		2B10CEA6265BAFA700DC2771 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B10CEA5265BAFA700DC2771 /* Label.swift */; };
 		2B55C19226564E6A0056CB21 /* Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C19126564E6A0056CB21 /* Decodable.swift */; };
 		2B55C19426564E810056CB21 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C19326564E810056CB21 /* Encodable.swift */; };
 		2B55C19626564E940056CB21 /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C19526564E940056CB21 /* UITableViewCell.swift */; };
@@ -62,6 +64,8 @@
 
 /* Begin PBXFileReference section */
 		2B10CE9F265BAAEE00DC2771 /* NDBluetoothLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NDBluetoothLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B10CEA3265BAC4C00DC2771 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		2B10CEA5265BAFA700DC2771 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		2B55C19126564E6A0056CB21 /* Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decodable.swift; sourceTree = "<group>"; };
 		2B55C19326564E810056CB21 /* Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encodable.swift; sourceTree = "<group>"; };
 		2B55C19526564E940056CB21 /* UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
@@ -223,6 +227,8 @@
 		2B6D0AF82655465500729E75 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2B10CEA3265BAC4C00DC2771 /* Button.swift */,
+				2B10CEA5265BAFA700DC2771 /* Label.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -399,6 +405,7 @@
 				2B55C1A8265652FD0056CB21 /* UIEdgeInsets.swift in Sources */,
 				2B55C19426564E810056CB21 /* Encodable.swift in Sources */,
 				2B55C1A02656510D0056CB21 /* Error.swift in Sources */,
+				2B10CEA6265BAFA700DC2771 /* Label.swift in Sources */,
 				2B55C19E26564FDE0056CB21 /* Dictionary.swift in Sources */,
 				2B55C1AC2656556D0056CB21 /* UITableViewHeaderFooterView.swift in Sources */,
 				2B6D0AFE26554A1400729E75 /* BaseViewController.swift in Sources */,
@@ -409,6 +416,7 @@
 				2B55C19A26564EF10056CB21 /* UIView.swift in Sources */,
 				2B55C1B8265671000056CB21 /* Assets.swift in Sources */,
 				2B6D0AC52655404B00729E75 /* SceneDelegate.swift in Sources */,
+				2B10CEA4265BAC4C00DC2771 /* Button.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
