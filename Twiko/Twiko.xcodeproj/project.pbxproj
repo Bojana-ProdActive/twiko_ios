@@ -35,6 +35,8 @@
 		2B6D0ACF2655405000729E75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B6D0ACD2655405000729E75 /* LaunchScreen.storyboard */; };
 		2B6D0AFE26554A1400729E75 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D0AFD26554A1400729E75 /* BaseViewController.swift */; };
 		2B6D0B0026554AB900729E75 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D0AFF26554AB900729E75 /* BaseNavigationController.swift */; };
+		2BBDFAC3265F9AC900952BE6 /* NDBluetoothLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BBDFAC2265F9AC900952BE6 /* NDBluetoothLibrary.framework */; };
+		2BBDFAC4265F9AC900952BE6 /* NDBluetoothLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2BBDFAC2265F9AC900952BE6 /* NDBluetoothLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				2BBDFAC4265F9AC900952BE6 /* NDBluetoothLibrary.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -93,6 +96,7 @@
 		2B6D0AD02655405000729E75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B6D0AFD26554A1400729E75 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		2B6D0AFF26554AB900729E75 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		2BBDFAC2265F9AC900952BE6 /* NDBluetoothLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NDBluetoothLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BBDFAC3265F9AC900952BE6 /* NDBluetoothLibrary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,20 +125,6 @@
 				2B46C83A265BB62C00A2581E /* TwikoTests.swift */,
 			);
 			path = TwikoTests;
-			sourceTree = "<group>";
-		};
-		2B46C83E265BB64E00A2581E /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Fonts;
-			sourceTree = "<group>";
-		};
-		2B46C83F265BB65500A2581E /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		2B55C19026564CE50056CB21 /* App */ = {
@@ -158,6 +149,7 @@
 		2B55C1E82656A39B0056CB21 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2BBDFAC2265F9AC900952BE6 /* NDBluetoothLibrary.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -189,7 +181,6 @@
 				2B6D0AF72655464D00729E75 /* Extensions */,
 				2B6D0AF62655464100729E75 /* Controllers */,
 				2B6D0AF82655465500729E75 /* Views */,
-				2B46C83F265BB65500A2581E /* Models */,
 				2B6D0AFA2655468900729E75 /* Supporting Files */,
 				2B6D0AC62655404B00729E75 /* ViewController.swift */,
 			);
@@ -237,7 +228,6 @@
 		2B6D0AFA2655468900729E75 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				2B46C83E265BB64E00A2581E /* Fonts */,
 				2B6D0ACD2655405000729E75 /* LaunchScreen.storyboard */,
 				2B6D0AC82655404B00729E75 /* Main.storyboard */,
 				2B6D0AD02655405000729E75 /* Info.plist */,

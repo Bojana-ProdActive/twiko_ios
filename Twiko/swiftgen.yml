@@ -10,9 +10,9 @@ xcassets:
        output: ./Twiko/SwiftGen/Assets.swift
 
 # Fonts
-fonts:
-  inputs:
-       - ./Twiko/Supporting Files/Fonts/
-  outputs:
-    templateName: swift5
-    output: ./Twiko/SwiftGen/Fonts.swift
+#fonts:
+#  inputs:
+#       - ./Twiko/Supporting Files/Fonts/
+#  outputs:
+#    templateName: swift5
+#    output: ./Twiko/SwiftGen/Fonts.swift
