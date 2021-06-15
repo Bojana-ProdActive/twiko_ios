@@ -1,0 +1,25 @@
+{
+    "connectable": true,
+    "isInRange":true,
+    "alarm":0,
+    "timeElapsedDetailsOkayWhat is itDo you want young detailsWhat is three disadvantaged young the sound on your ownNeed a spot at the barSecond can you print out on PasitaWell I'm going todayYesYeahWhen you record it":0,
+    "batteryStatus":0,
+    "regimenFlow":0.0,
+    "deliveredDose":0.0,
+    "maxDose":12.0,
+    "cartridgeTimeElapsed":0,
+    "timeUntilEndOfTreatment":0,
+    "startTimeOfTreatment":0,
+    "timeSinceDurationStopped":0,
+    "pumpStatusRegister": {
+      "isCartridgeAttached":true,
+      "isCoupledToStation":true,
+      "isDeliveringMedicine":false,
+      "isFtuFinished":true,
+      "isInFillingState":false,
+      "isInFullTreatmentFlow":false,
+      "isCartridgeRemovedInLastHour":false,
+      "isAlarmAcknowledged":false,
+      "status":7
+    }
+}

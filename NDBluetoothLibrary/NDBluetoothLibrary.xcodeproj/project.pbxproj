@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,16 @@
 		36433F2D266E46F800BEBC81 /* DecryptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36433F2C266E46F800BEBC81 /* DecryptionManager.swift */; };
 		36433F32266E525800BEBC81 /* EncryptionManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36433F31266E525800BEBC81 /* EncryptionManagerTest.swift */; };
 		36433F34266E52EB00BEBC81 /* DecryptionManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36433F33266E52EB00BEBC81 /* DecryptionManagerTest.swift */; };
+		3690A8CB2670A3520002855A /* NDBroadcastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3690A8CA2670A3520002855A /* NDBroadcastManager.swift */; };
+		3690A8CE2670A3CE0002855A /* NDPump.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3690A8CD2670A3CE0002855A /* NDPump.swift */; };
+		3690A8D02670A4DB0002855A /* NDPumpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3690A8CF2670A4DB0002855A /* NDPumpManager.swift */; };
+		3690A8D22670A6740002855A /* NDPumpStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3690A8D12670A6740002855A /* NDPumpStatus.swift */; };
+		36CDF4A62670BCF800708D74 /* NDCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CDF4A52670BCF800708D74 /* NDCredentials.swift */; };
+		36CDF4A92670BF6900708D74 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 36CDF4A82670BF6900708D74 /* KeychainAccess */; };
+		36CDF4D12673560A00708D74 /* NDPumpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CDF4D02673560A00708D74 /* NDPumpError.swift */; };
+		36CDF4D4267356A100708D74 /* NDBroadcastManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CDF4D3267356A100708D74 /* NDBroadcastManagerTest.swift */; };
+		36D37890267764CD00154A2A /* NDBroadcastDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D3788F267764CD00154A2A /* NDBroadcastDataParser.swift */; };
+		36D37893267766B900154A2A /* UInt8.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D37892267766B900154A2A /* UInt8.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +49,15 @@
 		36433F2C266E46F800BEBC81 /* DecryptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecryptionManager.swift; sourceTree = "<group>"; };
 		36433F31266E525800BEBC81 /* EncryptionManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncryptionManagerTest.swift; sourceTree = "<group>"; };
 		36433F33266E52EB00BEBC81 /* DecryptionManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecryptionManagerTest.swift; sourceTree = "<group>"; };
+		3690A8CA2670A3520002855A /* NDBroadcastManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDBroadcastManager.swift; sourceTree = "<group>"; };
+		3690A8CD2670A3CE0002855A /* NDPump.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDPump.swift; sourceTree = "<group>"; };
+		3690A8CF2670A4DB0002855A /* NDPumpManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDPumpManager.swift; sourceTree = "<group>"; };
+		3690A8D12670A6740002855A /* NDPumpStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDPumpStatus.swift; sourceTree = "<group>"; };
+		36CDF4A52670BCF800708D74 /* NDCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDCredentials.swift; sourceTree = "<group>"; };
+		36CDF4D02673560A00708D74 /* NDPumpError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDPumpError.swift; sourceTree = "<group>"; };
+		36CDF4D3267356A100708D74 /* NDBroadcastManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDBroadcastManagerTest.swift; sourceTree = "<group>"; };
+		36D3788F267764CD00154A2A /* NDBroadcastDataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDBroadcastDataParser.swift; sourceTree = "<group>"; };
+		36D37892267766B900154A2A /* UInt8.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UInt8.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36CDF4A92670BF6900708D74 /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +83,7 @@
 		2B55C1C32656A1240056CB21 = {
 			isa = PBXGroup;
 			children = (
+				36D37891267766A400154A2A /* Extensions */,
 				36433F20266E3DEB00BEBC81 /* Helpers */,
 				2B55C1CF2656A1240056CB21 /* NDBluetoothLibrary */,
 				2B55C1DA2656A1240056CB21 /* NDBluetoothLibraryTests */,
@@ -101,6 +122,7 @@
 		36433F20266E3DEB00BEBC81 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				3690A8C7266F7D500002855A /* Broadcast Handling */,
 				36433F2B266E46D100BEBC81 /* Decryption */,
 				36433F24266E3E2E00BEBC81 /* Encryption */,
 				36433F21266E3DF900BEBC81 /* Support */,
@@ -135,6 +157,7 @@
 		36433F2E266E521900BEBC81 /* Helpers Test */ = {
 			isa = PBXGroup;
 			children = (
+				36CDF4D22673567300708D74 /* Broadcast Handling Test */,
 				36433F30266E523300BEBC81 /* Encryption Test */,
 				36433F2F266E522800BEBC81 /* Decryption Test */,
 			);
@@ -155,6 +178,52 @@
 				36433F31266E525800BEBC81 /* EncryptionManagerTest.swift */,
 			);
 			path = "Encryption Test";
+			sourceTree = "<group>";
+		};
+		3690A8C7266F7D500002855A /* Broadcast Handling */ = {
+			isa = PBXGroup;
+			children = (
+				36CDF4CF267355F600708D74 /* Errors */,
+				3690A8CC2670A3AD0002855A /* Models */,
+				3690A8CA2670A3520002855A /* NDBroadcastManager.swift */,
+				3690A8CF2670A4DB0002855A /* NDPumpManager.swift */,
+				36CDF4A52670BCF800708D74 /* NDCredentials.swift */,
+				36D3788F267764CD00154A2A /* NDBroadcastDataParser.swift */,
+			);
+			path = "Broadcast Handling";
+			sourceTree = "<group>";
+		};
+		3690A8CC2670A3AD0002855A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3690A8CD2670A3CE0002855A /* NDPump.swift */,
+				3690A8D12670A6740002855A /* NDPumpStatus.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		36CDF4CF267355F600708D74 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				36CDF4D02673560A00708D74 /* NDPumpError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		36CDF4D22673567300708D74 /* Broadcast Handling Test */ = {
+			isa = PBXGroup;
+			children = (
+				36CDF4D3267356A100708D74 /* NDBroadcastManagerTest.swift */,
+			);
+			path = "Broadcast Handling Test";
+			sourceTree = "<group>";
+		};
+		36D37891267766A400154A2A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				36D37892267766B900154A2A /* UInt8.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,6 +256,9 @@
 			dependencies = (
 			);
 			name = NDBluetoothLibrary;
+			packageProductDependencies = (
+				36CDF4A82670BF6900708D74 /* KeychainAccess */,
+			);
 			productName = NDBluetoothPump;
 			productReference = 2B55C1CD2656A1240056CB21 /* NDBluetoothLibrary.framework */;
 			productType = "com.apple.product-type.framework";
@@ -236,6 +308,9 @@
 				Base,
 			);
 			mainGroup = 2B55C1C32656A1240056CB21;
+			packageReferences = (
+				36CDF4A72670BF6900708D74 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+			);
 			productRefGroup = 2B55C1CE2656A1240056CB21 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -289,8 +364,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36D37893267766B900154A2A /* UInt8.swift in Sources */,
+				36D37890267764CD00154A2A /* NDBroadcastDataParser.swift in Sources */,
+				3690A8D02670A4DB0002855A /* NDPumpManager.swift in Sources */,
 				36433F2D266E46F800BEBC81 /* DecryptionManager.swift in Sources */,
+				36CDF4D12673560A00708D74 /* NDPumpError.swift in Sources */,
 				36433F26266E3E4600BEBC81 /* EncryptionManager.swift in Sources */,
+				36CDF4A62670BCF800708D74 /* NDCredentials.swift in Sources */,
+				3690A8D22670A6740002855A /* NDPumpStatus.swift in Sources */,
+				3690A8CB2670A3520002855A /* NDBroadcastManager.swift in Sources */,
+				3690A8CE2670A3CE0002855A /* NDPump.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +384,7 @@
 				36433F32266E525800BEBC81 /* EncryptionManagerTest.swift in Sources */,
 				36433F34266E52EB00BEBC81 /* DecryptionManagerTest.swift in Sources */,
 				2B55C1DC2656A1240056CB21 /* NDBluetoothLibraryTests.swift in Sources */,
+				36CDF4D4267356A100708D74 /* NDBroadcastManagerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,7 +527,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = Y5A2X83345;
+				DEVELOPMENT_TEAM = BEQYWPGH67;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -471,7 +555,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = Y5A2X83345;
+				DEVELOPMENT_TEAM = BEQYWPGH67;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -561,6 +645,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		36CDF4A72670BF6900708D74 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		36CDF4A82670BF6900708D74 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 36CDF4A72670BF6900708D74 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2B55C1C42656A1240056CB21 /* Project object */;
 }

@@ -1,10 +1,10 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
-// Prod-Active Solutions NDBluetoothLibrary
-// Copyright (c) 2021 Prod-Active Solutions
+// NeuroDerm NDBluetoothLibrary
+// Copyright (c) 2021 NeuroDerm
 // All Rights Reserved Worldwide
 // Proprietary and Confidential - Not for Distribution
-// Written by Prod-Active Solutions.
+// Written by NeuroDerm.
 //
 // EncryptionManager.swift
 //
