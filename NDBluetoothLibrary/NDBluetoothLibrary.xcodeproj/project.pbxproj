@@ -9,7 +9,12 @@
 /* Begin PBXBuildFile section */
 		2B55C1D72656A1240056CB21 /* NDBluetoothLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B55C1CD2656A1240056CB21 /* NDBluetoothLibrary.framework */; };
 		2B55C1DC2656A1240056CB21 /* NDBluetoothLibraryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C1DB2656A1240056CB21 /* NDBluetoothLibraryTests.swift */; };
-		2B55C1DE2656A1240056CB21 /* NDBluetoothLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B55C1D02656A1240056CB21 /* NDBluetoothLibrary.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		36433F26266E3E4600BEBC81 /* EncryptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36433F25266E3E4600BEBC81 /* EncryptionManager.swift */; };
+		36433F29266E45CD00BEBC81 /* CommonCryptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 36433F22266E3E0A00BEBC81 /* CommonCryptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		36433F2A266E45DD00BEBC81 /* NDBluetoothLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B55C1D02656A1240056CB21 /* NDBluetoothLibrary.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		36433F2D266E46F800BEBC81 /* DecryptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36433F2C266E46F800BEBC81 /* DecryptionManager.swift */; };
+		36433F32266E525800BEBC81 /* EncryptionManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36433F31266E525800BEBC81 /* EncryptionManagerTest.swift */; };
+		36433F34266E52EB00BEBC81 /* DecryptionManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36433F33266E52EB00BEBC81 /* DecryptionManagerTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +34,11 @@
 		2B55C1D62656A1240056CB21 /* NDBluetoothLibraryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NDBluetoothLibraryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B55C1DB2656A1240056CB21 /* NDBluetoothLibraryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDBluetoothLibraryTests.swift; sourceTree = "<group>"; };
 		2B55C1DD2656A1240056CB21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		36433F22266E3E0A00BEBC81 /* CommonCryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonCryptor.h; sourceTree = "<group>"; };
+		36433F25266E3E4600BEBC81 /* EncryptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncryptionManager.swift; sourceTree = "<group>"; };
+		36433F2C266E46F800BEBC81 /* DecryptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecryptionManager.swift; sourceTree = "<group>"; };
+		36433F31266E525800BEBC81 /* EncryptionManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncryptionManagerTest.swift; sourceTree = "<group>"; };
+		36433F33266E52EB00BEBC81 /* DecryptionManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecryptionManagerTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +63,7 @@
 		2B55C1C32656A1240056CB21 = {
 			isa = PBXGroup;
 			children = (
+				36433F20266E3DEB00BEBC81 /* Helpers */,
 				2B55C1CF2656A1240056CB21 /* NDBluetoothLibrary */,
 				2B55C1DA2656A1240056CB21 /* NDBluetoothLibraryTests */,
 				2B55C1CE2656A1240056CB21 /* Products */,
@@ -80,10 +91,70 @@
 		2B55C1DA2656A1240056CB21 /* NDBluetoothLibraryTests */ = {
 			isa = PBXGroup;
 			children = (
+				36433F2E266E521900BEBC81 /* Helpers Test */,
 				2B55C1DB2656A1240056CB21 /* NDBluetoothLibraryTests.swift */,
 				2B55C1DD2656A1240056CB21 /* Info.plist */,
 			);
 			path = NDBluetoothLibraryTests;
+			sourceTree = "<group>";
+		};
+		36433F20266E3DEB00BEBC81 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				36433F2B266E46D100BEBC81 /* Decryption */,
+				36433F24266E3E2E00BEBC81 /* Encryption */,
+				36433F21266E3DF900BEBC81 /* Support */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		36433F21266E3DF900BEBC81 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				36433F22266E3E0A00BEBC81 /* CommonCryptor.h */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		36433F24266E3E2E00BEBC81 /* Encryption */ = {
+			isa = PBXGroup;
+			children = (
+				36433F25266E3E4600BEBC81 /* EncryptionManager.swift */,
+			);
+			path = Encryption;
+			sourceTree = "<group>";
+		};
+		36433F2B266E46D100BEBC81 /* Decryption */ = {
+			isa = PBXGroup;
+			children = (
+				36433F2C266E46F800BEBC81 /* DecryptionManager.swift */,
+			);
+			path = Decryption;
+			sourceTree = "<group>";
+		};
+		36433F2E266E521900BEBC81 /* Helpers Test */ = {
+			isa = PBXGroup;
+			children = (
+				36433F30266E523300BEBC81 /* Encryption Test */,
+				36433F2F266E522800BEBC81 /* Decryption Test */,
+			);
+			path = "Helpers Test";
+			sourceTree = "<group>";
+		};
+		36433F2F266E522800BEBC81 /* Decryption Test */ = {
+			isa = PBXGroup;
+			children = (
+				36433F33266E52EB00BEBC81 /* DecryptionManagerTest.swift */,
+			);
+			path = "Decryption Test";
+			sourceTree = "<group>";
+		};
+		36433F30266E523300BEBC81 /* Encryption Test */ = {
+			isa = PBXGroup;
+			children = (
+				36433F31266E525800BEBC81 /* EncryptionManagerTest.swift */,
+			);
+			path = "Encryption Test";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -93,7 +164,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B55C1DE2656A1240056CB21 /* NDBluetoothLibrary.h in Headers */,
+				36433F29266E45CD00BEBC81 /* CommonCryptor.h in Headers */,
+				36433F2A266E45DD00BEBC81 /* NDBluetoothLibrary.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,6 +220,7 @@
 				TargetAttributes = {
 					2B55C1CC2656A1240056CB21 = {
 						CreatedOnToolsVersion = 12.5;
+						LastSwiftMigration = 1250;
 					};
 					2B55C1D52656A1240056CB21 = {
 						CreatedOnToolsVersion = 12.5;
@@ -216,6 +289,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36433F2D266E46F800BEBC81 /* DecryptionManager.swift in Sources */,
+				36433F26266E3E4600BEBC81 /* EncryptionManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,6 +298,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36433F32266E525800BEBC81 /* EncryptionManagerTest.swift in Sources */,
+				36433F34266E52EB00BEBC81 /* DecryptionManagerTest.swift in Sources */,
 				2B55C1DC2656A1240056CB21 /* NDBluetoothLibraryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -363,6 +440,7 @@
 		2B55C1E22656A1240056CB21 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = Y5A2X83345;
@@ -381,6 +459,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -389,6 +468,7 @@
 		2B55C1E32656A1240056CB21 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = Y5A2X83345;
@@ -415,6 +495,7 @@
 		2B55C1E52656A1240056CB21 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y5A2X83345;
 				INFOPLIST_FILE = NDBluetoothLibraryTests/Info.plist;
@@ -433,6 +514,7 @@
 		2B55C1E62656A1240056CB21 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y5A2X83345;
 				INFOPLIST_FILE = NDBluetoothLibraryTests/Info.plist;
