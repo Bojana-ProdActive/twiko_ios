@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B3D50C4265FA0C400B2060C /* PriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3D50C3265FA0C400B2060C /* PriorityQueue.swift */; };
+		2B3D50C7265FA15F00B2060C /* CommandType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3D50C6265FA15F00B2060C /* CommandType.swift */; };
+		2B3D50CC265FA3E600B2060C /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3D50CB265FA3E600B2060C /* ConnectionManager.swift */; };
+		2B3D50D0265FB6C400B2060C /* PumpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3D50CF265FB6C400B2060C /* PumpManager.swift */; };
+		2B481A912670A38900CB376B /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B481A902670A38900CB376B /* Logger.swift */; };
+		2B5004B726779E3200A08DC6 /* NDBluetoothError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5004B626779E3200A08DC6 /* NDBluetoothError.swift */; };
 		2B55C1D72656A1240056CB21 /* NDBluetoothLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B55C1CD2656A1240056CB21 /* NDBluetoothLibrary.framework */; };
 		2B55C1DC2656A1240056CB21 /* NDBluetoothLibraryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C1DB2656A1240056CB21 /* NDBluetoothLibraryTests.swift */; };
 		36433F26266E3E4600BEBC81 /* EncryptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36433F25266E3E4600BEBC81 /* EncryptionManager.swift */; };
@@ -25,6 +31,14 @@
 		36CDF4D4267356A100708D74 /* NDBroadcastManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CDF4D3267356A100708D74 /* NDBroadcastManagerTest.swift */; };
 		36D37890267764CD00154A2A /* NDBroadcastDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D3788F267764CD00154A2A /* NDBroadcastDataParser.swift */; };
 		36D37893267766B900154A2A /* UInt8.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D37892267766B900154A2A /* UInt8.swift */; };
+		2B9E7ACA266E65170011E3B3 /* PumpVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9E7AC9266E65170011E3B3 /* PumpVersion.swift */; };
+		2B9F32CD26676CE2003593AE /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9F32CC26676CE2003593AE /* Error.swift */; };
+		2BAE1F8D2664C69B0055A8E6 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAE1F8C2664C69B0055A8E6 /* Service.swift */; };
+		2BAE1F8F2664C6AB0055A8E6 /* Characteristic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAE1F8E2664C6AB0055A8E6 /* Characteristic.swift */; };
+		2BAE1F912664C6DF0055A8E6 /* ServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAE1F902664C6DF0055A8E6 /* ServiceType.swift */; };
+		2BAE1F932664C8F50055A8E6 /* CharacteristicType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAE1F922664C8F50055A8E6 /* CharacteristicType.swift */; };
+		2BC1CE8E26661DDF00C2A47E /* Peripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC1CE8D26661DDF00C2A47E /* Peripheral.swift */; };
+		2BC1CE9026662F1200C2A47E /* PriorityCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC1CE8F26662F1200C2A47E /* PriorityCommand.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +52,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2B3D50C3265FA0C400B2060C /* PriorityQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityQueue.swift; sourceTree = "<group>"; };
+		2B3D50C6265FA15F00B2060C /* CommandType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandType.swift; sourceTree = "<group>"; };
+		2B3D50CB265FA3E600B2060C /* ConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
+		2B3D50CF265FB6C400B2060C /* PumpManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PumpManager.swift; sourceTree = "<group>"; };
+		2B481A902670A38900CB376B /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		2B5004B626779E3200A08DC6 /* NDBluetoothError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDBluetoothError.swift; sourceTree = "<group>"; };
 		2B55C1CD2656A1240056CB21 /* NDBluetoothLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NDBluetoothLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B55C1D02656A1240056CB21 /* NDBluetoothLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDBluetoothLibrary.h; sourceTree = "<group>"; };
 		2B55C1D12656A1240056CB21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -58,6 +78,14 @@
 		36CDF4D3267356A100708D74 /* NDBroadcastManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDBroadcastManagerTest.swift; sourceTree = "<group>"; };
 		36D3788F267764CD00154A2A /* NDBroadcastDataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDBroadcastDataParser.swift; sourceTree = "<group>"; };
 		36D37892267766B900154A2A /* UInt8.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UInt8.swift; sourceTree = "<group>"; };
+		2B9E7AC9266E65170011E3B3 /* PumpVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PumpVersion.swift; sourceTree = "<group>"; };
+		2B9F32CC26676CE2003593AE /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		2BAE1F8C2664C69B0055A8E6 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		2BAE1F8E2664C6AB0055A8E6 /* Characteristic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Characteristic.swift; sourceTree = "<group>"; };
+		2BAE1F902664C6DF0055A8E6 /* ServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceType.swift; sourceTree = "<group>"; };
+		2BAE1F922664C8F50055A8E6 /* CharacteristicType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacteristicType.swift; sourceTree = "<group>"; };
+		2BC1CE8D26661DDF00C2A47E /* Peripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Peripheral.swift; sourceTree = "<group>"; };
+		2BC1CE8F26662F1200C2A47E /* PriorityCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityCommand.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +108,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B3D50C2265F9FCF00B2060C /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				2B3D50C3265FA0C400B2060C /* PriorityQueue.swift */,
+				2BAE1F902664C6DF0055A8E6 /* ServiceType.swift */,
+				2BAE1F922664C8F50055A8E6 /* CharacteristicType.swift */,
+				2B481A902670A38900CB376B /* Logger.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		2B3D50C5265FA0F000B2060C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2B3D50C6265FA15F00B2060C /* CommandType.swift */,
+				2BAE1F8C2664C69B0055A8E6 /* Service.swift */,
+				2BAE1F8E2664C6AB0055A8E6 /* Characteristic.swift */,
+				2BC1CE8D26661DDF00C2A47E /* Peripheral.swift */,
+				2BC1CE8F26662F1200C2A47E /* PriorityCommand.swift */,
+				2B9E7AC9266E65170011E3B3 /* PumpVersion.swift */,
+				2B5004B626779E3200A08DC6 /* NDBluetoothError.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2B3D50CA265FA3AE00B2060C /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				2B3D50CB265FA3E600B2060C /* ConnectionManager.swift */,
+				2B3D50CF265FB6C400B2060C /* PumpManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		2B55C1C32656A1240056CB21 = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +165,10 @@
 		2B55C1CF2656A1240056CB21 /* NDBluetoothLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				2B9F32CB26676CC5003593AE /* Extensions */,
+				2B3D50CA265FA3AE00B2060C /* Managers */,
+				2B3D50C5265FA0F000B2060C /* Models */,
+				2B3D50C2265F9FCF00B2060C /* Utility */,
 				2B55C1D02656A1240056CB21 /* NDBluetoothLibrary.h */,
 				2B55C1D12656A1240056CB21 /* Info.plist */,
 			);
@@ -222,6 +288,14 @@
 			isa = PBXGroup;
 			children = (
 				36D37892267766B900154A2A /* UInt8.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		2B9F32CB26676CC5003593AE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2B9F32CC26676CE2003593AE /* Error.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -374,6 +448,20 @@
 				3690A8D22670A6740002855A /* NDPumpStatus.swift in Sources */,
 				3690A8CB2670A3520002855A /* NDBroadcastManager.swift in Sources */,
 				3690A8CE2670A3CE0002855A /* NDPump.swift in Sources */,
+				2B9E7ACA266E65170011E3B3 /* PumpVersion.swift in Sources */,
+				2B3D50C4265FA0C400B2060C /* PriorityQueue.swift in Sources */,
+				2BAE1F912664C6DF0055A8E6 /* ServiceType.swift in Sources */,
+				2B3D50D0265FB6C400B2060C /* PumpManager.swift in Sources */,
+				2B9F32CD26676CE2003593AE /* Error.swift in Sources */,
+				2B5004B726779E3200A08DC6 /* NDBluetoothError.swift in Sources */,
+				2B3D50C7265FA15F00B2060C /* CommandType.swift in Sources */,
+				2BC1CE8E26661DDF00C2A47E /* Peripheral.swift in Sources */,
+				2B3D50CC265FA3E600B2060C /* ConnectionManager.swift in Sources */,
+				2BAE1F8F2664C6AB0055A8E6 /* Characteristic.swift in Sources */,
+				2BAE1F8D2664C69B0055A8E6 /* Service.swift in Sources */,
+				2B481A912670A38900CB376B /* Logger.swift in Sources */,
+				2BC1CE9026662F1200C2A47E /* PriorityCommand.swift in Sources */,
+				2BAE1F932664C8F50055A8E6 /* CharacteristicType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,36 +10,85 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    private lazy var button: Button = {
-        let button = Button(type: .primary)
-        button.setTitle("Test", for: .normal)
-        return button
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.registerCellClass(UITableViewCell.self)
+        return tableView
     }()
 
-    private lazy var infoLabel: Label = {
-        let label = Label(type: .body)
-        label.textAlignment = .center
-        label.text = "Test Label"
-        return label
+    private lazy var scanButton: UIBarButtonItem = {
+        let item = UIBarButtonItem(title: "Scan", style: .plain, target: self, action: #selector(scanButtonTapper))
+        return item
     }()
+
+    private var devices: [Peripheral] = []
+    private var isScanning: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Button
-        view.addSubview(button)
-        NSLayoutConstraint.activate([
-            button.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80),
-            button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: UI.defaultPadding),
-            button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -UI.defaultPadding)
-        ])
+        view.addSubview(tableView)
+        tableView.pinToSafeArea(ofView: view)
 
-        // Label
-        view.addSubview(infoLabel)
-        NSLayoutConstraint.activate([
-            infoLabel.topAnchor.constraint(equalTo: button.bottomAnchor, constant: UI.defaultPadding),
-            infoLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: UI.defaultPadding),
-            infoLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -UI.defaultPadding)
-        ])
+        navigationItem.rightBarButtonItem = scanButton
+        PumpManager.shared.delegate = self
+    }
+
+    @objc  private func scanButtonTapper() {
+        if isScanning {
+            scanButton.title = "Scan"
+            PumpManager.shared.stopSearchingPumps()
+
+        } else {
+            scanButton.title = "Stop scan"
+            searchForPumps()
+        }
+        isScanning.toggle()
+    }
+
+    private func searchForPumps() {
+        PumpManager.shared.scanForConnectablePumps()
+    }
+
+    private func connect(peripheral: Peripheral) {
+        PumpManager.shared.connect(peripheral)
+    }
+}
+
+extension ViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return devices.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: UITableViewCell = tableView.dequeueReusableCell(atIndexPath: indexPath)
+        cell.textLabel?.text = devices[indexPath.row].localName
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        PumpManager.shared.stopSearchingPumps()
+        scanButton.title = "Scan"
+        scanButton.isEnabled = false
+        connect(peripheral: devices[indexPath.row])
+    }
+}
+
+extension ViewController: PumpManagerDelegate {
+    func peripheralsListUpdated(_ peripherals: [Peripheral]) {
+        devices = peripherals
+        tableView.reloadData()
+    }
+
+    func didConnectPump() {
+        debugPrint("***** Pump connected *****")
+    }
+
+    func didConnectionFailed(_ error: Error?) {
+        debugPrint("***** Connection has not established *****")
     }
 }
