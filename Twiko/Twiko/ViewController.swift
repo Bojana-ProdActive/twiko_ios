@@ -88,7 +88,11 @@ extension ViewController: PumpManagerDelegate {
         debugPrint("***** Pump connected *****")
     }
 
-    func didConnectionFailed(_ error: Error?) {
+    func didFailToConnect(_ error: Error?) {
         debugPrint("***** Connection has not established *****")
+    }
+
+    func didDisconnectPump(_ error: Error?) {
+        debugPrint("***** Pump has disconnected *****")
     }
 }

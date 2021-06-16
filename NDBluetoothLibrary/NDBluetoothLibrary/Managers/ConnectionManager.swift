@@ -410,7 +410,7 @@ final class ConnectionManager: NSObject, ConnectionManagerInterface {
         Log.d("")
         // Crete services array
         var servicesContainer: [Service] = []
-        for serviceType in ServiceType.allCases {
+        for serviceType in ServiceType.allCases where serviceType != .genericAttributeProfile {
             var characteristics: [Characteristic] = []
             for characteristicType in CharacteristicType.characteristics(forServiceType: serviceType) {
                 let newCharacteristic = Characteristic(type: characteristicType)

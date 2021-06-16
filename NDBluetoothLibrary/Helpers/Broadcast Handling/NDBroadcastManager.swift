@@ -29,7 +29,6 @@ final class NDBroadcastManager: NSObject, NDBroadcastManagerProtocol {
 
     static let bluetoothTurnedOffNotificationName = Notification.Name(rawValue: "BluetoothTurnedOffNotificationName")
     private static let firstDataKey = "Generic Attribute Profile"
-    private static let ndMedicationDosingSensorUUID = "00001801-0000-1000-8000-00805f9b34fb"
     private static let scanActiveTime: TimeInterval  = 10.0
     private static let scanInactiveTime: TimeInterval = 2.0
 
@@ -96,7 +95,7 @@ final class NDBroadcastManager: NSObject, NDBroadcastManagerProtocol {
             pumpManager.setIsPumpConnected(true)
         }
         peripheralFoundInTime = false
-        centralManager.scanForPeripherals(withServices: [CBUUID(string: NDBroadcastManager.ndMedicationDosingSensorUUID)],
+        centralManager.scanForPeripherals(withServices: [CBUUID(string: ServiceType.genericAttributeProfile.rawValue)],
                                           options: [CBCentralManagerScanOptionAllowDuplicatesKey: false])
         startScanTimeoutTimer()
     }

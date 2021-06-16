@@ -221,6 +221,8 @@ extension CharacteristicType {
                 .maximumDailyDoseValue,
                 .regimenCrcValue
             ]
+        case .genericAttributeProfile:
+            return []
         }
     }
 

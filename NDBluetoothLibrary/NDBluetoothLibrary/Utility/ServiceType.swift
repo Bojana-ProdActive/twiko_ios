@@ -19,5 +19,5 @@ enum ServiceType: String, CaseIterable {
     case regimen = "263F7000-5CFC-4DB5-927B-2F670FDCBCBB"
     case log = "59715000-A757-4879-9E1E-B843F85E672F"
     case general = "AFD04000-C496-4D71-96C6-25136C7D7339"
-//    case genericAttributeProfile = "00001801-0000-1000-8000-00805f9b34fb"
+    case genericAttributeProfile = "00001801-0000-1000-8000-00805f9b34fb"
 }

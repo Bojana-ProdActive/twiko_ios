@@ -24,10 +24,16 @@ public protocol PumpManagerDelegate: AnyObject {
     func didConnectPump()
 
     /**
-     Tells the delegate the device established connection with the pump.
+     Tells the delegate the device has not established connection with the pump.
      - parameter error: Error which describing reason why connection is not established
      */
-    func didConnectionFailed(_ error: Error?)
+    func didFailToConnect(_ error: Error?)
+
+    /**
+     Tells the delegate the pump disconnected from device
+     - parameter error: Error which describing reason why disconnection occurred
+     */
+    func didDisconnectPump(_ error: Error?)
 }
 
 public protocol PumpManagerInterface {
@@ -57,11 +63,17 @@ public protocol PumpManagerInterface {
 
 public final class PumpManager: PumpManagerInterface {
 
+    /// Returns the shared object (singleton instance)
     public static let shared: PumpManager = PumpManager()
+
     public weak var delegate: PumpManagerDelegate?
 
     lazy var connectinManager: ConnectionManagerInterface = ConnectionManager(delegate: self)
 
+    /**
+     Default init method vith internal access.
+     From access outside of library use **shared** instance
+     */
     init() {
 
     }
@@ -69,7 +81,7 @@ public final class PumpManager: PumpManagerInterface {
     public func scanForConnectablePumps() {
         Log.i("Scan started")
         connectinManager.stopScanningForDevices()
-        connectinManager.scannDevices(withCBUUIDs: [CBUUID(string: "00001801-0000-1000-8000-00805F9B34FB")])
+        connectinManager.scannDevices(withCBUUIDs: [CBUUID(string: ServiceType.genericAttributeProfile.rawValue)])
     }
 
     public func stopSearchingPumps() {
@@ -77,8 +89,6 @@ public final class PumpManager: PumpManagerInterface {
         connectinManager.stopScanningForDevices()
     }
 
-    /// Attempt connect to periferal
-    /// - Parameter peripheral: Periferal object
     public func connect(_ peripheral: Peripheral) {
         Log.i("Connection started")
         connectinManager.connect(peripheral)
@@ -112,17 +122,18 @@ extension PumpManager: ConnectionManagerDelegate {
         case .startAuthentication:
             Log.v("Start authentication notification arrived")
         default:
-            Log.v("Notification is not important")
+            Log.v(type)
         }
     }
 
     func didDisconnectPeripheral(_ peripheral: Peripheral, error: Error?) {
         Log.w("device \(peripheral.localName) disconnected, error: \(String(describing: error?.localizedDescription))")
+        delegate?.didDisconnectPump(error)
     }
 
     func connectionFailed(error: Error?) {
         Log.e("Error: \(String(describing: error?.localizedDescription)), code: \(error?.code ?? -1), domain: \(String(describing: error?.domain))")
-        delegate?.didConnectionFailed(error)
+        delegate?.didFailToConnect(error)
     }
 
     func connectionSuccess() {
