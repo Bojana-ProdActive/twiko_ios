@@ -244,8 +244,10 @@ final class ConnectionManager: NSObject, ConnectionManagerInterface {
         executingCommand = newCommand
         switch newCommand.type {
         case .read:
+            Log.d("Read characteristic: \(newCommand.characteristic.type)")
             peripheral.cbPeripheral.readValue(for: cbCharacteristic)
         case .write(let data):
+            Log.d("Write characteristic: \(newCommand.characteristic.type), data: \(data.hexEncodedString())")
             peripheral.cbPeripheral.writeValue(data, for: cbCharacteristic, type: .withResponse)
         }
     }

@@ -24,7 +24,7 @@ class NDPumpTest: XCTestCase {
     private var expectedPumpStatus: NDPumpStatus = NDPumpStatus()
     private var expectedTimeUntilEndOfTreatment: Int = 0
     private var expectedTimeSinceDurationStopped: Int = 0
-    
+
     /**
          This method test set pump data.
 

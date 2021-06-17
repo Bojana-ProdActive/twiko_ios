@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B114AAB267B919F009641BE /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B114AAA267B919F009641BE /* Data.swift */; };
+		2B114AB6267B922F009641BE /* PumpCommandType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B114AB3267B922E009641BE /* PumpCommandType.swift */; };
+		2B114AB7267B922F009641BE /* CharacteristicType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B114AB4267B922E009641BE /* CharacteristicType.swift */; };
+		2B114AB8267B922F009641BE /* ServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B114AB5267B922F009641BE /* ServiceType.swift */; };
+		2B114ABB267B92CC009641BE /* PumpManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B114ABA267B92CC009641BE /* PumpManagerTests.swift */; };
+		2B114ABD267B930D009641BE /* DataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B114ABC267B930D009641BE /* DataTests.swift */; };
+		2B114AC0267B9386009641BE /* PumpCommandTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B114ABF267B9386009641BE /* PumpCommandTypeTests.swift */; };
 		2B3D50C4265FA0C400B2060C /* PriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3D50C3265FA0C400B2060C /* PriorityQueue.swift */; };
 		2B3D50C7265FA15F00B2060C /* CommandType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3D50C6265FA15F00B2060C /* CommandType.swift */; };
 		2B3D50CC265FA3E600B2060C /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3D50CB265FA3E600B2060C /* ConnectionManager.swift */; };
@@ -14,13 +21,10 @@
 		2B481A912670A38900CB376B /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B481A902670A38900CB376B /* Logger.swift */; };
 		2B5004B726779E3200A08DC6 /* NDBluetoothError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5004B626779E3200A08DC6 /* NDBluetoothError.swift */; };
 		2B55C1D72656A1240056CB21 /* NDBluetoothLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B55C1CD2656A1240056CB21 /* NDBluetoothLibrary.framework */; };
-		2B55C1DC2656A1240056CB21 /* NDBluetoothLibraryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C1DB2656A1240056CB21 /* NDBluetoothLibraryTests.swift */; };
 		2B9E7ACA266E65170011E3B3 /* PumpVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9E7AC9266E65170011E3B3 /* PumpVersion.swift */; };
 		2B9F32CD26676CE2003593AE /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9F32CC26676CE2003593AE /* Error.swift */; };
 		2BAE1F8D2664C69B0055A8E6 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAE1F8C2664C69B0055A8E6 /* Service.swift */; };
 		2BAE1F8F2664C6AB0055A8E6 /* Characteristic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAE1F8E2664C6AB0055A8E6 /* Characteristic.swift */; };
-		2BAE1F912664C6DF0055A8E6 /* ServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAE1F902664C6DF0055A8E6 /* ServiceType.swift */; };
-		2BAE1F932664C8F50055A8E6 /* CharacteristicType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAE1F922664C8F50055A8E6 /* CharacteristicType.swift */; };
 		2BC1CE8E26661DDF00C2A47E /* Peripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC1CE8D26661DDF00C2A47E /* Peripheral.swift */; };
 		2BC1CE9026662F1200C2A47E /* PriorityCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC1CE8F26662F1200C2A47E /* PriorityCommand.swift */; };
 		36433F26266E3E4600BEBC81 /* EncryptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36433F25266E3E4600BEBC81 /* EncryptionManager.swift */; };
@@ -59,6 +63,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2B114AAA267B919F009641BE /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		2B114AB3267B922E009641BE /* PumpCommandType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PumpCommandType.swift; sourceTree = "<group>"; };
+		2B114AB4267B922E009641BE /* CharacteristicType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacteristicType.swift; sourceTree = "<group>"; };
+		2B114AB5267B922F009641BE /* ServiceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceType.swift; sourceTree = "<group>"; };
+		2B114ABA267B92CC009641BE /* PumpManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PumpManagerTests.swift; sourceTree = "<group>"; };
+		2B114ABC267B930D009641BE /* DataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataTests.swift; sourceTree = "<group>"; };
+		2B114ABF267B9386009641BE /* PumpCommandTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PumpCommandTypeTests.swift; sourceTree = "<group>"; };
 		2B3D50C3265FA0C400B2060C /* PriorityQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityQueue.swift; sourceTree = "<group>"; };
 		2B3D50C6265FA15F00B2060C /* CommandType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandType.swift; sourceTree = "<group>"; };
 		2B3D50CB265FA3E600B2060C /* ConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
@@ -69,14 +80,11 @@
 		2B55C1D02656A1240056CB21 /* NDBluetoothLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDBluetoothLibrary.h; sourceTree = "<group>"; };
 		2B55C1D12656A1240056CB21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B55C1D62656A1240056CB21 /* NDBluetoothLibraryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NDBluetoothLibraryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2B55C1DB2656A1240056CB21 /* NDBluetoothLibraryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDBluetoothLibraryTests.swift; sourceTree = "<group>"; };
 		2B55C1DD2656A1240056CB21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B9E7AC9266E65170011E3B3 /* PumpVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PumpVersion.swift; sourceTree = "<group>"; };
 		2B9F32CC26676CE2003593AE /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		2BAE1F8C2664C69B0055A8E6 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		2BAE1F8E2664C6AB0055A8E6 /* Characteristic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Characteristic.swift; sourceTree = "<group>"; };
-		2BAE1F902664C6DF0055A8E6 /* ServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceType.swift; sourceTree = "<group>"; };
-		2BAE1F922664C8F50055A8E6 /* CharacteristicType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacteristicType.swift; sourceTree = "<group>"; };
 		2BC1CE8D26661DDF00C2A47E /* Peripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Peripheral.swift; sourceTree = "<group>"; };
 		2BC1CE8F26662F1200C2A47E /* PriorityCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityCommand.swift; sourceTree = "<group>"; };
 		36433F22266E3E0A00BEBC81 /* CommonCryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonCryptor.h; sourceTree = "<group>"; };
@@ -122,12 +130,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B114AAC267B91C4009641BE /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				2B114AB4267B922E009641BE /* CharacteristicType.swift */,
+				2B114AB3267B922E009641BE /* PumpCommandType.swift */,
+				2B114AB5267B922F009641BE /* ServiceType.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		2B114AB9267B92A0009641BE /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				2B114ABA267B92CC009641BE /* PumpManagerTests.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		2B114ABE267B937E009641BE /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				2B114ABF267B9386009641BE /* PumpCommandTypeTests.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		2B3D50C2265F9FCF00B2060C /* Utility */ = {
 			isa = PBXGroup;
 			children = (
 				2B3D50C3265FA0C400B2060C /* PriorityQueue.swift */,
-				2BAE1F902664C6DF0055A8E6 /* ServiceType.swift */,
-				2BAE1F922664C8F50055A8E6 /* CharacteristicType.swift */,
 				2B481A902670A38900CB376B /* Logger.swift */,
 			);
 			path = Utility;
@@ -184,11 +216,12 @@
 		2B55C1CF2656A1240056CB21 /* NDBluetoothLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				3638526A267B4B7800E384FC /* Supporting Files */,
-				36385269267B4B5600E384FC /* Helpers */,
+				2B114AAC267B91C4009641BE /* Constants */,
 				2B9F32CB26676CC5003593AE /* Extensions */,
+				36385269267B4B5600E384FC /* Helpers */,
 				2B3D50CA265FA3AE00B2060C /* Managers */,
 				2B3D50C5265FA0F000B2060C /* Models */,
+				3638526A267B4B7800E384FC /* Supporting Files */,
 				2B3D50C2265F9FCF00B2060C /* Utility */,
 				2B55C1D02656A1240056CB21 /* NDBluetoothLibrary.h */,
 				2B55C1D12656A1240056CB21 /* Info.plist */,
@@ -199,12 +232,12 @@
 		2B55C1DA2656A1240056CB21 /* NDBluetoothLibraryTests */ = {
 			isa = PBXGroup;
 			children = (
-				3638526B267B4C1300E384FC /* Managers Tests */,
+				2B114ABE267B937E009641BE /* Constants */,
+				368A64C5267A0EAC0040727F /* Extension */,
+				36433F2E266E521900BEBC81 /* Helpers */,
+				2B114AB9267B92A0009641BE /* Managers */,
+				368A64CA267A19800040727F /* Models */,
 				368A64CF267A28E60040727F /* Supporting Files */,
-				368A64CA267A19800040727F /* Models Test */,
-				368A64C5267A0EAC0040727F /* Extension Tests */,
-				36433F2E266E521900BEBC81 /* Helpers Test */,
-				2B55C1DB2656A1240056CB21 /* NDBluetoothLibraryTests.swift */,
 				2B55C1DD2656A1240056CB21 /* Info.plist */,
 			);
 			path = NDBluetoothLibraryTests;
@@ -213,6 +246,7 @@
 		2B9F32CB26676CC5003593AE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				2B114AAA267B919F009641BE /* Data.swift */,
 				36D37892267766B900154A2A /* UInt8.swift */,
 				368A64CD267A1D0D0040727F /* Decodable.swift */,
 				2B9F32CC26676CE2003593AE /* Error.swift */,
@@ -238,13 +272,6 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		3638526B267B4C1300E384FC /* Managers Tests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Managers Tests";
-			sourceTree = "<group>";
-		};
 		36433F24266E3E2E00BEBC81 /* Encryption */ = {
 			isa = PBXGroup;
 			children = (
@@ -261,14 +288,14 @@
 			path = Decryption;
 			sourceTree = "<group>";
 		};
-		36433F2E266E521900BEBC81 /* Helpers Test */ = {
+		36433F2E266E521900BEBC81 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				368A64C32679DFCC0040727F /* NDBroadcastDataParserTest.swift */,
 				36433F30266E523300BEBC81 /* Encryption Test */,
 				36433F2F266E522800BEBC81 /* Decryption Test */,
 			);
-			path = "Helpers Test";
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		36433F2F266E522800BEBC81 /* Decryption Test */ = {
@@ -294,21 +321,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		368A64C5267A0EAC0040727F /* Extension Tests */ = {
+		368A64C5267A0EAC0040727F /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				2B114ABC267B930D009641BE /* DataTests.swift */,
 				368A64C8267A0EDD0040727F /* UInt8Test.swift */,
 			);
-			path = "Extension Tests";
+			path = Extension;
 			sourceTree = "<group>";
 		};
-		368A64CA267A19800040727F /* Models Test */ = {
+		368A64CA267A19800040727F /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				368A64CB267A1A550040727F /* NDPumpStatusTest.swift */,
 				368603A8267AA47C00FCA48B /* NDPumpTest.swift */,
 			);
-			path = "Models Test";
+			path = Models;
 			sourceTree = "<group>";
 		};
 		368A64CF267A28E60040727F /* Supporting Files */ = {
@@ -469,15 +497,18 @@
 				36433F2D266E46F800BEBC81 /* DecryptionManager.swift in Sources */,
 				36CDF4D12673560A00708D74 /* NDPumpError.swift in Sources */,
 				36433F26266E3E4600BEBC81 /* EncryptionManager.swift in Sources */,
+				2B114AB7267B922F009641BE /* CharacteristicType.swift in Sources */,
 				36CDF4A62670BCF800708D74 /* NDCredentialsManager.swift in Sources */,
+				2B114AAB267B919F009641BE /* Data.swift in Sources */,
 				3690A8D22670A6740002855A /* NDPumpStatus.swift in Sources */,
 				368A64CE267A1D0D0040727F /* Decodable.swift in Sources */,
 				3690A8CB2670A3520002855A /* NDBroadcastManager.swift in Sources */,
 				3690A8CE2670A3CE0002855A /* NDPump.swift in Sources */,
 				2B9E7ACA266E65170011E3B3 /* PumpVersion.swift in Sources */,
 				2B3D50C4265FA0C400B2060C /* PriorityQueue.swift in Sources */,
-				2BAE1F912664C6DF0055A8E6 /* ServiceType.swift in Sources */,
 				2B3D50D0265FB6C400B2060C /* PumpManager.swift in Sources */,
+				2B114AB6267B922F009641BE /* PumpCommandType.swift in Sources */,
+				2B114AB8267B922F009641BE /* ServiceType.swift in Sources */,
 				2B9F32CD26676CE2003593AE /* Error.swift in Sources */,
 				2B5004B726779E3200A08DC6 /* NDBluetoothError.swift in Sources */,
 				2B3D50C7265FA15F00B2060C /* CommandType.swift in Sources */,
@@ -487,7 +518,6 @@
 				2BAE1F8D2664C69B0055A8E6 /* Service.swift in Sources */,
 				2B481A912670A38900CB376B /* Logger.swift in Sources */,
 				2BC1CE9026662F1200C2A47E /* PriorityCommand.swift in Sources */,
-				2BAE1F932664C8F50055A8E6 /* CharacteristicType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,11 +526,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				368A64C42679DFCC0040727F /* NDBroadcastDataParserTest.swift in Sources */,
+				2B114ABB267B92CC009641BE /* PumpManagerTests.swift in Sources */,
 				36433F32266E525800BEBC81 /* EncryptionManagerTest.swift in Sources */,
+				2B114AC0267B9386009641BE /* PumpCommandTypeTests.swift in Sources */,
 				36433F34266E52EB00BEBC81 /* DecryptionManagerTest.swift in Sources */,
-				2B55C1DC2656A1240056CB21 /* NDBluetoothLibraryTests.swift in Sources */,
 				368A64C9267A0EDD0040727F /* UInt8Test.swift in Sources */,
 				368A64CC267A1A550040727F /* NDPumpStatusTest.swift in Sources */,
+				2B114ABD267B930D009641BE /* DataTests.swift in Sources */,
 				368603A9267AA47C00FCA48B /* NDPumpTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

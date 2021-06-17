@@ -24,6 +24,11 @@ class ViewController: UIViewController {
         return item
     }()
 
+    private lazy var commandButton: UIBarButtonItem = {
+        let item = UIBarButtonItem(title: "Turn Off", style: .plain, target: self, action: #selector(commandButtonTapped))
+        return item
+    }()
+
     private var devices: [Peripheral] = []
     private var isScanning: Bool = false
 
@@ -47,6 +52,17 @@ class ViewController: UIViewController {
             searchForPumps()
         }
         isScanning.toggle()
+    }
+
+    @objc private func commandButtonTapped() {
+        PumpManager.shared.sendTurnOffCommand { result in
+            switch result {
+            case .success:
+                debugPrint("***** Pump command sent *****")
+            case .failure(let error):
+                debugPrint("***** Pump command error: \(error) *****")
+            }
+        }
     }
 
     private func searchForPumps() {
@@ -86,13 +102,18 @@ extension ViewController: PumpManagerDelegate {
 
     func didConnectPump() {
         debugPrint("***** Pump connected *****")
+        navigationItem.rightBarButtonItem = commandButton
     }
 
     func didFailToConnect(_ error: Error?) {
         debugPrint("***** Connection has not established *****")
+        scanButton.isEnabled = true
+        navigationItem.rightBarButtonItem = scanButton
     }
 
     func didDisconnectPump(_ error: Error?) {
         debugPrint("***** Pump has disconnected *****")
+        scanButton.isEnabled = true
+        navigationItem.rightBarButtonItem = scanButton
     }
 }

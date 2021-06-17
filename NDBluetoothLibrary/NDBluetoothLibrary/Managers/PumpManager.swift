@@ -59,6 +59,108 @@ public protocol PumpManagerInterface {
      - parameter peripheral: Peripheral object which keeping reference on pump peripheral
      */
     func connect(_ peripheral: Peripheral)
+
+    /**
+     Send finish FTU commant to the connected pump.
+     - parameter handler: The block to be executed when the pump acknowledges the received command.
+     */
+    func sendFinishFtuCommand(_ handler: ((Result<Bool, Error>) -> Void)?)
+
+    /**
+     Send turn off command to the connected pump.
+     - parameter handler: The block to be executed when the pump acknowledges the received command.
+     */
+    func sendTurnOffCommand(_ handler: ((Result<Bool, Error>) -> Void)?)
+
+    /**
+     Send disconnect command to the connected pump.
+     - parameter handler: The block to be executed when the pump acknowledges the received command.
+     */
+    func sendDisconnectCommand(_ handler: ((Result<Bool, Error>) -> Void)?)
+
+    /**
+     Send start regimen download command to the connected pump.
+     - parameter handler: The block to be executed when the pump acknowledges the received command.
+     */
+    func sendStartRegimenDownloadCommand(_ handler: ((Result<Bool, Error>) -> Void)?)
+
+    /**
+     Send start regimen upload command to the connected pump.
+     - parameter handler: The block to be executed when the pump acknowledges the received command.
+     */
+    func sendStartRegimenUploadCommand(_ handler: ((Result<Bool, Error>) -> Void)?)
+
+    /**
+     Send finish regimen upload command to the connected pump.
+     - parameter handler: The block to be executed when the pump acknowledges the received command.
+     */
+    func sendFinishRegimenUploadCommand(_ handler: ((Result<Bool, Error>) -> Void)?)
+
+    /**
+     Send unpair command to the connected pump.
+     - parameter handler: The block to be executed when the pump acknowledges the received command.
+     */
+    func sendUnpairCommand(_ handler: ((Result<Bool, Error>) -> Void)?)
+
+    /**
+     Send start filling medication command to the connected pump.
+     - parameter handler: The block to be executed when the pump acknowledges the received command.
+     */
+    func sendStartFillingMedicationCommand(_ handler: ((Result<Bool, Error>) -> Void)?)
+
+    /**
+     Send start priming command to the connected pump.
+     - parameter handler: The block to be executed when the pump acknowledges the received command.
+     */
+    func sendStartPrimingCommand(_ handler: ((Result<Bool, Error>) -> Void)?)
+
+    /**
+     Send start watchdog test command to the connected pump.
+     - parameter handler: The block to be executed when the pump acknowledges the received command.
+     */
+    func sendStartWatchdogTestCommand(_ handler: ((Result<Bool, Error>) -> Void)?)
+
+    /**
+     Send clear pump logs command to the connected pump.
+     - parameter handler: The block to be executed when the pump acknowledges the received command.
+     */
+    func sendClearPumpLogCommand(_ handler: ((Result<Bool, Error>) -> Void)?)
+
+    /**
+     Send switch to fill state command to the connected pump.
+     - parameter handler: The block to be executed when the pump acknowledges the received command.
+     */
+    func sendSwitchToFillStateCommand(_ handler: ((Result<Bool, Error>) -> Void)?)
+
+    /**
+     Send stop logs download command to the connected pump.
+     - parameter handler: The block to be executed when the pump acknowledges the received command.
+     */
+    func sendStopLogsDownloadCommand(_ handler: ((Result<Bool, Error>) -> Void)?)
+
+    /**
+     Send the pump to the boothloader command to the connected pump.
+     - parameter handler: The block to be executed when the pump acknowledges the received command.
+     */
+    func sendThePumpToTheBoothloaderCommand(_ handler: ((Result<Bool, Error>) -> Void)?)
+
+    /**
+     Send acknowledge alarm command to the connected pump.
+     - parameter handler: The block to be executed when the pump acknowledges the received command.
+     */
+    func sendAcknowledgeAlarmCommand(_ handler: ((Result<Bool, Error>) -> Void)?)
+
+    /**
+     Send keep alive command to the connected pump.
+     - parameter handler: The block to be executed when the pump acknowledges the received command.
+     */
+    func sendKeepAliveCommand(_ handler: ((Result<Bool, Error>) -> Void)?)
+
+    /**
+     Send reset ftu and sent to ship mode command to the connected pump.
+     - parameter handler: The block to be executed when the pump acknowledges the received command.
+     */
+    func sendResetFtuAndSendToShipModeCommand(_ handler: ((Result<Bool, Error>) -> Void)?)
 }
 
 public final class PumpManager: PumpManagerInterface {
@@ -93,6 +195,98 @@ public final class PumpManager: PumpManagerInterface {
         Log.i("Connection started")
         connectinManager.connect(peripheral)
     }
+
+    public func sendFinishFtuCommand(_ handler: ((Result<Bool, Error>) -> Void)?) {
+        sendPumpCommand(command: .finishFtu, handler: handler)
+    }
+
+    public func sendTurnOffCommand(_ handler: ((Result<Bool, Error>) -> Void)?) {
+        sendPumpCommand(command: .turnOffThePump, handler: handler)
+    }
+
+    public func sendDisconnectCommand(_ handler: ((Result<Bool, Error>) -> Void)?) {
+        sendPumpCommand(command: .disconnect, handler: handler)
+    }
+
+    public func sendStartRegimenDownloadCommand(_ handler: ((Result<Bool, Error>) -> Void)?) {
+        sendPumpCommand(command: .startRegimenDownload, handler: handler)
+    }
+
+    public func sendStartRegimenUploadCommand(_ handler: ((Result<Bool, Error>) -> Void)?) {
+        sendPumpCommand(command: .startRegimenUpload, handler: handler)
+    }
+
+    public func sendFinishRegimenUploadCommand(_ handler: ((Result<Bool, Error>) -> Void)?) {
+        sendPumpCommand(command: .finishRegimenUpload, handler: handler)
+    }
+
+    public func sendUnpairCommand(_ handler: ((Result<Bool, Error>) -> Void)?) {
+        sendPumpCommand(command: .unpair, handler: handler)
+    }
+
+    public func sendStartFillingMedicationCommand(_ handler: ((Result<Bool, Error>) -> Void)?) {
+        sendPumpCommand(command: .startFillingMedication, handler: handler)
+    }
+
+    public func sendStartPrimingCommand(_ handler: ((Result<Bool, Error>) -> Void)?) {
+        sendPumpCommand(command: .startPriming, handler: handler)
+    }
+
+    public func sendStartWatchdogTestCommand(_ handler: ((Result<Bool, Error>) -> Void)?) {
+        sendPumpCommand(command: .startWatchdogTest, handler: handler)
+    }
+
+    public func sendClearPumpLogCommand(_ handler: ((Result<Bool, Error>) -> Void)?) {
+        sendPumpCommand(command: .clearPumpLog, handler: handler)
+    }
+
+    public func sendSwitchToFillStateCommand(_ handler: ((Result<Bool, Error>) -> Void)?) {
+        sendPumpCommand(command: .switchToFillState, handler: handler)
+    }
+
+    public func sendStopLogsDownloadCommand(_ handler: ((Result<Bool, Error>) -> Void)?) {
+        sendPumpCommand(command: .stopLogsDownload, handler: handler)
+    }
+
+    public func sendThePumpToTheBoothloaderCommand(_ handler: ((Result<Bool, Error>) -> Void)?) {
+        sendPumpCommand(command: .sendThePumpToTheBootloader, handler: handler)
+    }
+
+    public func sendAcknowledgeAlarmCommand(_ handler: ((Result<Bool, Error>) -> Void)?) {
+        sendPumpCommand(command: .acknowledgeAlarm, handler: handler)
+    }
+
+    public func sendKeepAliveCommand(_ handler: ((Result<Bool, Error>) -> Void)?) {
+        sendPumpCommand(command: .keepAlive, handler: handler)
+    }
+
+    public func sendResetFtuAndSendToShipModeCommand(_ handler: ((Result<Bool, Error>) -> Void)?) {
+        sendPumpCommand(command: .resetFtuAndSendToShipMode, handler: handler)
+    }
+}
+
+// MARK: - Private methods
+
+private extension PumpManager {
+
+    /**
+     Send command to the connected pump
+     - parameter command: Pump command should be send to the connected device.
+     - parameter handler: The block to be executed when the pump acknowledges the received command.
+     */
+    private func sendPumpCommand(command: PumpCommandType, handler: ((Result<Bool, Error>) -> Void)?) {
+        let bytesArray: [UInt8] = [command.rawValue]
+        connectinManager.write(Data(bytesArray), characteristicType: .pumpCommand) { result in
+            switch result {
+            case .success:
+                Log.d("Command \(command) sent")
+                handler?(.success(true))
+            case .failure(let error):
+                Log.w("command: \(command), error: \(error), code: \(error.code), domain: \(error.domain)")
+                handler?(.failure(error))
+            }
+        }
+    }
 }
 
 extension PumpManager: ConnectionManagerDelegate {
@@ -126,11 +320,6 @@ extension PumpManager: ConnectionManagerDelegate {
         }
     }
 
-    func didDisconnectPeripheral(_ peripheral: Peripheral, error: Error?) {
-        Log.w("device \(peripheral.localName) disconnected, error: \(String(describing: error?.localizedDescription))")
-        delegate?.didDisconnectPump(error)
-    }
-
     func connectionFailed(error: Error?) {
         Log.e("Error: \(String(describing: error?.localizedDescription)), code: \(error?.code ?? -1), domain: \(String(describing: error?.domain))")
         delegate?.didFailToConnect(error)
@@ -142,6 +331,7 @@ extension PumpManager: ConnectionManagerDelegate {
     }
 
     func didDisconnectPeripheral(_ peripheral: CBPeripheral, error: Error?) {
-        Log.s("Pump disconnected")
+        Log.w("device \(String(describing: peripheral.name)) disconnected, error: \(String(describing: error?.localizedDescription))")
+        delegate?.didDisconnectPump(error)
     }
 }
