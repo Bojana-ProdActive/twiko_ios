@@ -1,0 +1,11 @@
+{
+  "cartridge_attached":true,
+  "coupled_to_station":true,
+  "delivering_medicine":false,
+  "is_ftu_done":true,
+  "in_filling_state":false,
+  "in_full_treatment_flow":false,
+  "is_cartridge_removed_in_last_one_hour":false,
+  "is_alarm_acknowledged":false,
+  "status":7
+}

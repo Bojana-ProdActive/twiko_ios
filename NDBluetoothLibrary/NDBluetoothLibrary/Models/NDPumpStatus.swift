@@ -16,19 +16,14 @@ import Foundation
 ////////////////////////////////////////////////////////////////////////////////
 final class NDPumpStatus: Codable, Equatable {
 
-    // swiftlint:disable discouraged_optional_boolean
-    var isFtuDone: Bool?
-    var cartridgeAttached: Bool?
-    var coupledToStation: Bool?
-    var deliveringMedicine: Bool?
-    var inFillingState: Bool?
-    var isCartridgeRemovedInLastOneHour: Bool?
-    var isAlarmAcknowledged: Bool?
-
-    // OLD fileds
-    var batteryIsCharging: Bool?
-    var inFullTreatmentFlow: Bool?
-    var treatmentPaused: Bool?
+    var isFtuDone: Bool = false
+    var cartridgeAttached: Bool = false
+    var coupledToStation: Bool = false
+    var deliveringMedicine: Bool = false
+    var inFillingState: Bool = false
+    var isCartridgeRemovedInLastOneHour: Bool = false
+    var isAlarmAcknowledged: Bool = false
+    var inFullTreatmentFlow: Bool = false
 
     private enum CodingKeys: String, CodingKey {
         case isFtuDone = "is_ftu_done"
@@ -37,13 +32,9 @@ final class NDPumpStatus: Codable, Equatable {
         case deliveringMedicine = "delivering_medicine"
         case isCartridgeRemovedInLastOneHour = "is_cartridge_removed_in_last_one_hour"
         case isAlarmAcknowledged = "is_alarm_acknowledged"
-
-        case batteryIsCharging = "battery_charging"
         case inFillingState = "in_filling_state"
         case inFullTreatmentFlow = "in_full_treatment_flow"
-        case treatmentPaused = "treatment_paused"
     }
-    // swiftlint:enable discouraged_optional_boolean
 
     // MARK: - Coding keys
 
@@ -54,10 +45,7 @@ final class NDPumpStatus: Codable, Equatable {
             lhs.deliveringMedicine == rhs.deliveringMedicine &&
             lhs.isCartridgeRemovedInLastOneHour == rhs.isCartridgeRemovedInLastOneHour &&
             lhs.isAlarmAcknowledged == rhs.isAlarmAcknowledged &&
-            // OLD fields
-            lhs.batteryIsCharging == rhs.batteryIsCharging &&
             lhs.inFillingState == rhs.inFillingState &&
-            lhs.inFullTreatmentFlow == rhs.inFullTreatmentFlow &&
-            lhs.treatmentPaused == rhs.treatmentPaused
+            lhs.inFullTreatmentFlow == rhs.inFullTreatmentFlow
     }
 }

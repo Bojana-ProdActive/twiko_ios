@@ -27,6 +27,8 @@ final class NDBroadcastManager: NSObject, NDBroadcastManagerProtocol {
 
     // MARK: - Static
 
+    static let shared = NDBroadcastManager()
+
     static let bluetoothTurnedOffNotificationName = Notification.Name(rawValue: "BluetoothTurnedOffNotificationName")
     private static let firstDataKey = "Generic Attribute Profile"
     private static let scanActiveTime: TimeInterval  = 10.0
@@ -40,15 +42,15 @@ final class NDBroadcastManager: NSObject, NDBroadcastManagerProtocol {
     private var peripheralFoundInTime: Bool = false
     private var timer: Timer?
 
-    private var credentials: NDCredentialsProtocol = NDCredentials()
-    private var pumpManager: NDPumpManagerProtocol = NDPumpManager()
+    private var credentials: NDCredentialsProtocol = NDCredentialsManager()
+    private var pumpManager: NDPumpManagerProtocol = NDPumpManager.shared
 
     // MARK: - Initializers
 
-    init(credentials: NDCredentialsProtocol? = NDCredentials(), pumpManager: NDPumpManagerProtocol? = NDPumpManager()) {
-        self.credentials = credentials ?? NDCredentials()
-        self.pumpManager = pumpManager ?? NDPumpManager()
-    }
+//    init(credentials: NDCredentialsProtocol? = NDCredentials(), pumpManager: NDPumpManagerProtocol? = NDPumpManager()) {
+//        self.credentials = credentials ?? NDCredentials()
+//        self.pumpManager = pumpManager ?? NDPumpManager()
+//    }
 
     // MARK: - Interface
 

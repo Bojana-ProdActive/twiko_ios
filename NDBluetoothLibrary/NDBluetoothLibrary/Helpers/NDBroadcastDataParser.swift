@@ -19,7 +19,7 @@ final class NDBroadcastDataParser {
     /// Parse pump advertisement data using pump documentation
     ///
     /// - Parameter advertisementData: data from pump
-    /// - Returns: NDPumpDataNew object which contains all important data from pump
+    /// - Returns: NDPump object which contains all important data from pump
     static func parseData(advertisementData: Data) -> NDPump? {
         // get UInt8 array from advertisement data
         let byteArray = [UInt8](advertisementData)
@@ -30,8 +30,7 @@ final class NDBroadcastDataParser {
 
             // Parse alarm code
             pumpData?.alarmCode = byteArray[0]
-
-            if let alarmCode = pumpData?.alarmCode, alarmCode > 30, alarmCode < 40 {
+            if let alarmCode = pumpData?.alarmCode, alarmCode > 30 {
                 pumpData?.alarmDetailsCode = alarmCode - 30
                 pumpData?.alarmCode = 1
             }
@@ -63,7 +62,8 @@ final class NDBroadcastDataParser {
             if value < 0 {
                 value = Int(hour * 100 - minute)
             } else {
-                value = Int(byteArray[9] * 100 + byteArray[8])
+                let sum = hour * 100 + minute
+                value = Int(sum)
             }
             pumpData?.timeUntilEndOfTreatment = value
 
@@ -76,19 +76,19 @@ final class NDBroadcastDataParser {
             if value < 0 {
                 value = Int(((byteArray[11]) << 8) | (byteArray[10]))
             } else {
-                value = Int(byteArray[11] * 100 + byteArray[10])
+                let sum = byteArray[11] * 100 + byteArray[10]
+                value = Int(sum)
             }
 
             pumpData?.timeSinceDurationStopped = value
             pumpData?.timeUntilCartridgeReplacement = pumpData?.timeUntilEndOfTreatment
-            pumpData?.unit = NDPumpBaseUnit.miliLiters
         }
         return pumpData
     }
 
     // MARK: - Helpers
 
-    private static func parsePumpStatusRegister(statusByte: UInt8) -> NDPumpStatus {
+    static func parsePumpStatusRegister(statusByte: UInt8) -> NDPumpStatus {
         let pumpStatusBits = statusByte.bits()
         let pumpStatus = NDPumpStatus()
         pumpStatus.isFtuDone = pumpStatusBits[0].boolValue
@@ -96,6 +96,7 @@ final class NDBroadcastDataParser {
         pumpStatus.coupledToStation = pumpStatusBits[2].boolValue
         pumpStatus.deliveringMedicine = pumpStatusBits[3].boolValue
         pumpStatus.inFillingState = pumpStatusBits[4].boolValue
+        pumpStatus.inFullTreatmentFlow = pumpStatusBits[5].boolValue
         pumpStatus.isCartridgeRemovedInLastOneHour = pumpStatusBits[6].boolValue
         pumpStatus.isAlarmAcknowledged = pumpStatusBits[7].boolValue
         return pumpStatus

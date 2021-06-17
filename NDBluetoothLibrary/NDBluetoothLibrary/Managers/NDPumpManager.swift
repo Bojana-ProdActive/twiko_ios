@@ -32,7 +32,9 @@ final class NDPumpManager: NDPumpManagerProtocol {
 
     // MARK: - Data
 
-    private var broadcastManager: NDBroadcastManagerProtocol = NDBroadcastManager()
+    static let shared = NDPumpManager()
+
+    private var broadcastManager = NDBroadcastManager.shared
     private let queue = DispatchQueue(label: "NDSharedPumpQueue", attributes: .concurrent)
 
     private var pumpDictionary: [String: NDPump]! {
@@ -47,9 +49,9 @@ final class NDPumpManager: NDPumpManagerProtocol {
         }
     }
 
-    init(broadcastManager: NDBroadcastManagerProtocol? = NDBroadcastManager()) {
+    init() {
         pumpDictionary = [String: NDPump]()
-        self.broadcastManager = broadcastManager ?? NDBroadcastManager()
+//        self.broadcastManager = broadcastManager ?? NDBroadcastManager()
     }
 
     func startListeningForData() {

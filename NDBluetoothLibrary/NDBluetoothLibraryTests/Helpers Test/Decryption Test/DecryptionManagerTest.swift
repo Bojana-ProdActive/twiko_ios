@@ -20,14 +20,6 @@ class DecryptionManagerTest: XCTestCase {
     private let qrStringTest = "test\ntest\rtest"
     private let qrDecryptedDataExpectedResult = "LeZNNHSIJ+8E49MFInftFQ=="
 
-    override func setUp() {
-        super.setUp()
-    }
-
-    override func tearDown() {
-        super.tearDown()
-    }
-
     // MARK: - Aes 128 decrypt tests
 
     /// Testing if decrypting is the same for same data

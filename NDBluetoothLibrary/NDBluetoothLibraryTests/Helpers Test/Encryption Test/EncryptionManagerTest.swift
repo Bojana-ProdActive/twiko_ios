@@ -16,14 +16,6 @@ class EncryptionManagerTest: XCTestCase {
     private let testDataString = "test_data"
     private let decryptedTestDataString = "uj3IgJELOCLt"
 
-    override func setUp() {
-        super.setUp()
-    }
-
-    override func tearDown() {
-        super.tearDown()
-    }
-
     // MARK: - Encryption tests
 
     /// Testing if encryption is the same for same data
