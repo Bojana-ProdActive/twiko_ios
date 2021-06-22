@@ -38,7 +38,14 @@ protocol ConnectionManagerInterface {
 
     /// Make connection with peripheral object
     /// - Parameter peripheral: periferal object which keeps reference on CBPeripheral object
-    func connect(_ peripheral: Peripheral)
+    func connect(_ peripheral: Peripheral, authorizationEnabled: Bool)
+
+    /**
+     Disconnect from the pump.
+
+     Disconnectiong from connected pump and removes all commands from priority queue.
+     */
+    func disconnectThePump()
 
     /// Write value for characteristic with passed type.
     /// - Parameters:
@@ -52,6 +59,11 @@ protocol ConnectionManagerInterface {
     ///   - characteristicType: The characteristic which value needs to be read
     ///   - handler: callback handler
     func read(_ characteristicType: CharacteristicType, handler: ((_ result: Result<Data?, Error>) -> Void)?)
+
+    /**
+     Remove all commands from priority queue.
+     */
+    func clearCommandQueue()
 }
 
 extension ConnectionManager {
@@ -77,7 +89,6 @@ extension ConnectionManager {
 }
 
 final class ConnectionManager: NSObject, ConnectionManagerInterface {
-
     private lazy var queue: DispatchQueue = DispatchQueue(label: "con.neuroderm.bluetoooth.central-manager.main", qos: .background)
     private lazy var centralManager: CBCentralManager = CBCentralManager(delegate: self, queue: queue)
 
@@ -94,7 +105,10 @@ final class ConnectionManager: NSObject, ConnectionManagerInterface {
     private var services: [Service] = []
     private var searchingForDevices: Bool = false
 
+    private var pumpInitError: Error?
+
     private weak var delegate: ConnectionManagerDelegate?
+    private var authorizationEnabled: Bool = true
 
     init(delegate: ConnectionManagerDelegate) {
         self.delegate = delegate
@@ -135,7 +149,7 @@ final class ConnectionManager: NSObject, ConnectionManagerInterface {
 
     /// Make connection with peripheral object
     /// - Parameter peripheral: periferal object which keeps reference on CBPeripheral object
-    func connect(_ peripheral: Peripheral) {
+    func connect(_ peripheral: Peripheral, authorizationEnabled: Bool = true) {
         queue.sync {
             guard state == .disconnected || state == .disconnectedWithError else {
                 Log.e("Connection is not allowed")
@@ -146,11 +160,31 @@ final class ConnectionManager: NSObject, ConnectionManagerInterface {
             }
 
             Log.i("Connection started")
+            self.authorizationEnabled = authorizationEnabled
             state = .connecting
             connectablePeripheral = peripheral
             services = []
             centralManager.connect(peripheral.cbPeripheral, options: nil)
         }
+    }
+
+    func disconnectThePump() {
+        Log.d("state: \(state)")
+        guard state == .connected || state == .connecting || state == .initialized else {
+            Log.d("From \(state) state is not possible disconnection")
+            return
+        }
+
+        guard let peripheral = connectedPeripheral?.cbPeripheral else {
+            Log.d("There is not connected pump")
+            return
+        }
+
+        // Remove all commands from the command queue
+        priorityQueue.clear()
+
+        // Start disconection
+        centralManager.cancelPeripheralConnection(peripheral)
     }
 
     /// Write value for characteristic with passed type.
@@ -210,6 +244,10 @@ final class ConnectionManager: NSObject, ConnectionManagerInterface {
             priorityQueue.push(command)
             executeNextCommand()
         }
+    }
+
+    func clearCommandQueue() {
+        priorityQueue.clear()
     }
 
     // MARK: - Private
@@ -378,17 +416,21 @@ final class ConnectionManager: NSObject, ConnectionManagerInterface {
                 self.selectPump { selectPumpResult in
                     switch selectPumpResult {
                     case .success:
-                        self.writeAuthCode { authCodeResult in
-                            switch authCodeResult {
-                            case .success:
-                                self.subscribeForNotifications()
-                            case .failure(let error):
-                            self.resetConnectionVariables()
-                            self.state = .disconnectedWithError
-                            DispatchQueue.main.async { [weak self] in
-                                self?.delegate?.connectionFailed(error: error)
+                        if self.authorizationEnabled {
+                            self.writeAuthCode { authCodeResult in
+                                switch authCodeResult {
+                                case .success:
+                                    self.subscribeForNotifications()
+                                case .failure(let error):
+                                self.resetConnectionVariables()
+                                self.state = .disconnectedWithError
+                                DispatchQueue.main.async { [weak self] in
+                                    self?.delegate?.connectionFailed(error: error)
+                                }
+                                }
                             }
-                            }
+                        } else {
+                            self.subscribeForNotifications()
                         }
                     case .failure(let error):
                         self.resetConnectionVariables()
@@ -478,7 +520,13 @@ extension ConnectionManager: CBCentralManagerDelegate {
             return
         }
 
+        guard !discoveredPeripherals.contains(where: { $0.cbPeripheral.name == peripheral.name }) else {
+            Log.d("Device exists in discoveredPeripherals list")
+            return
+        }
+
         Log.d("New peripheral found: \(localName)")
+
         discoveredPeripherals.append(Peripheral(name: localName, peripheral: peripheral))
         DispatchQueue.main.async { [weak self] in
             guard let self = self else {
@@ -508,6 +556,21 @@ extension ConnectionManager: CBCentralManagerDelegate {
     }
 
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
+        Log.i("")
+        // If connection is not initialized call `connectionFailed` insted of `didDisconnectPeripheral`
+        if state == .connecting || state == .connected {
+            // Change state to disconnected
+            Log.d("Return connnection failed")
+            state = .disconnected
+            DispatchQueue.main.async { [weak self] in
+                self?.delegate?.connectionFailed(error: self?.pumpInitError ?? error)
+            }
+            return
+        }
+
+        Log.i("1")
+
+        // If error exists change state to `disconnectedWithError` (This is important for retry last command)
         if error != nil {
             state = .disconnectedWithError
         } else {
@@ -527,21 +590,14 @@ extension ConnectionManager: CBPeripheralDelegate {
         Log.i("Called")
         if let error = error {
             Log.e("Error: \(error.localizedDescription), code: \(error.code), domain: \(error.domain)")
-            centralManager.cancelPeripheralConnection(peripheral)
-
-            // TODO: Reset connectition data
-
-            DispatchQueue.main.async { [weak self] in
-                self?.delegate?.connectionFailed(error: error)
-            }
+            pumpInitError = error
+            disconnectThePump()
+            return
         }
 
         guard let services = peripheral.services else {
             Log.e("Peripheral does not have services")
-            // TODO: - Return error, disconnect and reset connection data
-            DispatchQueue.main.async { [weak self] in
-                self?.delegate?.connectionFailed(error: NSError())
-            }
+            disconnectThePump()
             return
         }
 
@@ -595,11 +651,8 @@ extension ConnectionManager: CBPeripheralDelegate {
         if let error = error {
             Log.w("Characteristic: \(characteristic) error: \(error.localizedDescription), code: \(error.code), domain: \(error.domain)")
             if error.code == CBATTError.Code.insufficientAuthentication.rawValue {
-                //TODO: Disconnect and setup initial data
-                DispatchQueue.main.async { [weak self] in
-                    self?.delegate?.connectionFailed(error: error)
-                }
-                return
+                pumpInitError = error
+                disconnectThePump()
             }
         } else {
             Log.i("characteristic: \(characteristic)")
@@ -610,6 +663,12 @@ extension ConnectionManager: CBPeripheralDelegate {
         characteristicObject?.setNotify(characteristic.isNotifying)
 
         if !containUnsubscribedCharacteristic(services) {
+            if !authorizationEnabled {
+                state = .initialized
+                DispatchQueue.main.async { [weak self] in
+                    self?.delegate?.connectionSuccess()
+                }
+            }
             Log.d("All notification subscribed")
         }
     }
@@ -637,6 +696,7 @@ extension ConnectionManager: CBPeripheralDelegate {
         Log.i("notification arrived: \(characteristic.uuid.uuidString.uppercased()), value: \(String(describing: characteristic.value))")
         switch characteristic.uuid.uuidString {
         case CharacteristicType.startAuthentication.rawValue.uppercased():
+            state = .initialized
             DispatchQueue.main.async { [weak self] in
                 if let data = characteristic.value {
                     self?.delegate?.authorizaionKey(data)

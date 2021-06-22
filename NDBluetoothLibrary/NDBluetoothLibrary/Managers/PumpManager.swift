@@ -61,6 +61,16 @@ public protocol PumpManagerInterface {
     func connect(_ peripheral: Peripheral)
 
     /**
+     Disconnect from connected pump. For callback events listen PumpManagerDelegate.
+     */
+    func disconnect()
+
+    /**
+     Send command for watchdog test and start disconnection
+     */
+    func startWatchdogTest()
+
+    /**
      Send finish FTU commant to the connected pump.
      - parameter handler: The block to be executed when the pump acknowledges the received command.
      */
@@ -165,6 +175,15 @@ public protocol PumpManagerInterface {
 
 public final class PumpManager: PumpManagerInterface {
 
+    // MARK: - Static data
+
+    /**
+     Timeout after disconnect command
+     */
+    private static let disconnectTimeOut: TimeInterval = 0.8
+
+    // MARK: - Public properties
+
     /// Returns the shared object (singleton instance)
     public static let shared: PumpManager = PumpManager()
 
@@ -172,13 +191,20 @@ public final class PumpManager: PumpManagerInterface {
 
     lazy var connectinManager: ConnectionManagerInterface = ConnectionManager(delegate: self)
 
+    // MARK: - Private properties
+
+    private var disconnectTimer: Timer?
+
+    // MARK: - Initialization
     /**
-     Default init method vith internal access.
+     Default init method with internal access.
      From access outside of library use **shared** instance
      */
     init() {
 
     }
+
+    // MARK: - Public interface
 
     public func scanForConnectablePumps() {
         Log.i("Scan started")
@@ -193,7 +219,27 @@ public final class PumpManager: PumpManagerInterface {
 
     public func connect(_ peripheral: Peripheral) {
         Log.i("Connection started")
-        connectinManager.connect(peripheral)
+        connectinManager.connect(peripheral, authorizationEnabled: false)
+    }
+
+    public func disconnect() {
+        Log.i("")
+        connectinManager.clearCommandQueue()
+        sendDisconnectCommand { _ in
+            self.startDisconnectTimer()
+        }
+    }
+
+    public func startWatchdogTest() {
+        Log.i("")
+        sendStartWatchdogTestCommand { [weak self] result in
+            switch result {
+            case .success:
+                self?.connectinManager.disconnectThePump()
+            case .failure(let error):
+                Log.w("Error: \(error)")
+            }
+        }
     }
 
     public func sendFinishFtuCommand(_ handler: ((Result<Bool, Error>) -> Void)?) {
@@ -287,6 +333,25 @@ private extension PumpManager {
             }
         }
     }
+
+    private func startDisconnectTimer() {
+        Log.v("")
+        stopDisconnectTimer()
+        disconnectTimer = Timer.scheduledTimer(withTimeInterval: PumpManager.disconnectTimeOut, repeats: false, block: { [weak self] _ in
+            Log.d("Disconnect timeout expired")
+            // Remove reference on timer
+            self?.stopDisconnectTimer()
+
+            // Start disconnection
+            self?.connectinManager.disconnectThePump()
+        })
+    }
+
+    private func stopDisconnectTimer() {
+        Log.v("")
+        disconnectTimer?.invalidate()
+        disconnectTimer = nil
+    }
 }
 
 extension PumpManager: ConnectionManagerDelegate {
@@ -332,6 +397,10 @@ extension PumpManager: ConnectionManagerDelegate {
 
     func didDisconnectPeripheral(_ peripheral: CBPeripheral, error: Error?) {
         Log.w("device \(String(describing: peripheral.name)) disconnected, error: \(String(describing: error?.localizedDescription))")
+        // Stop disconnect timer (disconnection occurred)
+        stopDisconnectTimer()
+
+        // Inform delegate
         delegate?.didDisconnectPump(error)
     }
 }
