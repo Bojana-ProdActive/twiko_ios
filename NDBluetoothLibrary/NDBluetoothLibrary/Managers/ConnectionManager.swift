@@ -27,6 +27,11 @@ protocol ConnectionManagerDelegate: AnyObject {
 
 protocol ConnectionManagerInterface {
 
+    /**
+     Configure Connection manager before usage. It should be called once.
+     */
+    func configure()
+
     /// Scan for devices with passed CBUUUID-s in range.
     /// - Parameters:
     ///   - cbuuids: List of CBUUIDs which will can be found in search process
@@ -36,9 +41,32 @@ protocol ConnectionManagerInterface {
     /// Stop searching for devices in range
     func stopScanningForDevices()
 
-    /// Make connection with peripheral object
-    /// - Parameter peripheral: periferal object which keeps reference on CBPeripheral object
-    func connect(_ peripheral: Peripheral, authorizationEnabled: Bool)
+    /**
+     Make connection with pump and exchange bounding keys.
+
+     This method trigger pairing, pump select and write defautl authorization key.
+     For every next connection use **func reconnect(_ peripheral: Peripheral, authorizationData: Data, authorizationEnabled: Bool)**
+     - parameter peripheral: A peripheral object that retains a reference to the pump we want to connect to us
+     - parameter authorizationEnabled: Is authorization mandatory or it can be skipped. For `false` authorization will be  skipped.
+     */
+    func connectFirstTime(_ peripheral: Peripheral, authorizationEnabled: Bool)
+
+    /**
+     Connect to the pump that exchanged the bounding key.
+
+     Connect on paired pump.
+     - parameter peripheral: A peripheral object that retains a reference to the pump we want to connect to us
+     - parameter authorizationData: Data object that represent authorization key
+     - parameter authorizationEnabled: Is authorization mandatory or it can be skipped. For `false` authorization will be  skipped.
+     */
+    func reconnect(_ peripheral: Peripheral, authorizationData: Data, authorizationEnabled: Bool)
+
+    /**
+     Returns a list of known peripherals by their identifiers.
+     - parameter identifier: A peripheral identifiers from which CBPeripheral objects can be retrieved.
+     - returns: A list of peripherals that the central manager is able to match to the provided identifier.
+     */
+    func retrievePeripheral(withIdentifier identifier: String) -> [Peripheral]
 
     /**
      Disconnect from the pump.
@@ -80,7 +108,7 @@ extension ConnectionManager {
         /// CS starts disconnecting, CS can't read or write data
         case disconnecting
 
-        ///CS completes disconnection
+        /// CS completes disconnection
         case disconnected
 
         /// Pump initialized disconnection
@@ -104,6 +132,14 @@ final class ConnectionManager: NSObject, ConnectionManagerInterface {
     private(set) var state: State = .disconnected
     private var services: [Service] = []
     private var searchingForDevices: Bool = false
+    private var isConfigured: Bool = false
+    private var isFirstTimeConnect: Bool = true
+    private var authorizationData: Data?
+    
+    private let defaultAuthorizationData: Data = {
+        let value: [UInt8] = [0x01, 0xa3, 0x19, 0xf6, 0xe8]
+        return Data(value)
+    }()
 
     private var pumpInitError: Error?
 
@@ -113,6 +149,17 @@ final class ConnectionManager: NSObject, ConnectionManagerInterface {
     init(delegate: ConnectionManagerDelegate) {
         self.delegate = delegate
         super.init()
+    }
+
+    func configure() {
+        guard !isConfigured else {
+            return
+        }
+
+        isConfigured.toggle()
+
+        // Init central manager because it is lazy property
+        _ = centralManager.state
     }
 
     /// Scan for devices with passed CBUUUID-s in range.
@@ -149,7 +196,7 @@ final class ConnectionManager: NSObject, ConnectionManagerInterface {
 
     /// Make connection with peripheral object
     /// - Parameter peripheral: periferal object which keeps reference on CBPeripheral object
-    func connect(_ peripheral: Peripheral, authorizationEnabled: Bool = true) {
+    func connectFirstTime(_ peripheral: Peripheral, authorizationEnabled: Bool = true) {
         queue.sync {
             guard state == .disconnected || state == .disconnectedWithError else {
                 Log.e("Connection is not allowed")
@@ -160,12 +207,41 @@ final class ConnectionManager: NSObject, ConnectionManagerInterface {
             }
 
             Log.i("Connection started")
+            isFirstTimeConnect = true
             self.authorizationEnabled = authorizationEnabled
             state = .connecting
             connectablePeripheral = peripheral
             services = []
             centralManager.connect(peripheral.cbPeripheral, options: nil)
         }
+    }
+
+    func reconnect(_ peripheral: Peripheral, authorizationData: Data, authorizationEnabled: Bool) {
+        queue.sync {
+            guard state == .disconnected || state == .disconnectedWithError else {
+                Log.e("Connection is not allowed")
+                DispatchQueue.main.async { [weak self] in
+                    self?.delegate?.connectionFailed(error: NDBluetoothError.connectionHasNotAllowed)
+                }
+                return
+            }
+
+            Log.i("Connection started")
+            isFirstTimeConnect = false
+            self.authorizationEnabled = authorizationEnabled
+            self.authorizationData = authorizationData
+            state = .connecting
+            connectablePeripheral = peripheral
+            services = []
+            centralManager.connect(peripheral.cbPeripheral, options: nil)
+        }
+    }
+
+    func retrievePeripheral(withIdentifier identifier: String) -> [Peripheral] {
+        if let uuid = UUID(uuidString: identifier) {
+            return centralManager.retrievePeripherals(withIdentifiers: [uuid]).map { Peripheral(name: $0.name ?? "", peripheral: $0) }
+        }
+        return []
     }
 
     func disconnectThePump() {
@@ -381,16 +457,13 @@ final class ConnectionManager: NSObject, ConnectionManagerInterface {
         executeNextCommand()
     }
 
-    private func writeAuthCode(_ handler: ((_ result: Result<Bool, Error>) -> Void)?) {
+    private func writeAuthCode(_ authCode: Data, _ handler: ((_ result: Result<Bool, Error>) -> Void)?) {
         Log.d("")
         guard let characteristic = characteristic(withType: .startAuthentication, services: services) else {
             Log.w("Select pump characteristic not found")
             return
         }
-
-        let value: [UInt8] = [0x01, 0xa3, 0x19, 0xf6, 0xe8]
-        let data = Data(value)
-        let command = PriorityCommand(type: .write(data),
+        let command = PriorityCommand(type: .write(authCode),
                                       priority: characteristic.type.priority,
                                       characteristic: characteristic,
                                       handler: { result in
@@ -407,6 +480,45 @@ final class ConnectionManager: NSObject, ConnectionManagerInterface {
         executeNextCommand()
     }
 
+    private func readPumpVersionAndExchangeAuthKey() {
+        Log.d("")
+        guard let authData = authorizationData else {
+            // TODO: Return errror
+            return
+        }
+        readPumpVersion { result in
+            switch result {
+            case .success:
+                guard self.authorizationEnabled else {
+                    DispatchQueue.main.async { [weak self] in
+                        self?.delegate?.connectionSuccess()
+                    }
+                    return
+                }
+
+                self.writeAuthCode(authData) { verificationResult in
+                    switch verificationResult {
+                    case .success:
+                        self.state = .initialized
+                        DispatchQueue.main.async { [weak self] in
+                            self?.delegate?.connectionSuccess()
+                        }
+                    case .failure(let error):
+                        DispatchQueue.main.async { [weak self] in
+                            self?.delegate?.connectionFailed(error: error)
+                        }
+                    }
+                }
+            case .failure(let error):
+                self.resetConnectionVariables()
+                self.state = .disconnected
+                DispatchQueue.main.async { [weak self] in
+                    self?.delegate?.connectionFailed(error: error)
+                }
+            }
+        }
+    }
+
     private func exchangeDataBeforePairing() {
         Log.d("")
         readPumpVersion { result in
@@ -417,7 +529,7 @@ final class ConnectionManager: NSObject, ConnectionManagerInterface {
                     switch selectPumpResult {
                     case .success:
                         if self.authorizationEnabled {
-                            self.writeAuthCode { authCodeResult in
+                            self.writeAuthCode(self.defaultAuthorizationData) { authCodeResult in
                                 switch authCodeResult {
                                 case .success:
                                     self.subscribeForNotifications()
@@ -442,7 +554,7 @@ final class ConnectionManager: NSObject, ConnectionManagerInterface {
                 }
             case .failure(let error):
                 self.resetConnectionVariables()
-                self.state = .disconnectedWithError
+                self.state = .disconnected
                 DispatchQueue.main.async { [weak self] in
                     self?.delegate?.connectionFailed(error: error)
                 }
@@ -537,7 +649,7 @@ extension ConnectionManager: CBCentralManagerDelegate {
     }
 
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        Log.i("Peripheral \(peripheral.name ?? "") connected")
+        Log.i("Peripheral \(peripheral.name ?? "") identifier: \(peripheral.identifier) connected")
         connectedPeripheral = connectablePeripheral
         peripheral.delegate = self
         state = .connected
@@ -643,7 +755,11 @@ extension ConnectionManager: CBPeripheralDelegate {
         }
 
         if !containUndiscoveredCharacteristic(services) {
-            exchangeDataBeforePairing()
+            if isFirstTimeConnect {
+                exchangeDataBeforePairing()
+            } else {
+                subscribeForNotifications()
+            }
         }
     }
 
@@ -663,11 +779,15 @@ extension ConnectionManager: CBPeripheralDelegate {
         characteristicObject?.setNotify(characteristic.isNotifying)
 
         if !containUnsubscribedCharacteristic(services) {
-            if !authorizationEnabled {
-                state = .initialized
-                DispatchQueue.main.async { [weak self] in
-                    self?.delegate?.connectionSuccess()
+            if isFirstTimeConnect {
+                if !authorizationEnabled {
+                    state = .initialized
+                    DispatchQueue.main.async { [weak self] in
+                        self?.delegate?.connectionSuccess()
+                    }
                 }
+            } else {
+                readPumpVersionAndExchangeAuthKey()
             }
             Log.d("All notification subscribed")
         }

@@ -19,27 +19,40 @@ class ViewController: UIViewController {
         return tableView
     }()
 
-    private lazy var scanButton: UIBarButtonItem = {
-        let item = UIBarButtonItem(title: "Scan", style: .plain, target: self, action: #selector(scanButtonTapper))
-        return item
-    }()
+    private lazy var scanButton: UIBarButtonItem = UIBarButtonItem(title: "Scan", style: .plain, target: self, action: #selector(scanButtonTapper))
 
-    private lazy var commandButton: UIBarButtonItem = {
-        let item = UIBarButtonItem(title: "Turn Off", style: .plain, target: self, action: #selector(commandButtonTapped))
-        return item
-    }()
+    private lazy var commandButton: UIBarButtonItem = UIBarButtonItem(title: "Turn Off", style: .plain, target: self, action: #selector(commandButtonTapped))
+
+    private lazy var connectOnPreviousPumpButton: UIBarButtonItem = UIBarButtonItem(title: "Reconnect", style: .plain, target: self, action: #selector(reconnectButtonTapped))
 
     private var devices: [Peripheral] = []
     private var isScanning: Bool = false
+    private var connectingPeripheral: Peripheral?
+
+    private var pumpIdentifier: String? {
+        get {
+            UserDefaults.standard.string(forKey: "pumpIdentifier")
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "pumpIdentifier")
+            UserDefaults.standard.synchronize()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        PumpManager.shared.delegate = self
+        PumpManager.shared.configure()
 
         view.addSubview(tableView)
         tableView.pinToSafeArea(ofView: view)
 
         navigationItem.rightBarButtonItem = scanButton
-        PumpManager.shared.delegate = self
+
+        if pumpIdentifier != nil {
+            navigationItem.leftBarButtonItem = connectOnPreviousPumpButton
+        }
     }
 
     @objc  private func scanButtonTapper() {
@@ -66,12 +79,23 @@ class ViewController: UIViewController {
         }
     }
 
+    @objc private func reconnectButtonTapped() {
+        guard let identifier = pumpIdentifier else {
+            return
+        }
+        let peripherals = PumpManager.shared.retrievePeripheral(withIdentifier: identifier)
+        if let peripheral = peripherals.first {
+            connect(peripheral: peripheral)
+        }
+    }
+
     private func searchForPumps() {
         PumpManager.shared.scanForConnectablePumps()
     }
 
     private func connect(peripheral: Peripheral) {
-        PumpManager.shared.connect(peripheral)
+        connectingPeripheral = peripheral
+        PumpManager.shared.connectFirstTime(peripheral)
     }
 }
 
@@ -112,17 +136,20 @@ extension ViewController: PumpManagerDelegate {
 
     func didConnectPump() {
         debugPrint("***** Pump connected *****")
+        pumpIdentifier = connectingPeripheral?.identifier
         navigationItem.rightBarButtonItem = commandButton
     }
 
     func didFailToConnect(_ error: Error?) {
         debugPrint("***** Connection has not established *****")
+        connectingPeripheral = nil
         scanButton.isEnabled = true
         navigationItem.rightBarButtonItem = scanButton
     }
 
     func didDisconnectPump(_ error: Error?) {
         debugPrint("***** Pump has disconnected *****")
+        connectingPeripheral = nil
         scanButton.isEnabled = true
         navigationItem.rightBarButtonItem = scanButton
     }

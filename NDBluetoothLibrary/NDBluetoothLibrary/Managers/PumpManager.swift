@@ -55,6 +55,11 @@ public protocol PumpManagerInterface {
     var delegate: PumpManagerDelegate? { get set }
 
     /**
+     Configure Connection manager before usage. It should be called once.
+     */
+    func configure()
+
+    /**
      Scan for pumps in range which availabel for connection.
      For result lissen *PumpManagerDelegate.peripheralsListUpdated(_ peripherals: [Peripheral])* method
      */
@@ -66,11 +71,29 @@ public protocol PumpManagerInterface {
     func stopSearchingPumps()
 
     /**
-     Make connection with the pump.
-     - warning: For connection status listen PumpManagerDelegate
-     - parameter peripheral: Peripheral object which keeping reference on pump peripheral
+     Make connection with pump and exchange bounding keys.
+
+     This method trigger pairing, pump select and write default authorization key.
+     For every next connection use **reconnect(_ peripheral: Peripheral, key: Data)**
+     - parameter peripheral: A peripheral object that retains a reference to the pump we want to connect to us.
      */
-    func connect(_ peripheral: Peripheral)
+    func connectFirstTime(_ peripheral: Peripheral)
+
+    /**
+     Connect to the pump that exchanged the bounding key.
+
+     Connect on paired pump.
+     - parameter peripheral: A peripheral object that retains a reference to the pump we want to connect to us.
+     - parameter key: Data object that represent authorization key.
+     */
+    func reconnect(_ peripheral: Peripheral, key: Data)
+
+    /**
+     Returns a list of known peripherals by their identifiers.
+     - parameter identifier: A peripheral identifiers from which CBPeripheral objects can be retrieved.
+     - returns: A list of peripherals that the central manager is able to match to the provided identifier.
+     */
+    func retrievePeripheral(withIdentifier identifier: String) -> [Peripheral]
 
     /**
      Disconnect from connected pump. For callback events listen PumpManagerDelegate.
@@ -202,7 +225,7 @@ public final class PumpManager: PumpManagerInterface {
     // MARK: - Static data
 
     /**
-     Timeout after disconnect commadnd
+     Timeout after disconnect command
      */
     private static let disconnectTimeOut: TimeInterval = 0.8
 
@@ -232,20 +255,34 @@ public final class PumpManager: PumpManagerInterface {
 
     // MARK: - Public interface
 
+    public func configure() {
+        connectinManager.configure()
+    }
+
     public func scanForConnectablePumps() {
-        Log.i("Scan started")
+        Log.i("")
         connectinManager.stopScanningForDevices()
         connectinManager.scannDevices(withCBUUIDs: [CBUUID(string: ServiceType.genericAttributeProfile.rawValue)])
     }
 
     public func stopSearchingPumps() {
-        Log.i("Scan stoped")
+        Log.i("")
         connectinManager.stopScanningForDevices()
     }
 
-    public func connect(_ peripheral: Peripheral) {
-        Log.i("Connection started")
-        connectinManager.connect(peripheral, authorizationEnabled: false)
+    public func connectFirstTime(_ peripheral: Peripheral) {
+        Log.i("")
+        connectinManager.connectFirstTime(peripheral, authorizationEnabled: false)
+    }
+
+    public func reconnect(_ peripheral: Peripheral, key: Data) {
+        Log.i("")
+        connectinManager.reconnect(peripheral, authorizationData: key, authorizationEnabled: false)
+    }
+
+    public func retrievePeripheral(withIdentifier identifier: String) -> [Peripheral] {
+        Log.i("")
+        return connectinManager.retrievePeripheral(withIdentifier: identifier)
     }
 
     public func disconnect() {

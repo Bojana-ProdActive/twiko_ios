@@ -22,4 +22,8 @@ final public class Peripheral {
         localName = name
         cbPeripheral = peripheral
     }
+
+    public var identifier: String {
+        return cbPeripheral.identifier.uuidString
+    }
 }
