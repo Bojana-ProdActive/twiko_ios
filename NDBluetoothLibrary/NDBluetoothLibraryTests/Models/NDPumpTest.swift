@@ -114,14 +114,14 @@ class NDPumpTest: XCTestCase {
          */
     func testEqualFunction() {
         /// Set first pump data
-        let pumpOne = NDPump()
+        let pumpOne = BroadcastModel()
         pumpOne.alarmCode = 0
         pumpOne.alarmDetailsCode = 0
         pumpOne.activeRegimenFlow = 0.0
         pumpOne.batteryStatus = 20
         pumpOne.deliverDose = 0.50
         pumpOne.maxDeliveredDose = 12.0
-        let pumpStatusOne = NDPumpStatus()
+        var pumpStatusOne = NDPumpStatus()
 
         pumpStatusOne.isFtuDone = false
         pumpStatusOne.cartridgeAttached = true
@@ -133,14 +133,14 @@ class NDPumpTest: XCTestCase {
         pumpStatusOne.deliveringMedicine = true
         pumpOne.pumpStatus = pumpStatusOne
 
-        let pumpTwo = NDPump()
+        let pumpTwo = BroadcastModel()
         pumpTwo.alarmCode = 0
         pumpTwo.alarmDetailsCode = 0
         pumpTwo.activeRegimenFlow = 0.0
         pumpTwo.batteryStatus = 20
         pumpTwo.deliverDose = 0.50
         pumpTwo.maxDeliveredDose = 12.0
-        let pumpStatusTwo = NDPumpStatus()
+        var pumpStatusTwo = NDPumpStatus()
 
         pumpStatusTwo.isFtuDone = false
         pumpStatusTwo.cartridgeAttached = true
@@ -170,13 +170,13 @@ class NDPumpTest: XCTestCase {
          */
     func testNonEqualFunction() {
         /// Set first pump data
-        let pumpOne = NDPump()
+        let pumpOne = BroadcastModel()
         pumpOne.alarmCode = 1
         pumpOne.alarmDetailsCode = 9
         let pumpStatusOne = NDPumpStatus()
         pumpOne.pumpStatus = pumpStatusOne
 
-        let pumpTwo = NDPump()
+        let pumpTwo = BroadcastModel()
         pumpTwo.alarmCode = 0
         pumpTwo.alarmDetailsCode = 0
         let pumpStatusTwo = NDPumpStatus()

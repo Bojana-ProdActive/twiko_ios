@@ -50,6 +50,18 @@ class ConnectionManagerMock: ConnectionManagerInterface {
             handler?(.success(responseData))
         }
     }
+
+    func connect(_ peripheral: Peripheral, authorizationEnabled: Bool) {
+
+    }
+
+    func disconnectThePump() {
+
+    }
+
+    func clearCommandQueue() {
+
+    }
 }
 
 class PumpManagerTests: XCTestCase {
@@ -58,12 +70,14 @@ class PumpManagerTests: XCTestCase {
     var sut: PumpManager!
     var defaultError: Error = NSError(domain: "com.ndlibrary.test", code: -1)
     var pumpCommandTimeout: TimeInterval = 3
+    var pump: Pump!
 
     override func setUpWithError() throws {
         try super.setUpWithError()
 
         connectionManager = ConnectionManagerMock()
         sut = PumpManager()
+        pump = Pump()
         sut.connectinManager = connectionManager
     }
 
@@ -764,7 +778,104 @@ class PumpManagerTests: XCTestCase {
         waitForExpectations(timeout: pumpCommandTimeout, handler: nil)
     }
 
+    /**
+     Testing reading status register from the pump.
+
+     After calling the method, the following events should be performed in the block block
+     - Is returned `success` as result in callback block
+     - Is read method called on `ConnetionManager` object
+     - Is characteristic equal to `CharacteristicType.pumpStatusRegister`
+     */
+    func testReadingPumpStatusData_ShouldReturnSuccess() {
+        let expectation = expectation(description: "Sending the pump status register")
+
+        sut.readStatusRegister(handler: { result in
+            expectation.fulfill()
+            self.validateSuccessReadingFromPump(result, CharacteristicType.pumpStatusRegister)
+        })
+
+        waitForExpectations(timeout: pumpCommandTimeout, handler: nil)
+    }
+
+    /**
+     Testing reading status register from the pump.
+
+     After calling the method, the following events should be performed in the block block
+     - Is returned `failure` as result in callback block
+     - Is read method called on `ConnetionManager` object
+     - Is characteristic equal to `CharacteristicType.pumpStatusRegister`
+     */
+    func testReadingPumpStatusData_ShouldReturnFailure() {
+        let expectation = expectation(description: "Sending the pump status register")
+        connectionManager.responseError = defaultError
+
+        sut.readStatusRegister(handler: { result in
+            expectation.fulfill()
+            self.validateFailureReadingFromPump(result, CharacteristicType.pumpStatusRegister)
+        })
+
+        waitForExpectations(timeout: pumpCommandTimeout, handler: nil)
+    }
+
+    /**
+     Testing reading pump alarm status from the pump.
+
+     After calling the method, the following events should be performed in the block block
+     - Is returned `success` as result in callback block
+     - Is read method called on `ConnetionManager` object
+     - Is characteristic equal to `CharacteristicType.pumpAlarm`
+     */
+    func testReadingPumpAlarmStatusData_ShouldReturnSuccess() {
+        let expectation = expectation(description: "Sending the pump alarm")
+
+        sut.readAlarmStatus(handler: { result in
+            expectation.fulfill()
+            self.validateSuccessReadingFromPump(result, CharacteristicType.pumpAlarm)
+        })
+
+        waitForExpectations(timeout: pumpCommandTimeout, handler: nil)
+    }
+
+    /**
+     Testing reading pump alarm status from the pump.
+
+     After calling the method, the following events should be performed in the block block
+     - Is returned `failure` as result in callback block
+     - Is read method called on `ConnetionManager` object
+     - Is characteristic equal to `CharacteristicType.pumpAlarm`
+     */
+    func testReadingPumpAlarmStatusData_ShouldReturnFailure() {
+        let expectation = expectation(description: "Sending the pump alarm")
+        connectionManager.responseError = defaultError
+        sut.readAlarmStatus(handler: { result in
+            expectation.fulfill()
+            self.validateFailureReadingFromPump(result, CharacteristicType.pumpAlarm)
+        })
+
+        waitForExpectations(timeout: pumpCommandTimeout, handler: nil)
+    }
+
     // MARK: - Private
+
+    func validateSuccessReadingFromPump(_ result: Result<Pump?, Error>, _ characteristics: CharacteristicType) {
+        switch result {
+        case .success(_):
+            XCTAssertTrue(self.connectionManager.hasReadCalled)
+            XCTAssertEqual(self.connectionManager.readCharacteristicType, characteristics)
+        case .failure:
+            XCTFail("Result should be success")
+        }
+    }
+
+    func validateFailureReadingFromPump(_ result: Result<Pump?, Error>, _ characteristics: CharacteristicType) {
+        switch result {
+        case .success(_):
+            XCTFail("Result should error")
+        case .failure:
+            XCTAssertTrue(self.connectionManager.hasReadCalled)
+            XCTAssertEqual(self.connectionManager.readCharacteristicType, characteristics)
+        }
+    }
 
     func vaildateSuccessPumpCommandResult(_ result: Result<Bool, Error>, commandType: PumpCommandType) {
         switch result {
@@ -789,5 +900,57 @@ class PumpManagerTests: XCTestCase {
             let writeValue: [UInt8] = [commandType.rawValue]
             XCTAssertEqual(self.connectionManager.writeData, Data(writeValue))
         }
+    }
+
+    // MARK: - Update pump test
+
+    /**
+     Testing update alarm pump data.
+
+     After calling the method, the pump objcest in Pump Manager should be changed with following data.
+     - `alarm code` =  3
+     - `alarm details code` = 0
+     - `no treatment duration` = 0
+     - `is sound enabled` =  true
+     */
+    func testUpdatePumpAlarmData() {
+        let data = Data([0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03])
+
+        let characteristic = CBMutableCharacteristic(type: CBUUID(string: CharacteristicType.pumpAlarm.rawValue), properties: CBCharacteristicProperties(), value: data, permissions: CBAttributePermissions())
+        sut.didUpdateValue(forCharacteristic: characteristic, error: nil)
+
+        XCTAssertEqual(sut.pump.alarm?.alarmCode, 3)
+        XCTAssertEqual(sut.pump.alarm?.alarmDetailsCode, 0)
+        XCTAssertEqual(sut.pump.alarm?.noTreatmentDuration, 0)
+        XCTAssertEqual(sut.pump.alarm?.isSoundEnabled, true)
+    }
+
+    /**
+     Testing update pump status register data.
+
+     After calling the method, the pump objcest in Pump Manager should be changed with following data.
+     - Is FTU done: `true`
+     - Cartridge attached: `true`
+     - Coupled to the Station: `true`
+     - Delivering medicine: `false`
+     - Is in fill state: `false`
+     - Is in full treatment flow: `false`
+     - Is Cartridge Removed In Last Hour: `false`
+     - Is Alarm Acknowledged: `false`
+     */
+    func testUpdatePumpStatusRegisterData() {
+        let data = Data([0x07])
+
+        let characteristic = CBMutableCharacteristic(type: CBUUID(string: CharacteristicType.pumpStatusRegister.rawValue), properties: CBCharacteristicProperties(), value: data, permissions: CBAttributePermissions())
+        sut.didUpdateValue(forCharacteristic: characteristic, error: nil)
+
+        XCTAssertEqual(sut.pump.pumpStatus?.isFtuDone, true)
+        XCTAssertEqual(sut.pump.pumpStatus?.cartridgeAttached, true)
+        XCTAssertEqual(sut.pump.pumpStatus?.coupledToStation, true)
+        XCTAssertEqual(sut.pump.pumpStatus?.deliveringMedicine, false)
+        XCTAssertEqual(sut.pump.pumpStatus?.inFillingState, false)
+        XCTAssertEqual(sut.pump.pumpStatus?.inFullTreatmentFlow, false)
+        XCTAssertEqual(sut.pump.pumpStatus?.isCartridgeRemovedInLastOneHour, false)
+        XCTAssertEqual(sut.pump.pumpStatus?.isAlarmAcknowledged, false)
     }
 }

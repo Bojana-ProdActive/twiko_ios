@@ -18,10 +18,10 @@ import Foundation
 protocol NDPumpManagerProtocol {
 
     func setIsPumpConnected(_ isConnected: Bool)
-    func setPumpDataForKey(pumpData: NDPump, key: String)
+    func setPumpDataForKey(pumpData: BroadcastModel, key: String)
     func startListeningForData()
     func stopListeningForData()
-    func getPumpDataForKey(key: String) -> NDPump?
+    func getPumpDataForKey(key: String) -> BroadcastModel?
     func getBluetootStatus() -> CBManagerState?
     func getIsPumpConnected() -> Bool
     func clearPumpDictionary()
@@ -37,7 +37,7 @@ final class NDPumpManager: NDPumpManagerProtocol {
     private var broadcastManager = NDBroadcastManager.shared
     private let queue = DispatchQueue(label: "NDSharedPumpQueue", attributes: .concurrent)
 
-    private var pumpDictionary: [String: NDPump]! {
+    private var pumpDictionary: [String: BroadcastModel]! {
         didSet {
 //            NotificationCenter.default.post(Notification(name: NDNotificationName.foundPumpNotificationName))
         }
@@ -50,7 +50,7 @@ final class NDPumpManager: NDPumpManagerProtocol {
     }
 
     init() {
-        pumpDictionary = [String: NDPump]()
+        pumpDictionary = [String: BroadcastModel]()
 //        self.broadcastManager = broadcastManager ?? NDBroadcastManager()
     }
 
@@ -67,7 +67,7 @@ final class NDPumpManager: NDPumpManagerProtocol {
     /// - Parameters:
     ///   - pumpData: pump data to add to dictionary
     ///   - key: pump name equals to key
-    func setPumpDataForKey(pumpData: NDPump, key: String) {
+    func setPumpDataForKey(pumpData: BroadcastModel, key: String) {
         queue.async(flags: .barrier) {
             self.pumpDictionary[key] = pumpData
         }
@@ -77,8 +77,8 @@ final class NDPumpManager: NDPumpManagerProtocol {
     ///
     /// - Parameter key: pump name equals to key
     /// - Returns: pump data for given key
-    func getPumpDataForKey(key: String) -> NDPump? {
-        var result: NDPump?
+    func getPumpDataForKey(key: String) -> BroadcastModel? {
+        var result: BroadcastModel?
         queue.sync {
             result = self.pumpDictionary[key]
         }
@@ -88,8 +88,8 @@ final class NDPumpManager: NDPumpManagerProtocol {
     /// Thread safe method to get pumpDictionary
     ///
     /// - Returns: pump dictionary
-    func getPumpDictionary() -> [String: NDPump]? {
-        var result: [String: NDPump]?
+    func getPumpDictionary() -> [String: BroadcastModel]? {
+        var result: [String: BroadcastModel]?
         queue.sync {
             result = self.pumpDictionary
         }

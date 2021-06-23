@@ -14,7 +14,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 import Foundation
 ////////////////////////////////////////////////////////////////////////////////
-final class NDPumpStatus: Codable, Equatable {
+public struct NDPumpStatus: Codable, Equatable {
 
     var isFtuDone: Bool = false
     var cartridgeAttached: Bool = false
@@ -38,7 +38,7 @@ final class NDPumpStatus: Codable, Equatable {
 
     // MARK: - Coding keys
 
-    static func == (lhs: NDPumpStatus, rhs: NDPumpStatus) -> Bool {
+    public static func == (lhs: NDPumpStatus, rhs: NDPumpStatus) -> Bool {
         return lhs.cartridgeAttached == rhs.cartridgeAttached &&
             lhs.isFtuDone == rhs.isFtuDone &&
             lhs.coupledToStation == rhs.coupledToStation &&

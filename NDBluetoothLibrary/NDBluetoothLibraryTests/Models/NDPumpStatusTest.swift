@@ -112,7 +112,7 @@ class NDPumpStatusTest: XCTestCase {
          */
     func testEqualFunction() {
         /// Set first pump status
-        let pumpStatusOne = NDPumpStatus()
+        var pumpStatusOne = NDPumpStatus()
 
         pumpStatusOne.isFtuDone = false
         pumpStatusOne.cartridgeAttached = true
@@ -123,7 +123,7 @@ class NDPumpStatusTest: XCTestCase {
         pumpStatusOne.coupledToStation = true
         pumpStatusOne.deliveringMedicine = true
 
-        let pumpStatusTwo = NDPumpStatus()
+        var pumpStatusTwo = NDPumpStatus()
 
         pumpStatusTwo.isFtuDone = false
         pumpStatusTwo.cartridgeAttached = true
@@ -152,7 +152,7 @@ class NDPumpStatusTest: XCTestCase {
         let pumpStatusOne = NDPumpStatus()
         pumpStatus.isFtuDone = false
 
-        let pumpStatusTwo = NDPumpStatus()
+        var pumpStatusTwo = NDPumpStatus()
         pumpStatusTwo.isFtuDone = true
 
         XCTAssertFalse(pumpStatusOne == pumpStatusTwo)

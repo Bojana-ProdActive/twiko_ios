@@ -155,7 +155,7 @@ final class NDBroadcastManager: NSObject, NDBroadcastManagerProtocol {
 
     /// Save new pump data
     /// - Parameter pumpData: new pump data received in broadcast
-    private func updateSharedData(pumpData: NDPump) {
+    private func updateSharedData(pumpData: BroadcastModel) {
         guard let name = pumpData.pumpName else {
             return
         }
@@ -185,7 +185,7 @@ extension NDBroadcastManager: CBCentralManagerDelegate {
             pumpManager.setIsPumpConnected(true)
 
             if let decryptedData = decryptData(data: data) {
-                var pumpData: NDPump?
+                var pumpData: BroadcastModel?
                 if decryptedData.count == 13 {
                     pumpData = NDBroadcastDataParser.parseData(advertisementData: decryptedData)
                 }

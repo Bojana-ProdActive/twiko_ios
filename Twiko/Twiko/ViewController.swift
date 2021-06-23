@@ -96,6 +96,15 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension ViewController: PumpManagerDelegate {
+
+    func didPumpStatusRegisterChanged(_ pump: Pump) {
+        // TODO:
+    }
+
+    func didPumpAlarmChanged(_ pump: Pump) {
+        // TODO:
+    }
+
     func peripheralsListUpdated(_ peripherals: [Peripheral]) {
         devices = peripherals
         tableView.reloadData()

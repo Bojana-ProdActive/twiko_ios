@@ -9,12 +9,12 @@
 // NDPump.swift
 //
 // AUTHOR IDENTITY:
-//        Digital Atrium        9.6.21.
+//        Bojana Vojvodic        9.6.21.
 //
 ////////////////////////////////////////////////////////////////////////////////
 import Foundation
 
-final class NDPump: Codable, Equatable {
+final class BroadcastModel: Codable, Equatable {
 
     var alarmCode: UInt8?
     var alarmDetailsCode: UInt8 = 0
@@ -49,7 +49,7 @@ final class NDPump: Codable, Equatable {
         case rawData = "kRawData"
     }
 
-    static func == (lhs: NDPump, rhs: NDPump) -> Bool {
+    static func == (lhs: BroadcastModel, rhs: BroadcastModel) -> Bool {
         return lhs.rawData == rhs.rawData &&
             lhs.pumpName == rhs.pumpName &&
             lhs.activeRegimenFlow == rhs.activeRegimenFlow &&

@@ -34,6 +34,18 @@ public protocol PumpManagerDelegate: AnyObject {
      - parameter error: Error which describing reason why disconnection occurred
      */
     func didDisconnectPump(_ error: Error?)
+
+    /**
+     Tells the delegate the pump alarm status has been changed
+     - parameter pump: Pump with updated alarm data.
+     */
+    func didPumpAlarmChanged(_ pump: Pump)
+
+    /**
+     Tells the delegate the pump status register has been changed
+     - parameter pump: Pump with updated pump status register data.
+     */
+    func didPumpStatusRegisterChanged(_ pump: Pump)
 }
 
 public protocol PumpManagerInterface {
@@ -171,6 +183,18 @@ public protocol PumpManagerInterface {
      - parameter handler: The block to be executed when the pump acknowledges the received command.
      */
     func sendResetFtuAndSendToShipModeCommand(_ handler: ((Result<Bool, Error>) -> Void)?)
+
+    /**
+     Read alarm status from the connected pump.
+     - parameter handler: The block to be executed when the pump read pump data.
+     */
+    func readAlarmStatus(handler: ((Result<Pump?, Error>) -> Void)?)
+
+    /**
+     Read pump status register from the connected pump.
+     - parameter handler: The block to be executed when the pump read pump data.
+     */
+    func readStatusRegister(handler: ((Result<Pump?, Error>) -> Void)?)
 }
 
 public final class PumpManager: PumpManagerInterface {
@@ -178,7 +202,7 @@ public final class PumpManager: PumpManagerInterface {
     // MARK: - Static data
 
     /**
-     Timeout after disconnect command
+     Timeout after disconnect commadnd
      */
     private static let disconnectTimeOut: TimeInterval = 0.8
 
@@ -186,6 +210,8 @@ public final class PumpManager: PumpManagerInterface {
 
     /// Returns the shared object (singleton instance)
     public static let shared: PumpManager = PumpManager()
+
+    private(set) var pump = Pump()
 
     public weak var delegate: PumpManagerDelegate?
 
@@ -309,6 +335,48 @@ public final class PumpManager: PumpManagerInterface {
     public func sendResetFtuAndSendToShipModeCommand(_ handler: ((Result<Bool, Error>) -> Void)?) {
         sendPumpCommand(command: .resetFtuAndSendToShipMode, handler: handler)
     }
+
+    public func readAlarmStatus(handler: ((Result<Pump?, Error>) -> Void)?) {
+        connectinManager.read(.pumpAlarm) { [weak self] result in
+            switch result {
+            case .success(let data):
+                Log.d("Command read pump alarm status sent")
+
+                guard let data = data else {
+                    handler?(.success(nil))
+                    return
+                }
+                let pumpAlarmData = PumpDataParser.parseAlarmData(advertisementData: data)
+
+                self?.pump.alarm = pumpAlarmData
+                handler?(.success(self?.pump))
+            case .failure(let error):
+                Log.w("command: pump alarm, error: \(error), code: \(error.code), domain: \(error.domain)")
+                handler?(.failure(error))
+            }
+        }
+    }
+
+    public func readStatusRegister(handler: ((Result<Pump?, Error>) -> Void)?) {
+        connectinManager.read(.pumpStatusRegister) { [weak self] result in
+            switch result {
+            case .success(let data):
+                Log.d("Command read pump status register sent")
+
+                guard let data = data else {
+                    handler?(.success(nil))
+                    return
+                }
+                let pumpStatusData = PumpDataParser.parsePumpStatusRegister(advertisementData: data)
+
+                self?.pump.pumpStatus = pumpStatusData
+                handler?(.success(self?.pump))
+            case .failure(let error):
+                Log.w("command: pump alarm, error: \(error), code: \(error.code), domain: \(error.domain)")
+                handler?(.failure(error))
+            }
+        }
+    }
 }
 
 // MARK: - Private methods
@@ -352,6 +420,32 @@ private extension PumpManager {
         disconnectTimer?.invalidate()
         disconnectTimer = nil
     }
+
+    /**
+     Parse and update alarm data from the connected pump.
+     - parameter data: Value of pump alarm characteristics.
+     */
+    private func updatePumpAlarmData(data: Data?) {
+        guard let data = data else {
+            return
+        }
+
+        let alarmData = PumpDataParser.parseAlarmData(advertisementData: data)
+         pump.alarm = alarmData
+    }
+
+    /**
+     Parse and update pump status register data from the connected pump.
+     - parameter data: Value of pump status register characteristics.
+     */
+    private func updatePumpStatusRegisterData(data: Data?) {
+        guard let data = data else {
+            return
+        }
+
+        let pumpStatus = PumpDataParser.parsePumpStatusRegister(advertisementData: data)
+        pump.pumpStatus = pumpStatus
+    }
 }
 
 extension PumpManager: ConnectionManagerDelegate {
@@ -380,6 +474,17 @@ extension PumpManager: ConnectionManagerDelegate {
         switch type {
         case .startAuthentication:
             Log.v("Start authentication notification arrived")
+        case .pumpAlarm:
+            Log.v("Alarm status.")
+            let alarmRowData = characteristic.value
+
+            updatePumpAlarmData(data: alarmRowData)
+            delegate?.didPumpAlarmChanged(pump)
+        case .pumpStatusRegister:
+            Log.v("Pump status register")
+
+            updatePumpStatusRegisterData(data: characteristic.value)
+            delegate?.didPumpStatusRegisterChanged(pump)
         default:
             Log.v(type)
         }

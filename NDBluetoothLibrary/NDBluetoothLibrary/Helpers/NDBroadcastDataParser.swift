@@ -20,13 +20,13 @@ final class NDBroadcastDataParser {
     ///
     /// - Parameter advertisementData: data from pump
     /// - Returns: NDPump object which contains all important data from pump
-    static func parseData(advertisementData: Data) -> NDPump? {
+    static func parseData(advertisementData: Data) -> BroadcastModel? {
         // get UInt8 array from advertisement data
         let byteArray = [UInt8](advertisementData)
-        var pumpData: NDPump?
+        var pumpData: BroadcastModel?
         //if byte have 13 or more bytes
         if byteArray.count >= 12 {
-            pumpData = NDPump()
+            pumpData = BroadcastModel()
 
             // Parse alarm code
             pumpData?.alarmCode = byteArray[0]
@@ -90,7 +90,7 @@ final class NDBroadcastDataParser {
 
     static func parsePumpStatusRegister(statusByte: UInt8) -> NDPumpStatus {
         let pumpStatusBits = statusByte.bits()
-        let pumpStatus = NDPumpStatus()
+        var pumpStatus = NDPumpStatus()
         pumpStatus.isFtuDone = pumpStatusBits[0].boolValue
         pumpStatus.cartridgeAttached = pumpStatusBits[1].boolValue
         pumpStatus.coupledToStation = pumpStatusBits[2].boolValue
