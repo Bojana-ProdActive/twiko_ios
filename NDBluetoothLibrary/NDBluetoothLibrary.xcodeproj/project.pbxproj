@@ -45,11 +45,13 @@
 		368EC5E52680A9010021EC9A /* PumpDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368EC5E42680A9010021EC9A /* PumpDataParser.swift */; };
 		368EC5E72680A9270021EC9A /* PumpAlarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368EC5E62680A9270021EC9A /* PumpAlarm.swift */; };
 		368EC5E92680DE160021EC9A /* PumpAlarmStatusTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368EC5E82680DE160021EC9A /* PumpAlarmStatusTest.swift */; };
-		368EC5EB2680E1860021EC9A /* PumpAlarmStatusDataParserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368EC5EA2680E1860021EC9A /* PumpAlarmStatusDataParserTest.swift */; };
+		368EC5EB2680E1860021EC9A /* PumpDataParserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368EC5EA2680E1860021EC9A /* PumpDataParserTest.swift */; };
 		3690A8CB2670A3520002855A /* NDBroadcastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3690A8CA2670A3520002855A /* NDBroadcastManager.swift */; };
 		3690A8CE2670A3CE0002855A /* BroadcastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3690A8CD2670A3CE0002855A /* BroadcastModel.swift */; };
 		3690A8D02670A4DB0002855A /* NDPumpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3690A8CF2670A4DB0002855A /* NDPumpManager.swift */; };
 		3690A8D22670A6740002855A /* NDPumpStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3690A8D12670A6740002855A /* NDPumpStatus.swift */; };
+		36962F7326846D4B00C7176B /* UInt64Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36962F7226846D4B00C7176B /* UInt64Test.swift */; };
+		369D9E982683780800CEF045 /* UInt64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369D9E972683780800CEF045 /* UInt64.swift */; };
 		36CDF4A62670BCF800708D74 /* NDCredentialsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CDF4A52670BCF800708D74 /* NDCredentialsManager.swift */; };
 		36CDF4A92670BF6900708D74 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 36CDF4A82670BF6900708D74 /* KeychainAccess */; };
 		36CDF4D12673560A00708D74 /* NDPumpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CDF4D02673560A00708D74 /* NDPumpError.swift */; };
@@ -108,11 +110,13 @@
 		368EC5E42680A9010021EC9A /* PumpDataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PumpDataParser.swift; sourceTree = "<group>"; };
 		368EC5E62680A9270021EC9A /* PumpAlarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PumpAlarm.swift; sourceTree = "<group>"; };
 		368EC5E82680DE160021EC9A /* PumpAlarmStatusTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PumpAlarmStatusTest.swift; sourceTree = "<group>"; };
-		368EC5EA2680E1860021EC9A /* PumpAlarmStatusDataParserTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PumpAlarmStatusDataParserTest.swift; sourceTree = "<group>"; };
+		368EC5EA2680E1860021EC9A /* PumpDataParserTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PumpDataParserTest.swift; sourceTree = "<group>"; };
 		3690A8CA2670A3520002855A /* NDBroadcastManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDBroadcastManager.swift; sourceTree = "<group>"; };
 		3690A8CD2670A3CE0002855A /* BroadcastModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastModel.swift; sourceTree = "<group>"; };
 		3690A8CF2670A4DB0002855A /* NDPumpManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDPumpManager.swift; sourceTree = "<group>"; };
 		3690A8D12670A6740002855A /* NDPumpStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDPumpStatus.swift; sourceTree = "<group>"; };
+		36962F7226846D4B00C7176B /* UInt64Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UInt64Test.swift; sourceTree = "<group>"; };
+		369D9E972683780800CEF045 /* UInt64.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UInt64.swift; sourceTree = "<group>"; };
 		36CDF4A52670BCF800708D74 /* NDCredentialsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDCredentialsManager.swift; sourceTree = "<group>"; };
 		36CDF4D02673560A00708D74 /* NDPumpError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDPumpError.swift; sourceTree = "<group>"; };
 		36D3788F267764CD00154A2A /* NDBroadcastDataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDBroadcastDataParser.swift; sourceTree = "<group>"; };
@@ -262,6 +266,7 @@
 				36D37892267766B900154A2A /* UInt8.swift */,
 				368A64CD267A1D0D0040727F /* Decodable.swift */,
 				2B9F32CC26676CE2003593AE /* Error.swift */,
+				369D9E972683780800CEF045 /* UInt64.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -307,7 +312,7 @@
 				368A64C32679DFCC0040727F /* NDBroadcastDataParserTest.swift */,
 				36433F30266E523300BEBC81 /* Encryption Test */,
 				36433F2F266E522800BEBC81 /* Decryption Test */,
-				368EC5EA2680E1860021EC9A /* PumpAlarmStatusDataParserTest.swift */,
+				368EC5EA2680E1860021EC9A /* PumpDataParserTest.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -340,6 +345,7 @@
 			children = (
 				2B114ABC267B930D009641BE /* DataTests.swift */,
 				368A64C8267A0EDD0040727F /* UInt8Test.swift */,
+				36962F7226846D4B00C7176B /* UInt64Test.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -521,6 +527,7 @@
 				3690A8D22670A6740002855A /* NDPumpStatus.swift in Sources */,
 				368A64CE267A1D0D0040727F /* Decodable.swift in Sources */,
 				3690A8CB2670A3520002855A /* NDBroadcastManager.swift in Sources */,
+				369D9E982683780800CEF045 /* UInt64.swift in Sources */,
 				3690A8CE2670A3CE0002855A /* BroadcastModel.swift in Sources */,
 				2B9E7ACA266E65170011E3B3 /* PumpVersion.swift in Sources */,
 				2B3D50C4265FA0C400B2060C /* PriorityQueue.swift in Sources */,
@@ -544,8 +551,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				368A64C42679DFCC0040727F /* NDBroadcastDataParserTest.swift in Sources */,
+				36962F7326846D4B00C7176B /* UInt64Test.swift in Sources */,
 				2B114ABB267B92CC009641BE /* PumpManagerTests.swift in Sources */,
-				368EC5EB2680E1860021EC9A /* PumpAlarmStatusDataParserTest.swift in Sources */,
+				368EC5EB2680E1860021EC9A /* PumpDataParserTest.swift in Sources */,
 				36433F32266E525800BEBC81 /* EncryptionManagerTest.swift in Sources */,
 				368EC5E92680DE160021EC9A /* PumpAlarmStatusTest.swift in Sources */,
 				2B114AC0267B9386009641BE /* PumpCommandTypeTests.swift in Sources */,

@@ -855,6 +855,90 @@ class PumpManagerTests: XCTestCase {
         waitForExpectations(timeout: pumpCommandTimeout, handler: nil)
     }
 
+    /**
+     Testing reading time from the pump.
+
+     After calling the method, the following events should be performed in the block
+     - Is returned `success` as result in callback block
+     - Is read method called on `ConnetionManager` object
+     - Is characteristic equal to `CharacteristicType.clockSynchronization`
+     */
+    func testReadingPumpTime_ShouldReturnSuccess() {
+        let expectation = expectation(description: "Reading pump time")
+
+        sut.readPumpTime(handler: { result in
+               expectation.fulfill()
+               self.validateSuccessReadingFromPump(result, CharacteristicType.clockSynchronization)
+        })
+
+        waitForExpectations(timeout: pumpCommandTimeout, handler: nil)
+    }
+
+    /**
+     Testing reading time from the pump.
+
+     After calling the method, the following events should be performed in the block block
+     - Is returned `failure` as result in callback block
+     - Is read method called on `ConnetionManager` object
+     - Is characteristic equal to `CharacteristicType.clockSynchronization`
+     */
+    func testReadingPumpTime_ShouldReturnFailure() {
+        let expectation = expectation(description: "Reading pump time")
+        connectionManager.responseError = defaultError
+
+        sut.readPumpTime(handler: { result in
+               expectation.fulfill()
+               self.validateFailureReadingFromPump(result, CharacteristicType.clockSynchronization)
+        })
+
+        waitForExpectations(timeout: pumpCommandTimeout, handler: nil)
+    }
+
+    /**
+     Testing write time on the pump.
+
+     After calling the method, the following events should be performed in the block block
+     - Is returned `success` as result in callback block
+     - Is write method called on `ConnetionManager` object
+     - Is characteristic equal to `CharacteristicType.clockSynchronization`
+     */
+    func testWritePumpTime_ShouldReturnSuccess() {
+        let expectation = expectation(description: "Reading pump time")
+        let miliseconds = UInt64(25687)
+        let byteData = miliseconds.getDataByteArray()
+
+        sut.writePumpTime(milliseconds: 25687, handler: { result in
+               expectation.fulfill()
+            self.validateSuccessWriteOnPump(writedData: byteData, result, CharacteristicType.clockSynchronization)
+
+        })
+
+        waitForExpectations(timeout: pumpCommandTimeout, handler: nil)
+    }
+
+    /**
+     Testing write time on the pump.
+
+     After calling the method, the following events should be performed in the block block
+     - Is returned `failure` as result in callback block
+     - Is write method called on `ConnetionManager` object
+     - Is characteristic equal to `CharacteristicType.clockSynchronization`
+     */
+    func testWritePumpTime_ShouldReturnFailure() {
+        let expectation = expectation(description: "Reading pump time")
+        connectionManager.responseError = defaultError
+        let miliseconds = UInt64(25687)
+        let byteData = miliseconds.getDataByteArray()
+
+        sut.writePumpTime(milliseconds: 25687, handler: { result in
+               expectation.fulfill()
+            self.validateFailureWriteOnPump(writedData: byteData, result, CharacteristicType.clockSynchronization)
+
+        })
+
+        waitForExpectations(timeout: pumpCommandTimeout, handler: nil)
+    }
+
     // MARK: - Private
 
     func validateSuccessReadingFromPump(_ result: Result<Pump?, Error>, _ characteristics: CharacteristicType) {
@@ -874,6 +958,28 @@ class PumpManagerTests: XCTestCase {
         case .failure:
             XCTAssertTrue(self.connectionManager.hasReadCalled)
             XCTAssertEqual(self.connectionManager.readCharacteristicType, characteristics)
+        }
+    }
+
+    func validateSuccessWriteOnPump(writedData: Data, _ result: Result<Bool, Error>, _ characteristics: CharacteristicType) {
+        switch result {
+        case .success(_):
+            XCTAssertTrue(self.connectionManager.hasWriteCalled)
+            XCTAssertEqual(self.connectionManager.writeCharacteristicType, characteristics)
+            XCTAssertEqual(self.connectionManager.writeData, writedData)
+        case .failure:
+            XCTFail("Result should be success")
+        }
+    }
+
+    func validateFailureWriteOnPump(writedData: Data, _ result: Result<Bool, Error>, _ characteristics: CharacteristicType) {
+        switch result {
+        case .success(_):
+            XCTFail("Result should be error")
+        case .failure:
+            XCTAssertTrue(self.connectionManager.hasWriteCalled)
+            XCTAssertEqual(self.connectionManager.writeCharacteristicType, characteristics)
+            XCTAssertEqual(self.connectionManager.writeData, writedData)
         }
     }
 

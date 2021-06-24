@@ -218,6 +218,18 @@ public protocol PumpManagerInterface {
      - parameter handler: The block to be executed when the pump read pump data.
      */
     func readStatusRegister(handler: ((Result<Pump?, Error>) -> Void)?)
+
+    /**
+     Read time (clock sync) from the connected pump.
+     - parameter handler: The block to be executed when the pump read pump data.
+     */
+    func readPumpTime(handler: ((Result<Pump?, Error>) -> Void)?)
+
+    /**
+     Write time on the connected pump.
+     - parameter handler: The block to be executed when pump wrute data.
+     */
+    func writePumpTime(milliseconds: UInt64, handler: ((Result<Bool, Error>) -> Void)?)
 }
 
 public final class PumpManager: PumpManagerInterface {
@@ -409,10 +421,46 @@ public final class PumpManager: PumpManagerInterface {
                 self?.pump.pumpStatus = pumpStatusData
                 handler?(.success(self?.pump))
             case .failure(let error):
-                Log.w("command: pump alarm, error: \(error), code: \(error.code), domain: \(error.domain)")
+                Log.w("command: pump status register, error: \(error), code: \(error.code), domain: \(error.domain)")
                 handler?(.failure(error))
             }
         }
+    }
+
+    public func readPumpTime(handler: ((Result<Pump?, Error>) -> Void)?) {
+        connectinManager.read(.clockSynchronization) { [weak self] result in
+            switch result {
+            case .success(let data):
+                Log.d("Command read pump time (clock sync) sent")
+                guard let data = data else {
+                    handler?(.success(nil))
+                    return
+                }
+
+                let time = PumpDataParser.parsePumpClockSynchronizationData(advertisementData: data)
+                self?.pump.pumpTime = time
+                handler?(.success(self?.pump))
+            case .failure(let error):
+                Log.w("command: read clock synchronization, error: \(error), code: \(error.code), domain: \(error.domain)")
+                handler?(.failure(error))
+            }
+        }
+    }
+
+    public func writePumpTime(milliseconds: UInt64, handler: ((Result<Bool, Error>) -> Void)?) {
+        let newTime = milliseconds.getDataByteArray()
+        connectinManager.write(newTime, characteristicType: .clockSynchronization, handler: { [weak self] result in
+            switch result {
+            case .success:
+                Log.d("Command write time on the pump (clock sync) sent")
+
+                self?.pump.pumpTime = milliseconds
+                handler?(.success(true))
+            case .failure(let error):
+                Log.w("command: write clock synchronization, error: \(error), code: \(error.code), domain: \(error.domain)")
+                handler?(.failure(error))
+            }
+        })
     }
 }
 

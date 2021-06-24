@@ -76,4 +76,26 @@ final class PumpDataParser {
         }
         return pumpStatus
     }
+
+    /**
+     Parse pump clock synchronization.
+     - parameter advertisementData: Bytes array of data from the pump.
+     - returns `UInt64`:  Time in miliseconds from pump.
+     */
+    static func parsePumpClockSynchronizationData(advertisementData: Data) -> UInt64? {
+
+        // get UInt8 array from advertisement data
+        var byteArray = [UInt8](advertisementData)
+        byteArray.reverse()
+
+        var time: UInt64?
+
+        //if byte have 8 or more bytes
+        if byteArray.count >= 8 {
+            let data = Data([byteArray[0], byteArray[1], byteArray[2], byteArray[3], byteArray[4], byteArray[5], byteArray[6], byteArray[7]])
+            time = UInt64(littleEndian: data.withUnsafeBytes { $0.pointee })
+            return time
+        }
+        return time
+    }
 }

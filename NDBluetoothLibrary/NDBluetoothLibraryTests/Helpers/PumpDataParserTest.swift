@@ -7,7 +7,7 @@
 @testable import NDBluetoothLibrary
 import XCTest
 
-class PumpAlarmStatusDataParserTest: XCTestCase {
+class PumpDataParserTest: XCTestCase {
 
     // MARK: - Pump alarm status data
 
@@ -19,6 +19,9 @@ class PumpAlarmStatusDataParserTest: XCTestCase {
     private var expectedAlarmDetailsCode: UInt8 = 0
     private var expectedIsSoundEnabled: Bool = false
     private var expectedNoTreatmentDuration: UInt32 = 0
+
+    private var expectedTime = UInt64(1639883723)
+    private var pumpTimeData = Data([0x00, 0x00, 0x00, 0x00, 0x61, 0xBE, 0xA3, 0xCB])
 
     /**
          This method test parsing pump alarm status data from byte arry.
@@ -71,6 +74,31 @@ class PumpAlarmStatusDataParserTest: XCTestCase {
         XCTAssertEqual(parsedPumpAlarmStatusData?.alarmDetailsCode, expectedAlarmDetailsCode)
         XCTAssertEqual(parsedPumpAlarmStatusData?.isSoundEnabled, expectedIsSoundEnabled)
         XCTAssertEqual(parsedPumpAlarmStatusData?.noTreatmentDuration, expectedNoTreatmentDuration)
+    }
+
+    /**
+         This method test parsing pump clock synchronization data parsing.
+
+         After setting input data: `[0x00, 0x00, 0x00, 0x00, 0x61, 0xBE, 0xA3, 0xCB]` pump status should create output:
+         - UInt64 time value: `1639883723`
+         */
+    func testParsingTimeData_Equal() {
+        let parsedTimeData = PumpDataParser.parsePumpClockSynchronizationData(advertisementData: pumpTimeData)
+
+        XCTAssertEqual(expectedTime, parsedTimeData)
+    }
+
+    /**
+         This method test parsing pump clock synchronization data parsing.
+
+         After setting input data: `[0x00, 0x00, 0x00, 0x00, 0x61, 0xBE, 0xA3, 0xCB]` pump status should not create output:
+         - UInt64 time value: `28`
+         */
+    func testParsingTimeData_NotEqual() {
+        expectedTime = UInt64(28)
+        let parsedTimeData = PumpDataParser.parsePumpClockSynchronizationData(advertisementData: pumpTimeData)
+
+        XCTAssertNotEqual(expectedTime, parsedTimeData)
     }
 
 }

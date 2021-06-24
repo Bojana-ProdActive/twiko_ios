@@ -6,25 +6,25 @@
 // Proprietary and Confidential - Not for Distribution
 // Written by NeuroDerm.
 //
-// Pump.swift
+// UInt64.swift
 //
 // AUTHOR IDENTITY:
-//        Bojana Vojvodic        22.6.21.
+//        Bojana Vojvodic        23.6.21.
 //
 ////////////////////////////////////////////////////////////////////////////////
 import Foundation
 ////////////////////////////////////////////////////////////////////////////////
-public struct Pump: Codable {
+extension UInt64 {
 
-    var alarm: PumpAlarm?
-    var pumpStatus: NDPumpStatus?
-    var pumpTime: UInt64?
-
-    // MARK: - Coding keys
-
-    private enum CodingKeys: String, CodingKey {
-        case alarm = "pump_alarm"
-        case pumpStatus = "pump_status"
-        case pumpTime = "pump_time"
+    var data: Data {
+        var int = self
+        return Data(bytes: &int, count: MemoryLayout<UInt64>.size)
     }
+
+    func getDataByteArray() -> Data {
+        var tempArray = [UInt8](data)
+        tempArray.reverse()
+        return Data(tempArray)
+    }
+
 }
