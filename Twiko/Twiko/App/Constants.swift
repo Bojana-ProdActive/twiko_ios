@@ -17,6 +17,14 @@ import UIKit
 ////////////////////////////////////////////////////////////////////////////////
 struct KeychainKeys {
 
+    static let peripheralId = "peripheral_id"
+    static let pumpName = "pump_name"
+    static let pumpVersion = "pump_version"
+    static let pumpVerificationCode = "pump_verification_code"
+    static let broadcastDescription = "broadcast_description"
+    static let ftuDateTime = "ftu_date_time"
+    static let filingCycleCount = "filing_cycle_count"
+
 }
 
 struct LocalSettingsKeys {

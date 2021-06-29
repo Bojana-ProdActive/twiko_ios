@@ -135,7 +135,7 @@ final class ConnectionManager: NSObject, ConnectionManagerInterface {
     private var isConfigured: Bool = false
     private var isFirstTimeConnect: Bool = true
     private var authorizationData: Data?
-    
+
     private let defaultAuthorizationData: Data = {
         let value: [UInt8] = [0x01, 0xa3, 0x19, 0xf6, 0xe8]
         return Data(value)
