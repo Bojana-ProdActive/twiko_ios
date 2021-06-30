@@ -27,7 +27,7 @@ final class PumpDataParser {
         var byteArray = [UInt8](advertisementData)
         byteArray.reverse()
         var pumpAlarmStatus: PumpAlarm?
-        //if byte have 13 or more bytes
+        // if byte have 13 or more bytes
         if byteArray.count >= 12 {
             pumpAlarmStatus = PumpAlarm()
 
@@ -62,7 +62,7 @@ final class PumpDataParser {
         let bits = firstByte.bits()
         var pumpStatus: NDPumpStatus?
 
-        //if byte have more than 7 bytes
+        // if byte have more than 7 bytes
         if bits.count > 7 {
             pumpStatus = NDPumpStatus()
             pumpStatus?.isFtuDone = bits[0].boolValue
@@ -90,7 +90,7 @@ final class PumpDataParser {
 
         var time: UInt64?
 
-        //if byte have 8 or more bytes
+        // if byte have 8 or more bytes
         if byteArray.count >= 8 {
             let data = Data([byteArray[0], byteArray[1], byteArray[2], byteArray[3], byteArray[4], byteArray[5], byteArray[6], byteArray[7]])
             time = UInt64(littleEndian: data.withUnsafeBytes { $0.pointee })

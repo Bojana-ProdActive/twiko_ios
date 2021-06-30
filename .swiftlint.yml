@@ -35,7 +35,7 @@ opt_in_rules:
   - toggle_bool
   - unneeded_parentheses_in_closure_argument
   - unused_import
-  - unused_private_declaration
+  - unused_declaration
   - yoda_condition
   - discouraged_optional_boolean
 

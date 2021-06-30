@@ -21,13 +21,13 @@ final class DecryptionManager {
     /// - Parameter keyString: key used for decryption
     /// - Returns: decrypted data
     static func aes128Decrypt(data: Data, withKey keyString: String) -> Data? {
-        //Key to Data
+        // Key to Data
         let key: Data? = keyString.data(using: .utf8)
 
         // Init cryptor
         var cryptor: CCCryptorRef?
 
-        //Empty IV: initialization vector
+        // Empty IV: initialization vector
         let iv = Data(count: kCCBlockSizeAES128)
 
         // Create Cryptor
@@ -38,43 +38,43 @@ final class DecryptionManager {
             (iv as NSData).bytes,  // can be NULL, because null is full of zeros
             (key! as NSData).bytes,    // key
             (key?.count)!, // keylength
-            nil,   //const void *tweak
-            0, //size_t tweakLength,
-            0, //int numRounds,
-            CCModeOptions(kCCModeOptionCTR_BE),    //CCModeOptions options,
-            &cryptor)  //CCCryptorRef *cryptorRef
+            nil,   // const void *tweak
+            0, // size_t tweakLength,
+            0, // int numRounds,
+            CCModeOptions(kCCModeOptionCTR_BE),    // CCModeOptions options,
+            &cryptor)  // CCCryptorRef *cryptorRef
 
         if createDecrypt == kCCSuccess {
             // Alloc Data Out
             var cipherDataDecrypt = Data(count: data.count+kCCBlockSizeAES128)
             let cipherDataDecryptNS = NSMutableData(data: cipherDataDecrypt)
 
-            //alloc number of bytes written to data Out
+            // alloc number of bytes written to data Out
             var outLengthDecrypt: size_t = size_t()
 
-            //Update Cryptor
+            // Update Cryptor
             let updateDecrypt: CCCryptorStatus = CCCryptorUpdate(cryptor,
-                                                                 (data as NSData).bytes,    //const void *dataIn,
-                                                                 data.count, //size_t dataInLength,
-                cipherDataDecryptNS.mutableBytes,  //void *dataOut,
+                                                                 (data as NSData).bytes,    // const void *dataIn,
+                                                                 data.count, // size_t dataInLength,
+                cipherDataDecryptNS.mutableBytes,  // void *dataOut,
                 cipherDataDecryptNS.length,    // size_t dataOutAvailable,
                 &outLengthDecrypt) // size_t *dataOutMoved)
 
             if updateDecrypt == kCCSuccess {
-                //Cut Data Out with nedded length
+                // Cut Data Out with nedded length
                 cipherDataDecryptNS.length = outLengthDecrypt
 
-                //Final Cryptor
-                let `final`: CCCryptorStatus = CCCryptorFinal(cryptor,  //CCCryptorRef cryptorRef,
-                    cipherDataDecryptNS.mutableBytes, //void *dataOut,
+                // Final Cryptor
+                let `final`: CCCryptorStatus = CCCryptorFinal(cryptor,  // CCCryptorRef cryptorRef,
+                    cipherDataDecryptNS.mutableBytes, // void *dataOut,
                     cipherDataDecryptNS.length,   // size_t dataOutAvailable,
                     &outLengthDecrypt)    // size_t *dataOutMoved)
 
                 if `final` == kCCSuccess {
-                    //Release Cryptor
-                    //CCCryptorStatus release =
+                    // Release Cryptor
+                    // CCCryptorStatus release =
                     CCCryptorRelease(cryptor)
-                    //CCCryptorRef cryptorRef
+                    // CCCryptorRef cryptorRef
                 }
 
                 cipherDataDecrypt = cipherDataDecryptNS as Data
@@ -82,7 +82,7 @@ final class DecryptionManager {
                 return cipherDataDecrypt
             }
         } else {
-            //error
+            // error
             print("Error accured while decrypting!")
         }
         return nil
@@ -93,13 +93,13 @@ final class DecryptionManager {
     /// - Parameter keyString: key used for decryption
     /// - Returns: decrypted data
     static func aesDecryptQR(data: Data, withKey keyString: String) -> Data? {
-        //Key to Data
+        // Key to Data
         let key: Data? = keyString.data(using: .utf8)
 
         // Init cryptor
         var cryptor: CCCryptorRef?
 
-        //Empty IV: initialization vector
+        // Empty IV: initialization vector
         let iv = Data(count: kCCBlockSizeAES128)
 
         // Create Cryptor
@@ -110,43 +110,43 @@ final class DecryptionManager {
             (iv as NSData).bytes,  // can be NULL, because null is full of zeros
             (key! as NSData).bytes,    // key
             (key?.count)!, // keylength
-            nil,   //const void *tweak
-            0, //size_t tweakLength,
-            0, //int numRounds,
-            CCModeOptions(kCCModeOptionCTR_BE),    //CCModeOptions options,
-            &cryptor)  //CCCryptorRef *cryptorRef
+            nil,   // const void *tweak
+            0, // size_t tweakLength,
+            0, // int numRounds,
+            CCModeOptions(kCCModeOptionCTR_BE),    // CCModeOptions options,
+            &cryptor)  // CCCryptorRef *cryptorRef
 
         if createDecrypt == kCCSuccess {
             // Alloc Data Out
             var cipherDataDecrypt = Data(count: data.count+kCCBlockSizeAES128)
             let cipherDataDecryptNS = NSMutableData(data: cipherDataDecrypt)
 
-            //alloc number of bytes written to data Out
+            // alloc number of bytes written to data Out
             var outLengthDecrypt: size_t = size_t()
 
-            //Update Cryptor
+            // Update Cryptor
             let updateDecrypt: CCCryptorStatus = CCCryptorUpdate(cryptor,
-                                                                 (data as NSData).bytes,    //const void *dataIn,
-                                                                 data.count, //size_t dataInLength,
-                cipherDataDecryptNS.mutableBytes,  //void *dataOut,
+                                                                 (data as NSData).bytes,    // const void *dataIn,
+                                                                 data.count, // size_t dataInLength,
+                cipherDataDecryptNS.mutableBytes,  // void *dataOut,
                 cipherDataDecryptNS.length,    // size_t dataOutAvailable,
                 &outLengthDecrypt) // size_t *dataOutMoved)
 
             if updateDecrypt == kCCSuccess {
-                //Cut Data Out with nedded length
+                // Cut Data Out with nedded length
                 cipherDataDecryptNS.length = outLengthDecrypt
 
-                //Final Cryptor
-                let `final`: CCCryptorStatus = CCCryptorFinal(cryptor,  //CCCryptorRef cryptorRef,
-                    cipherDataDecryptNS.mutableBytes, //void *dataOut,
+                // Final Cryptor
+                let `final`: CCCryptorStatus = CCCryptorFinal(cryptor,  // CCCryptorRef cryptorRef,
+                    cipherDataDecryptNS.mutableBytes, // void *dataOut,
                     cipherDataDecryptNS.length,   // size_t dataOutAvailable,
                     &outLengthDecrypt)    // size_t *dataOutMoved)
 
                 if `final` == kCCSuccess {
-                    //Release Cryptor
-                    //CCCryptorStatus release =
+                    // Release Cryptor
+                    // CCCryptorStatus release =
                     CCCryptorRelease(cryptor)
-                    //CCCryptorRef cryptorRef
+                    // CCCryptorRef cryptorRef
                 }
 
                 cipherDataDecrypt = cipherDataDecryptNS as Data
@@ -154,7 +154,7 @@ final class DecryptionManager {
                 return cipherDataDecrypt
             }
         } else {
-            //error
+            // error
             print("Error accured while decrypting!")
         }
         return nil

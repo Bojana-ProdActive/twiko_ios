@@ -245,6 +245,42 @@ public protocol PumpManagerInterface {
      - parameter handler: The block to be executed when the pump read broadcast decryption key.
      */
     func readBroadcastDecryptionKey(handler: ((Result<String?, Error>) -> Void)?)
+
+    /**
+     Read minimum value (above 0) that can be set for segment medicine flow rate and returns Pump object with assigned value as callback parameter.
+     - parameter handler: A block to execute when a read is performed.
+     */
+    func readRegimenSetupMinimumValue(handler: ((Result<Pump, Error>) -> Void)?)
+
+    /**
+     Read maximum value that can be set for segment medicine flow rate and returns Pump object with assigned value as callback parameter.
+     - parameter handler: A block to execute when a read is performed.
+     */
+    func readRegimenSetupMaximumValue(handler: ((Result<Pump, Error>) -> Void)?)
+
+    /**
+     Read maximum daily dose value that can be set  and returns Pump object with assigned value as callback parameter.
+     - parameter handler: A block to execute when a read is performed.
+     */
+    func readMaximumDailyDoseValue(handler: ((Result<Pump, Error>) -> Void)?)
+
+    /**
+     Read current active Regimen position. In case there no activate one value is `-1`
+     - parameter handler: A block to execute when a read is performed.
+     */
+    func readActiveRegimenIndex(handler: ((Result<Pump, Error>) -> Void)?)
+
+    /**
+     Read constant number of defined amount of Regimens saved on the pump and update pump object with read value.
+     - parameter handler: A block to execute when a read is performed.
+     */
+    func readRegimenSize(handler: ((Result<Pump, Error>) -> Void)?)
+
+    /**
+     Download regimens from the pump.
+     - parameter handler: A block to execute when download is performed.
+     */
+    func downloadRegimens( _ handler: ((Result<[PumpRegimen], Error>) -> Void)?)
 }
 
 public final class PumpManager: PumpManagerInterface {
@@ -261,11 +297,13 @@ public final class PumpManager: PumpManagerInterface {
     /// Returns the shared object (singleton instance)
     public static let shared: PumpManager = PumpManager()
 
-    private(set) var pump = Pump()
+    private(set) var pump: Pump = Pump()
 
     public weak var delegate: PumpManagerDelegate?
 
     lazy var connectinManager: ConnectionManagerInterface = ConnectionManager(delegate: self)
+
+    private lazy var regimenManager: RegimenManager = RegimenManager(regimenDownloader: RegimenDownloader(pumpManager: self))
 
     // MARK: - Private properties
 
@@ -504,6 +542,105 @@ public final class PumpManager: PumpManagerInterface {
             }
         }
     }
+
+    func readRawData(_ characteristicType: CharacteristicType, handler: ((_ result: Result<Data?, Error>) -> Void)?) {
+        connectinManager.read(characteristicType, handler: handler)
+    }
+
+    func writeRawData(_ data: Data, characteristicType: CharacteristicType, handler: ((_ result: Result<Data?, Error>) -> Void)?) {
+        connectinManager.write(data, characteristicType: characteristicType, handler: handler)
+    }
+}
+
+// MARK: - Regimens
+
+extension PumpManager {
+    public func readRegimenSetupMinimumValue(handler: ((Result<Pump, Error>) -> Void)?) {
+        connectinManager.read(.regimenSetupMinimumValue) { result in
+            switch result {
+            case .success(let data):
+                if let data = data {
+                    let value = UInt64.create(fromBigEndian: data)
+                    self.pump.setLimitationRegimenSetupMinValue(value)
+                    Log.d(value)
+                }
+                handler?(.success(self.pump))
+            case .failure(let error):
+                Log.w(error)
+                handler?(.failure(error))
+            }
+        }
+    }
+
+    public func readRegimenSetupMaximumValue(handler: ((Result<Pump, Error>) -> Void)?) {
+        connectinManager.read(.regimenSetupMaximumValue) { result in
+            switch result {
+            case .success(let data):
+                if let data = data {
+                    let value = UInt64.create(fromBigEndian: data)
+                    self.pump.setLimitationRegimenSetupMaxValue(value)
+                    Log.d(value)
+                }
+                handler?(.success(self.pump))
+            case .failure(let error):
+                Log.w(error)
+                handler?(.failure(error))
+            }
+        }
+    }
+
+    public func readMaximumDailyDoseValue(handler: ((Result<Pump, Error>) -> Void)?) {
+        connectinManager.read(.maximumDailyDoseValue) { result in
+            switch result {
+            case .success(let data):
+                if let data = data {
+                    let value = UInt64.create(fromBigEndian: data)
+                    self.pump.setLimitationRegimenDailyDoseMaxValue(value)
+                    Log.d(value)
+                }
+                handler?(.success(self.pump))
+            case .failure(let error):
+                Log.w(error)
+                handler?(.failure(error))
+            }
+        }
+    }
+
+    public func readActiveRegimenIndex(handler: ((Result<Pump, Error>) -> Void)?) {
+        connectinManager.read(.activeRegimenIndex) { result in
+            switch result {
+            case .success(let data):
+                if let data = data {
+                    Log.d(data.hexEncodedString())
+                    self.pump.activeRegimenIndex = Int32.create(fromBigEndian: data)
+                }
+                handler?(.success(self.pump))
+            case .failure(let error):
+                Log.w(error)
+                handler?(.failure(error))
+            }
+        }
+    }
+
+    public func readRegimenSize(handler: ((Result<Pump, Error>) -> Void)?) {
+        connectinManager.read(.regimenSize) { result in
+            switch result {
+            case .success(let data):
+                if let data = data {
+                    Log.d(data.hexEncodedString())
+                    self.pump.activeRegimenIndex = Int32.create(fromBigEndian: data)
+                }
+                handler?(.success(self.pump))
+            case .failure(let error):
+                Log.w(error)
+                handler?(.failure(error))
+            }
+        }
+    }
+
+    public func downloadRegimens(_ handler: ((Result<[PumpRegimen], Error>) -> Void)?) {
+        regimenManager.download(handler)
+    }
 }
 
 // MARK: - Private methods
@@ -593,7 +730,7 @@ private extension PumpManager {
             Log.d("Decryption key missing.")
             return
         }
-        broadcastManager.startScan(pumpName: pumpName, decryptionKey: decryptionKey)
+        _ = broadcastManager.startScan(pumpName: pumpName, decryptionKey: decryptionKey)
     }
 }
 

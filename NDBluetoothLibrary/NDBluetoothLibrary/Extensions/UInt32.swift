@@ -6,30 +6,19 @@
 // Proprietary and Confidential - Not for Distribution
 // Written by NeuroDerm.
 //
-// UInt64.swift
+// UInt32.swift
 //
 // AUTHOR IDENTITY:
-//        Bojana Vojvodic        23.6.21.
+//        Goran Tokovic        23.6.21.
 //
 ////////////////////////////////////////////////////////////////////////////////
-import Foundation
+import UIKit
 ////////////////////////////////////////////////////////////////////////////////
-extension UInt64 {
-    static func create(fromBigEndian data: Data) -> UInt64 {
+extension UInt32 {
+    static func create(fromBigEndian data: Data) -> UInt32 {
         let value = data.withUnsafeBytes {
-            $0.load(as: UInt64.self)
+            $0.load(as: UInt32.self)
         }
-        return UInt64(bigEndian: value)
-    }
-
-    var data: Data {
-        var int = self
-        return Data(bytes: &int, count: MemoryLayout<UInt64>.size)
-    }
-
-    func getDataByteArray() -> Data {
-        var tempArray = [UInt8](data)
-        tempArray.reverse()
-        return Data(tempArray)
+        return UInt32(bigEndian: value)
     }
 }

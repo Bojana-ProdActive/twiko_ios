@@ -69,6 +69,7 @@ class ViewController: UIViewController {
 
     @objc private func commandButtonTapped() {
 //        PumpManager.shared.disconnect()
+//        PumpManager.shared.readRegimens()
         PumpManager.shared.sendTurnOffCommand { result in
             switch result {
             case .success:

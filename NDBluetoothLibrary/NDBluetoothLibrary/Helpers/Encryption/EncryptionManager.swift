@@ -23,7 +23,7 @@ final class EncryptionManager {
     /// - Returns: encrypted data
     static func aes128Encrypt(data: Data, withKey keyString: String) -> Data? {
 
-        //Key to Data
+        // Key to Data
         let key: Data? = keyString.data(using: .utf8)
 
         // Init cryptor
@@ -32,10 +32,10 @@ final class EncryptionManager {
         // Alloc Data Out
         var cipherData = Data(count: data.count+kCCBlockSizeAES128)
 
-        //Empty IV: initialization vector
+        // Empty IV: initialization vector
         let iv = Data(count: kCCBlockSizeAES128)
 
-        //Create Cryptor
+        // Create Cryptor
         let create: CCCryptorStatus = CCCryptorCreateWithMode(CCOperation(kCCEncrypt),
                                                               CCMode(kCCModeCTR),
                                                               CCAlgorithm(kCCAlgorithmAES),
@@ -51,10 +51,10 @@ final class EncryptionManager {
 
         if create == kCCSuccess {
 
-            //alloc number of bytes written to data Out
+            // alloc number of bytes written to data Out
             var outLength: size_t = size_t()
 
-            //Update Cryptor
+            // Update Cryptor
             let cipherDataNS = NSMutableData(data: cipherData)
             let update: CCCryptorStatus = CCCryptorUpdate(cryptor,
                                                           (data as NSData).bytes,
@@ -64,18 +64,18 @@ final class EncryptionManager {
                                                           &outLength)
 
             if update == kCCSuccess {
-                //Cut Data Out with nedded length
+                // Cut Data Out with nedded length
                 cipherDataNS.length = outLength
 
-                //Final Cryptor
-                let `final`: CCCryptorStatus = CCCryptorFinal(cryptor,  //CCCryptorRef cryptorRef,
-                    cipherDataNS.mutableBytes,  //void *dataOut,
+                // Final Cryptor
+                let `final`: CCCryptorStatus = CCCryptorFinal(cryptor,  // CCCryptorRef cryptorRef,
+                    cipherDataNS.mutableBytes,  // void *dataOut,
                     cipherDataNS.length, // size_t dataOutAvailable,
                     &outLength)   // size_t *dataOutMoved)
                 if `final` == kCCSuccess {
-                    //Release Cryptor
-                    //CCCryptorStatus release =
-                    CCCryptorRelease(cryptor)   //CCCryptorRef cryptorRef
+                    // Release Cryptor
+                    // CCCryptorStatus release =
+                    CCCryptorRelease(cryptor)   // CCCryptorRef cryptorRef
                 }
 
                 cipherData = cipherDataNS as Data
@@ -83,7 +83,7 @@ final class EncryptionManager {
                 return cipherData
             }
         } else {
-            //error
+            // error
             print("Error accured while encrypting!")
         }
         return nil

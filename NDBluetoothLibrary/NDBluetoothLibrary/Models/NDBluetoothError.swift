@@ -19,4 +19,5 @@ public enum NDBluetoothError: Error {
     case connectionHasNotAllowed
     case readDataIsNil
     case characteristicIsNotDiscovered
+    case commandHasCanceled
 }

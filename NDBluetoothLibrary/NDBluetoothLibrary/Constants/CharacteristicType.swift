@@ -50,7 +50,7 @@ enum CharacteristicType: String, CaseIterable {
     case regimenSegmentTime = "263F7007-5CFC-4DB5-927B-2F670FDCBCBB"
     case regimenSegmentValue = "263F7008-5CFC-4DB5-927B-2F670FDCBCBB"
     case clearSelectedRegimen = "263F7010-5CFC-4DB5-927B-2F670FDCBCBB"
-    case selectedRegimenSize = "263F7011-5CFC-4DB5-927B-2F670FDCBCBB"
+    case numberOfSegmentsInRegimen = "263F7011-5CFC-4DB5-927B-2F670FDCBCBB"
     case activeRegimenIndex = "263F7012-5CFC-4DB5-927B-2F670FDCBCBB"
     case currentMedicineFlow = "263F7014-5CFC-4DB5-927B-2F670FDCBCBB"
     case deliveredDose = "263F7015-5CFC-4DB5-927B-2F670FDCBCBB"
@@ -83,7 +83,7 @@ extension CharacteristicType {
              .regimenSegmentPointer,
              .regimenSegmentTime,
              .regimenSegmentValue,
-             .selectedRegimenSize,
+             .numberOfSegmentsInRegimen,
              .activeRegimenIndex,
              .currentMedicineFlow,
              .deliveredDose,
@@ -164,7 +164,7 @@ extension CharacteristicType {
              .regimenSegmentTime,
              .regimenSegmentValue,
              .clearSelectedRegimen,
-             .selectedRegimenSize,
+             .numberOfSegmentsInRegimen,
              .activeRegimenIndex,
              .currentMedicineFlow,
              .deliveredDose,
@@ -212,7 +212,7 @@ extension CharacteristicType {
                 .regimenSegmentTime,
                 .regimenSegmentValue,
                 .clearSelectedRegimen,
-                .selectedRegimenSize,
+                .numberOfSegmentsInRegimen,
                 .activeRegimenIndex,
                 .currentMedicineFlow,
                 .deliveredDose,

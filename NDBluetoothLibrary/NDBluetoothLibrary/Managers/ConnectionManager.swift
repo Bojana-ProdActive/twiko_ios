@@ -260,7 +260,7 @@ final class ConnectionManager: NSObject, ConnectionManagerInterface {
         }
 
         // Remove all commands from the command queue
-        priorityQueue.clear()
+        clearCommandQueue()
 
         // Start disconection
         centralManager.cancelPeripheralConnection(peripheral)
@@ -326,7 +326,14 @@ final class ConnectionManager: NSObject, ConnectionManagerInterface {
     }
 
     func clearCommandQueue() {
+        // Return error for all commands on queue
         priorityQueue.clear()
+        for _ in 0 ..< priorityQueue.count {
+            let command = priorityQueue.pop()
+            DispatchQueue.main.async {
+                command?.handler?(.failure(NDBluetoothError.commandHasCanceled))
+            }
+        }
     }
 
     // MARK: - Private

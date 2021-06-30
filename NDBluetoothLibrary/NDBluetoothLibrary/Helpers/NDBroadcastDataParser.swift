@@ -24,7 +24,7 @@ final class NDBroadcastDataParser {
         // get UInt8 array from advertisement data
         let byteArray = [UInt8](advertisementData)
         var pumpData: BroadcastModel?
-        //if byte have 13 or more bytes
+        // if byte have 13 or more bytes
         if byteArray.count >= 12 {
             pumpData = BroadcastModel()
 
@@ -35,26 +35,26 @@ final class NDBroadcastDataParser {
                 pumpData?.alarmCode = 1
             }
 
-            //pump status register
+            // pump status register
             pumpData?.pumpStatus = NDBroadcastDataParser.parsePumpStatusRegister(statusByte: byteArray[1])
 
-            //battery status
+            // battery status
             pumpData?.batteryStatus = byteArray[2]
 
-            //active regimen idnex
+            // active regimen idnex
             pumpData?.activeRegimenFlow = Float(byteArray[3]) * 0.01
 
-            //delivered dose
+            // delivered dose
             let decimalPartDeliveredDose: UInt8! = byteArray[4]
             let integerPartDeliveredDose: UInt8! = byteArray[5]
-            pumpData?.deliverDose = Float(integerPartDeliveredDose) + Float(decimalPartDeliveredDose)/100 //value in mililiters
+            pumpData?.deliverDose = Float(integerPartDeliveredDose) + Float(decimalPartDeliveredDose)/100 // value in mililiters
 
-            //total daily dose
+            // total daily dose
             let decimalPartTotalDailyDose: UInt8! = byteArray[6]
             let integerPartTotalDailyDose: UInt8! = byteArray[7]
-            pumpData?.maxDeliveredDose = Float(integerPartTotalDailyDose) + Float(decimalPartTotalDailyDose)/100 //value in mililiters
+            pumpData?.maxDeliveredDose = Float(integerPartTotalDailyDose) + Float(decimalPartTotalDailyDose)/100 // value in mililiters
 
-            //Next treatment start time
+            // Next treatment start time
             var hour = Int(byteArray[9])
             var minute = Int(byteArray[8])
 
@@ -67,7 +67,7 @@ final class NDBroadcastDataParser {
             }
             pumpData?.timeUntilEndOfTreatment = value
 
-            //End of Treatment time
+            // End of Treatment time
             if let isDeliverigMedicine = pumpData?.pumpStatus?.deliveringMedicine, let isFullTreatmantFlow = pumpData?.pumpStatus?.inFullTreatmentFlow, let alarmCode =  pumpData?.alarmCode, !isDeliverigMedicine, !isFullTreatmantFlow, alarmCode == 0 {
                 pumpData?.timeUntilEndOfTreatment = 0
             }
