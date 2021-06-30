@@ -48,6 +48,15 @@ public protocol PumpManagerDelegate: AnyObject {
     func didPumpStatusRegisterChanged(_ pump: Pump)
 }
 
+public protocol BroadcastReadingDelegate: AnyObject {
+
+    /**
+     Tells the delegate the broadcast data are read.
+     */
+    func didReadBroadcastData(broadcastModel: BroadcastModel?)
+
+}
+
 public protocol PumpManagerInterface {
     /**
      The object that acts as the delegate of the PumpService
@@ -230,6 +239,12 @@ public protocol PumpManagerInterface {
      - parameter handler: The block to be executed when pump wrute data.
      */
     func writePumpTime(milliseconds: UInt64, handler: ((Result<Bool, Error>) -> Void)?)
+
+    /**
+     Read broadcast decryption key.
+     - parameter handler: The block to be executed when the pump read broadcast decryption key.
+     */
+    func readBroadcastDecryptionKey(handler: ((Result<String?, Error>) -> Void)?)
 }
 
 public final class PumpManager: PumpManagerInterface {
@@ -255,6 +270,14 @@ public final class PumpManager: PumpManagerInterface {
     // MARK: - Private properties
 
     private var disconnectTimer: Timer?
+
+    // MARK: - Broadcast data
+
+    lazy var broadcastManager = NDBroadcastManager(delegate: self)
+
+    var pumpName: String?
+
+    var decryptionKey: String?
 
     // MARK: - Initialization
     /**
@@ -462,6 +485,25 @@ public final class PumpManager: PumpManagerInterface {
             }
         })
     }
+
+    public func readBroadcastDecryptionKey(handler: ((Result<String?, Error>) -> Void)?) {
+        connectinManager.read(.pumpBroadcastDecryptionKey) { [weak self] result in
+            switch result {
+            case .success(let decryptionKeyData):
+                Log.d("Command read broadcast decryption key sent")
+                guard let decryptionKeyData = decryptionKeyData else {
+                    handler?(.success(nil))
+                    return
+                }
+                let decryptionKeyString = PumpDataParser.parseDecryptionKeyData(advertisementData: decryptionKeyData)
+                self?.decryptionKey = decryptionKeyString
+                handler?(.success(self?.decryptionKey))
+            case .failure(let error):
+                Log.w("command: read broadcast decryption key, error: \(error), code: \(error.code), domain: \(error.domain)")
+                handler?(.failure(error))
+            }
+        }
+    }
 }
 
 // MARK: - Private methods
@@ -531,6 +573,28 @@ private extension PumpManager {
         let pumpStatus = PumpDataParser.parsePumpStatusRegister(advertisementData: data)
         pump.pumpStatus = pumpStatus
     }
+
+    /**
+     Stop listening broadcast when pump is connected.
+     */
+    private func stopListeningBroadcast() {
+        broadcastManager.stopScan()
+    }
+
+    /**
+     Start listening broadcast when pump is not connected.
+     */
+    private func startListeningBroadcast() {
+        guard let pumpName = pumpName else {
+            Log.d("Pump name missing.")
+            return
+        }
+        guard let decryptionKey = decryptionKey else {
+            Log.d("Decryption key missing.")
+            return
+        }
+        broadcastManager.startScan(pumpName: pumpName, decryptionKey: decryptionKey)
+    }
 }
 
 extension PumpManager: ConnectionManagerDelegate {
@@ -582,6 +646,8 @@ extension PumpManager: ConnectionManagerDelegate {
 
     func connectionSuccess() {
         Log.s("Pump connected")
+        pumpName = connectinManager.connectedPumpName
+        stopListeningBroadcast()
         delegate?.didConnectPump()
     }
 
@@ -593,4 +659,18 @@ extension PumpManager: ConnectionManagerDelegate {
         // Inform delegate
         delegate?.didDisconnectPump(error)
     }
+}
+
+// MARK: - Broadcast Delegate Interface
+
+extension PumpManager: BroadcastReadingDelegate {
+
+    public func didReadBroadcastData(broadcastModel: BroadcastModel?) {
+        guard broadcastModel != nil else {
+            Log.v("Failed to read broadcast data.")
+            return
+        }
+        Log.v("Broadcast data are read successfully.")
+    }
+
 }

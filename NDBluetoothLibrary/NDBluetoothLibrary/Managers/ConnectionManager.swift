@@ -27,6 +27,8 @@ protocol ConnectionManagerDelegate: AnyObject {
 
 protocol ConnectionManagerInterface {
 
+    var connectedPumpName: String? { get }
+
     /**
      Configure Connection manager before usage. It should be called once.
      */
@@ -121,6 +123,7 @@ final class ConnectionManager: NSObject, ConnectionManagerInterface {
     private lazy var centralManager: CBCentralManager = CBCentralManager(delegate: self, queue: queue)
 
     var stateUpdatedHandler: ((CBManagerState) -> Void)?
+    var connectedPumpName: String?
 
     private var cbuuidArray: [CBUUID]?
     private var discoveredPeripherals: [Peripheral] = []
@@ -653,6 +656,7 @@ extension ConnectionManager: CBCentralManagerDelegate {
         connectedPeripheral = connectablePeripheral
         peripheral.delegate = self
         state = .connected
+        connectedPumpName = peripheral.name
         discoverAllServicesAndCharacteristics()
     }
 

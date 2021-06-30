@@ -14,7 +14,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 import Foundation
 
-final class BroadcastModel: Codable, Equatable {
+public final class BroadcastModel: Codable, Equatable {
 
     var alarmCode: UInt8?
     var alarmDetailsCode: UInt8 = 0
@@ -49,7 +49,7 @@ final class BroadcastModel: Codable, Equatable {
         case rawData = "kRawData"
     }
 
-    static func == (lhs: BroadcastModel, rhs: BroadcastModel) -> Bool {
+    public static func == (lhs: BroadcastModel, rhs: BroadcastModel) -> Bool {
         return lhs.rawData == rhs.rawData &&
             lhs.pumpName == rhs.pumpName &&
             lhs.activeRegimenFlow == rhs.activeRegimenFlow &&

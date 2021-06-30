@@ -48,11 +48,10 @@
 		368EC5EB2680E1860021EC9A /* PumpDataParserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368EC5EA2680E1860021EC9A /* PumpDataParserTest.swift */; };
 		3690A8CB2670A3520002855A /* NDBroadcastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3690A8CA2670A3520002855A /* NDBroadcastManager.swift */; };
 		3690A8CE2670A3CE0002855A /* BroadcastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3690A8CD2670A3CE0002855A /* BroadcastModel.swift */; };
-		3690A8D02670A4DB0002855A /* NDPumpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3690A8CF2670A4DB0002855A /* NDPumpManager.swift */; };
 		3690A8D22670A6740002855A /* NDPumpStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3690A8D12670A6740002855A /* NDPumpStatus.swift */; };
 		36962F7326846D4B00C7176B /* UInt64Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36962F7226846D4B00C7176B /* UInt64Test.swift */; };
+		36995FAB268B403200686D25 /* NDBroadcastManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36995FAA268B403200686D25 /* NDBroadcastManagerTest.swift */; };
 		369D9E982683780800CEF045 /* UInt64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369D9E972683780800CEF045 /* UInt64.swift */; };
-		36CDF4A62670BCF800708D74 /* NDCredentialsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CDF4A52670BCF800708D74 /* NDCredentialsManager.swift */; };
 		36CDF4A92670BF6900708D74 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 36CDF4A82670BF6900708D74 /* KeychainAccess */; };
 		36CDF4D12673560A00708D74 /* NDPumpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CDF4D02673560A00708D74 /* NDPumpError.swift */; };
 		36D37890267764CD00154A2A /* NDBroadcastDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D3788F267764CD00154A2A /* NDBroadcastDataParser.swift */; };
@@ -113,11 +112,10 @@
 		368EC5EA2680E1860021EC9A /* PumpDataParserTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PumpDataParserTest.swift; sourceTree = "<group>"; };
 		3690A8CA2670A3520002855A /* NDBroadcastManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDBroadcastManager.swift; sourceTree = "<group>"; };
 		3690A8CD2670A3CE0002855A /* BroadcastModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastModel.swift; sourceTree = "<group>"; };
-		3690A8CF2670A4DB0002855A /* NDPumpManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDPumpManager.swift; sourceTree = "<group>"; };
 		3690A8D12670A6740002855A /* NDPumpStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDPumpStatus.swift; sourceTree = "<group>"; };
 		36962F7226846D4B00C7176B /* UInt64Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UInt64Test.swift; sourceTree = "<group>"; };
+		36995FAA268B403200686D25 /* NDBroadcastManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDBroadcastManagerTest.swift; sourceTree = "<group>"; };
 		369D9E972683780800CEF045 /* UInt64.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UInt64.swift; sourceTree = "<group>"; };
-		36CDF4A52670BCF800708D74 /* NDCredentialsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDCredentialsManager.swift; sourceTree = "<group>"; };
 		36CDF4D02673560A00708D74 /* NDPumpError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDPumpError.swift; sourceTree = "<group>"; };
 		36D3788F267764CD00154A2A /* NDBroadcastDataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDBroadcastDataParser.swift; sourceTree = "<group>"; };
 		36D37892267766B900154A2A /* UInt8.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UInt8.swift; sourceTree = "<group>"; };
@@ -158,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				2B114ABA267B92CC009641BE /* PumpManagerTests.swift */,
+				36995FAA268B403200686D25 /* NDBroadcastManagerTest.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -202,8 +201,6 @@
 			isa = PBXGroup;
 			children = (
 				3690A8CA2670A3520002855A /* NDBroadcastManager.swift */,
-				3690A8CF2670A4DB0002855A /* NDPumpManager.swift */,
-				36CDF4A52670BCF800708D74 /* NDCredentialsManager.swift */,
 				2B3D50CB265FA3E600B2060C /* ConnectionManager.swift */,
 				2B3D50CF265FB6C400B2060C /* PumpManager.swift */,
 			);
@@ -516,13 +513,11 @@
 				367C0B512681DFCE00F534B2 /* Pump.swift in Sources */,
 				36D37890267764CD00154A2A /* NDBroadcastDataParser.swift in Sources */,
 				368EC5E72680A9270021EC9A /* PumpAlarm.swift in Sources */,
-				3690A8D02670A4DB0002855A /* NDPumpManager.swift in Sources */,
 				36433F2D266E46F800BEBC81 /* DecryptionManager.swift in Sources */,
 				368EC5E52680A9010021EC9A /* PumpDataParser.swift in Sources */,
 				36CDF4D12673560A00708D74 /* NDPumpError.swift in Sources */,
 				36433F26266E3E4600BEBC81 /* EncryptionManager.swift in Sources */,
 				2B114AB7267B922F009641BE /* CharacteristicType.swift in Sources */,
-				36CDF4A62670BCF800708D74 /* NDCredentialsManager.swift in Sources */,
 				2B114AAB267B919F009641BE /* Data.swift in Sources */,
 				3690A8D22670A6740002855A /* NDPumpStatus.swift in Sources */,
 				368A64CE267A1D0D0040727F /* Decodable.swift in Sources */,
@@ -551,6 +546,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				368A64C42679DFCC0040727F /* NDBroadcastDataParserTest.swift in Sources */,
+				36995FAB268B403200686D25 /* NDBroadcastManagerTest.swift in Sources */,
 				36962F7326846D4B00C7176B /* UInt64Test.swift in Sources */,
 				2B114ABB267B92CC009641BE /* PumpManagerTests.swift in Sources */,
 				368EC5EB2680E1860021EC9A /* PumpDataParserTest.swift in Sources */,

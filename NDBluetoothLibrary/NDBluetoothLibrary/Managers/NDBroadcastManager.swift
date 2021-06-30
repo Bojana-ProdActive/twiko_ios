@@ -18,7 +18,7 @@ protocol NDBroadcastManagerProtocol {
 
     var bluetoothManagerState: CBManagerState { get }
 
-    func startScan() -> Error?
+    func startScan(pumpName: String, decryptionKey: String) -> Error?
     func stopScan()
 
 }
@@ -26,8 +26,6 @@ protocol NDBroadcastManagerProtocol {
 final class NDBroadcastManager: NSObject, NDBroadcastManagerProtocol {
 
     // MARK: - Static
-
-    static let shared = NDBroadcastManager()
 
     static let bluetoothTurnedOffNotificationName = Notification.Name(rawValue: "BluetoothTurnedOffNotificationName")
     private static let firstDataKey = "Generic Attribute Profile"
@@ -42,15 +40,18 @@ final class NDBroadcastManager: NSObject, NDBroadcastManagerProtocol {
     private var peripheralFoundInTime: Bool = false
     private var timer: Timer?
 
-    private var credentials: NDCredentialsProtocol = NDCredentialsManager()
-    private var pumpManager: NDPumpManagerProtocol = NDPumpManager.shared
+    private weak var delegate: BroadcastReadingDelegate?
 
-    // MARK: - Initializers
+    // MARK: Initialization
 
-//    init(credentials: NDCredentialsProtocol? = NDCredentials(), pumpManager: NDPumpManagerProtocol? = NDPumpManager()) {
-//        self.credentials = credentials ?? NDCredentials()
-//        self.pumpManager = pumpManager ?? NDPumpManager()
-//    }
+    init(delegate: BroadcastReadingDelegate) {
+        self.delegate = delegate
+    }
+
+    // MARK: - Pump data
+
+    private var decryptionKey: String?
+    private var pumpName: String?
 
     // MARK: - Interface
 
@@ -58,18 +59,14 @@ final class NDBroadcastManager: NSObject, NDBroadcastManagerProtocol {
         return centralManager.state
     }
 
-    func startScan() -> Error? {
+    func startScan(pumpName: String, decryptionKey: String) -> Error? {
         guard !isScanning else {
             debugPrint("[NDBroadcastManager] alredy scanning.")
             return NDPumpError.alredyScanning
         }
 
-        credentials.restoreCredentials()
-
-        guard credentials.pumpName != nil else {
-            debugPrint("[NDBroadcastManager] no pump name.")
-            return NDPumpError.noPumpAvailable
-        }
+        self.decryptionKey = decryptionKey
+        self.pumpName = pumpName
 
         shouldStartNewScan = true
         if centralManager.state == .poweredOn {
@@ -91,10 +88,9 @@ final class NDBroadcastManager: NSObject, NDBroadcastManagerProtocol {
 
     @objc private func startScanPeriod() {
         if !peripheralFoundInTime {
-            debugPrint("[NDBaseBLEService startScanPeriod] Not found peripheral")
-            pumpManager.setIsPumpConnected(false)
+            Log.d("Not found peripheral")
         } else {
-            pumpManager.setIsPumpConnected(true)
+            Log.d("Found peripheral")
         }
         peripheralFoundInTime = false
         centralManager.scanForPeripherals(withServices: [CBUUID(string: ServiceType.genericAttributeProfile.rawValue)],
@@ -145,22 +141,12 @@ final class NDBroadcastManager: NSObject, NDBroadcastManagerProtocol {
     /// - Parameter data: encrypted data
     /// - Returns: decrypted data
     private func decryptData(data: Data) -> Data? {
-        guard let decryptionKey = credentials.decryptionKey else {
+        guard let decryptionKey = decryptionKey else {
             return nil
         }
 
         let decryptedData = DecryptionManager.aes128Decrypt(data: data, withKey: decryptionKey)
         return decryptedData
-    }
-
-    /// Save new pump data
-    /// - Parameter pumpData: new pump data received in broadcast
-    private func updateSharedData(pumpData: BroadcastModel) {
-        guard let name = pumpData.pumpName else {
-            return
-        }
-
-        pumpManager.setPumpDataForKey(pumpData: pumpData, key: name)
     }
 }
 
@@ -174,32 +160,27 @@ extension NDBroadcastManager: CBCentralManagerDelegate {
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String: Any], rssi RSSI: NSNumber) {
         debugPrint("[NDBaseBLEService didDiscover] new peripheral discovered")
         if let deviceName = advertisementData[CBAdvertisementDataLocalNameKey] as? String,
-           deviceName == credentials.pumpName,
+           deviceName == pumpName,
            let dataDict = advertisementData[CBAdvertisementDataServiceDataKey] as? [AnyHashable: Any] {
             var data: Data = Data()
             for key in dataDict.keys where key.description == NDBroadcastManager.firstDataKey {
                 data = dataDict[key] as! Data
             }
-
             peripheralFoundInTime = true
-            pumpManager.setIsPumpConnected(true)
 
             if let decryptedData = decryptData(data: data) {
                 var pumpData: BroadcastModel?
                 if decryptedData.count == 13 {
                     pumpData = NDBroadcastDataParser.parseData(advertisementData: decryptedData)
                 }
-                if let pumpData = pumpData, let name = peripheral.name {
-                    pumpData.pumpName = name
-                    pumpData.rawData = data
-                    updateSharedData(pumpData: pumpData)
-                }
+                pumpData?.pumpName = pumpName
+                delegate?.didReadBroadcastData(broadcastModel: pumpData)
             } else {
-                debugPrint("[NDBaseBLEService didDiscover] Pump data can't be decrypted")
+                Log.d("Pump data can't be decrypted")
             }
 
         } else {
-            debugPrint("[NDBaseBLEService didDiscover] Advertizing data not available")
+            Log.d("Advertizing data not available")
         }
     }
 }

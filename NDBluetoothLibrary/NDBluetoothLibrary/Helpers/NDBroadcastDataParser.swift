@@ -55,8 +55,8 @@ final class NDBroadcastDataParser {
             pumpData?.maxDeliveredDose = Float(integerPartTotalDailyDose) + Float(decimalPartTotalDailyDose)/100 //value in mililiters
 
             //Next treatment start time
-            let hour = Int(byteArray[9])
-            let minute = Int(byteArray[8])
+            var hour = Int(byteArray[9])
+            var minute = Int(byteArray[8])
 
             var value = Int(byteArray[9])
             if value < 0 {
@@ -72,11 +72,14 @@ final class NDBroadcastDataParser {
                 pumpData?.timeUntilEndOfTreatment = 0
             }
 
+            hour = Int(byteArray[11])
+            minute = Int(byteArray[10])
+
             value = Int(byteArray[11])
             if value < 0 {
                 value = Int(((byteArray[11]) << 8) | (byteArray[10]))
             } else {
-                let sum = byteArray[11] * 100 + byteArray[10]
+                let sum = hour * 100 + minute
                 value = Int(sum)
             }
 

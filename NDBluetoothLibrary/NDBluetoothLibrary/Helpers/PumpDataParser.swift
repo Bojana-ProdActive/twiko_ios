@@ -98,4 +98,16 @@ final class PumpDataParser {
         }
         return time
     }
+
+    /**
+     Parse pump decryption data key.
+     - parameter advertisementData: Bytes array of data from the pump.
+     - returns `String`:  String whitch represents decryption key.
+     */
+    static func parseDecryptionKeyData(advertisementData: Data) -> String? {
+
+        // get UInt8 array from advertisement data
+        let byteArray = [UInt8](advertisementData)
+        return String(bytes: byteArray, encoding: .ascii)
+    }
 }

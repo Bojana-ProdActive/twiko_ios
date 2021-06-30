@@ -10,6 +10,25 @@ import CoreBluetooth
 import XCTest
 
 class ConnectionManagerMock: ConnectionManagerInterface {
+    var connectedPumpName: String?
+
+    func configure() {
+
+    }
+
+    func connectFirstTime(_ peripheral: Peripheral, authorizationEnabled: Bool) {
+
+    }
+
+    func reconnect(_ peripheral: Peripheral, authorizationData: Data, authorizationEnabled: Bool) {
+
+    }
+
+    func retrievePeripheral(withIdentifier identifier: String) -> [Peripheral] {
+
+        return []
+    }
+
     var responseError: Error?
     var responseData: Data?
     var writeData: Data?
@@ -939,6 +958,44 @@ class PumpManagerTests: XCTestCase {
         waitForExpectations(timeout: pumpCommandTimeout, handler: nil)
     }
 
+    /**
+     Testing reading decryption data key from the pump.
+
+     After calling the method, the following events should be performed in the block block
+     - Is returned `success` as result in callback block
+     - Is read method called on `ConnetionManager` object
+     - Is characteristic equal to `CharacteristicType.pumpBroadcastDecryptionKey`
+     */
+    func testBroadcastDecryptionKey_ShouldReturnSuccess() {
+        let expectation = expectation(description: "Sending the pump status register")
+
+        sut.readBroadcastDecryptionKey(handler: { result in
+            expectation.fulfill()
+            self.validateSuccessReadingStringFromPump(result, CharacteristicType.pumpBroadcastDecryptionKey)
+        })
+
+        waitForExpectations(timeout: pumpCommandTimeout, handler: nil)
+    }
+
+    /**
+     Testing reading decryption data key from the pump.
+
+     After calling the method, the following events should be performed in the block block
+     - Is returned `failure` as result in callback block
+     - Is read method called on `ConnetionManager` object
+     - Is characteristic equal to `CharacteristicType.pumpBroadcastDecryptionKey`
+     */
+    func testBroadcastDecryptionKey_ShouldReturnFailure() {
+        let expectation = expectation(description: "Sending the pump status register")
+        connectionManager.responseError = defaultError
+        sut.readBroadcastDecryptionKey(handler: { result in
+            expectation.fulfill()
+            self.validateFailureReadingStringFromPump(result, CharacteristicType.pumpBroadcastDecryptionKey)
+        })
+
+        waitForExpectations(timeout: pumpCommandTimeout, handler: nil)
+    }
+
     // MARK: - Private
 
     func validateSuccessReadingFromPump(_ result: Result<Pump?, Error>, _ characteristics: CharacteristicType) {
@@ -958,6 +1015,26 @@ class PumpManagerTests: XCTestCase {
         case .failure:
             XCTAssertTrue(self.connectionManager.hasReadCalled)
             XCTAssertEqual(self.connectionManager.readCharacteristicType, characteristics)
+        }
+    }
+
+    func validateFailureReadingStringFromPump(_ result: Result<String?, Error>, _ characteristics: CharacteristicType) {
+        switch result {
+        case .success(_):
+            XCTFail("Result should error")
+        case .failure:
+            XCTAssertTrue(self.connectionManager.hasReadCalled)
+            XCTAssertEqual(self.connectionManager.readCharacteristicType, characteristics)
+        }
+    }
+
+    func validateSuccessReadingStringFromPump(_ result: Result<String?, Error>, _ characteristics: CharacteristicType) {
+        switch result {
+        case .success(_):
+            XCTAssertTrue(self.connectionManager.hasReadCalled)
+            XCTAssertEqual(self.connectionManager.readCharacteristicType, characteristics)
+        case .failure:
+            XCTFail("Result should be success")
         }
     }
 
@@ -1058,5 +1135,16 @@ class PumpManagerTests: XCTestCase {
         XCTAssertEqual(sut.pump.pumpStatus?.inFullTreatmentFlow, false)
         XCTAssertEqual(sut.pump.pumpStatus?.isCartridgeRemovedInLastOneHour, false)
         XCTAssertEqual(sut.pump.pumpStatus?.isAlarmAcknowledged, false)
+    }
+
+    /**
+     Testing success connection.
+
+     After calling the method pump name shoud be same as connected pump name from the manager.
+     */
+    func testSuccessConnection() {
+        sut.connectionSuccess()
+
+        XCTAssertEqual(sut.pumpName, connectionManager.connectedPumpName)
     }
 }
