@@ -25,8 +25,6 @@
 		2B55C1AA2656553D0056CB21 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C1A92656553D0056CB21 /* UITableView.swift */; };
 		2B55C1AC2656556D0056CB21 /* UITableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C1AB2656556D0056CB21 /* UITableViewHeaderFooterView.swift */; };
 		2B55C1AE265657B40056CB21 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C1AD265657B40056CB21 /* Constants.swift */; };
-		2B55C1B8265671000056CB21 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C1B7265671000056CB21 /* Assets.swift */; };
-		2B55C1BD26567E620056CB21 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C1BC26567E620056CB21 /* Fonts.swift */; };
 		2B6D0AC32655404B00729E75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D0AC22655404B00729E75 /* AppDelegate.swift */; };
 		2B6D0AC52655404B00729E75 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D0AC42655404B00729E75 /* SceneDelegate.swift */; };
 		2B6D0AC72655404B00729E75 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D0AC62655404B00729E75 /* ViewController.swift */; };
@@ -39,6 +37,12 @@
 		2B6D814A268C820400D361CE /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 2B6D8149268C820400D361CE /* KeychainAccess */; };
 		2BBDFAC3265F9AC900952BE6 /* NDBluetoothLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BBDFAC2265F9AC900952BE6 /* NDBluetoothLibrary.framework */; };
 		2BBDFAC4265F9AC900952BE6 /* NDBluetoothLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2BBDFAC2265F9AC900952BE6 /* NDBluetoothLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		368FD95E26932F8C00426E18 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368FD95D26932F8C00426E18 /* UIFont.swift */; };
+		368FD96426934D0600426E18 /* BarlowSemiCondensed-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 368FD96326934D0600426E18 /* BarlowSemiCondensed-SemiBold.otf */; };
+		368FD96626934E0700426E18 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368FD96526934E0700426E18 /* String.swift */; };
+		368FD9682694485D00426E18 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368FD9672694485D00426E18 /* Assets.swift */; };
+		368FD96A2694486B00426E18 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368FD9692694486B00426E18 /* Fonts.swift */; };
+		368FD96C269460D100426E18 /* AudioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368FD96B269460D100426E18 /* AudioButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,8 +90,6 @@
 		2B55C1A92656553D0056CB21 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		2B55C1AB2656556D0056CB21 /* UITableViewHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewHeaderFooterView.swift; sourceTree = "<group>"; };
 		2B55C1AD265657B40056CB21 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		2B55C1B7265671000056CB21 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
-		2B55C1BC26567E620056CB21 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		2B6D0ABF2655404B00729E75 /* Twiko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twiko.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B6D0AC22655404B00729E75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2B6D0AC42655404B00729E75 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +102,12 @@
 		2B6D8143268C7F8400D361CE /* TwikoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwikoTests.swift; sourceTree = "<group>"; };
 		2B6D8146268C80EF00D361CE /* KeychainManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		2BBDFAC2265F9AC900952BE6 /* NDBluetoothLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NDBluetoothLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		368FD95D26932F8C00426E18 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		368FD96326934D0600426E18 /* BarlowSemiCondensed-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BarlowSemiCondensed-SemiBold.otf"; sourceTree = "<group>"; };
+		368FD96526934E0700426E18 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		368FD9672694485D00426E18 /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		368FD9692694486B00426E18 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		368FD96B269460D100426E18 /* AudioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,8 +152,8 @@
 		2B55C1B626566C1B0056CB21 /* SwiftGen */ = {
 			isa = PBXGroup;
 			children = (
-				2B55C1B7265671000056CB21 /* Assets.swift */,
-				2B55C1BC26567E620056CB21 /* Fonts.swift */,
+				368FD9672694485D00426E18 /* Assets.swift */,
+				368FD9692694486B00426E18 /* Fonts.swift */,
 			);
 			path = SwiftGen;
 			sourceTree = "<group>";
@@ -217,6 +225,8 @@
 				2B55C1A7265652FD0056CB21 /* UIEdgeInsets.swift */,
 				2B55C1A92656553D0056CB21 /* UITableView.swift */,
 				2B55C1AB2656556D0056CB21 /* UITableViewHeaderFooterView.swift */,
+				368FD95D26932F8C00426E18 /* UIFont.swift */,
+				368FD96526934E0700426E18 /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -226,6 +236,7 @@
 			children = (
 				2B10CEA3265BAC4C00DC2771 /* Button.swift */,
 				2B10CEA5265BAFA700DC2771 /* Label.swift */,
+				368FD96B269460D100426E18 /* AudioButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -233,6 +244,7 @@
 		2B6D0AFA2655468900729E75 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				368FD9602693394000426E18 /* Fonts */,
 				2B6D0ACD2655405000729E75 /* LaunchScreen.storyboard */,
 				2B6D0AC82655404B00729E75 /* Main.storyboard */,
 				2B6D0AD02655405000729E75 /* Info.plist */,
@@ -248,6 +260,14 @@
 				2B6D8146268C80EF00D361CE /* KeychainManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		368FD9602693394000426E18 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				368FD96326934D0600426E18 /* BarlowSemiCondensed-SemiBold.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -347,6 +367,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				368FD96426934D0600426E18 /* BarlowSemiCondensed-SemiBold.otf in Resources */,
 				2B6D0ACF2655405000729E75 /* LaunchScreen.storyboard in Resources */,
 				2B46C845265BBD0A00A2581E /* Images.xcassets in Resources */,
 				2B46C841265BBB1B00A2581E /* Colors.xcassets in Resources */,
@@ -412,11 +433,13 @@
 				2B55C1AE265657B40056CB21 /* Constants.swift in Sources */,
 				2B55C1A2265651730056CB21 /* UIButton.swift in Sources */,
 				2B55C1A6265652CD0056CB21 /* UICollectionViewCell.swift in Sources */,
+				368FD96626934E0700426E18 /* String.swift in Sources */,
 				2B55C1A4265652050056CB21 /* UICollectionView.swift in Sources */,
+				368FD96C269460D100426E18 /* AudioButton.swift in Sources */,
 				2B55C19C26564F090056CB21 /* Collection.swift in Sources */,
 				2B55C19626564E940056CB21 /* UITableViewCell.swift in Sources */,
+				368FD9682694485D00426E18 /* Assets.swift in Sources */,
 				2B6D8147268C80EF00D361CE /* KeychainManager.swift in Sources */,
-				2B55C1BD26567E620056CB21 /* Fonts.swift in Sources */,
 				2B55C1A8265652FD0056CB21 /* UIEdgeInsets.swift in Sources */,
 				2B55C19426564E810056CB21 /* Encodable.swift in Sources */,
 				2B55C1A02656510D0056CB21 /* Error.swift in Sources */,
@@ -429,8 +452,9 @@
 				2B55C19226564E6A0056CB21 /* Decodable.swift in Sources */,
 				2B6D0B0026554AB900729E75 /* BaseNavigationController.swift in Sources */,
 				2B55C19A26564EF10056CB21 /* UIView.swift in Sources */,
-				2B55C1B8265671000056CB21 /* Assets.swift in Sources */,
+				368FD95E26932F8C00426E18 /* UIFont.swift in Sources */,
 				2B6D0AC52655404B00729E75 /* SceneDelegate.swift in Sources */,
+				368FD96A2694486B00426E18 /* Fonts.swift in Sources */,
 				2B10CEA4265BAC4C00DC2771 /* Button.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,7 +14,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 import Foundation
 ////////////////////////////////////////////////////////////////////////////////
-enum AlertPriority: Int {
+public enum AlertPriority: Int {
     case noAlert
     case high
     case medium
@@ -67,7 +67,7 @@ public enum Alert: UInt8 {
      Get priority for alarm.
      - returns  `NDAlertPriority`: Possible values  `high`, `low`, `medium`, `notDefined`, or `noAlert`
      */
-    func getAlertPriority() -> AlertPriority {
+    public func getAlertPriority() -> AlertPriority {
         switch self {
         case .noAlarm:
             return AlertPriority.noAlert

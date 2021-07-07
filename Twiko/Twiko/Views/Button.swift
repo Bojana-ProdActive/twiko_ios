@@ -20,16 +20,19 @@ final class Button: UIButton {
 
     enum ButtonType {
         case primary
+        case secondary
     }
 
     // MARK: - Data
 
     private let type: ButtonType
+    private var titleText: String = ""
 
     // MARK: - Initialization
 
-    init(type: ButtonType) {
+    init(type: ButtonType, titleText: String? = "") {
         self.type = type
+        self.titleText = titleText ?? ""
         super.init(frame: .zero)
         commonInit()
     }
@@ -55,9 +58,23 @@ final class Button: UIButton {
     }
 
     private func setAppearanceByType() {
+        titleLabel?.font = UIFont.primary(size: 26, weight: .semibold)
         switch type {
         case .primary:
-            backgroundColor = Asset.Colors.accentColor.color
+            backgroundColor = Asset.Colors.primary.color
+
+            setAttributedTitle(titleText.uppercased().getAttributedStringWithSpacing(spacing: 1.43), for: .normal)
+            setTitleColor(.black, for: .normal)
+            layer.cornerRadius = 3
+        case .secondary:
+            backgroundColor = .white
+
+            setAttributedTitle(titleText.uppercased().getAttributedStringWithSpacing(spacing: 1.37), for: .normal)
+            setTitleColor(.black, for: .normal)
+            layer.cornerRadius = 3
+            layer.borderWidth = 1.5
+            layer.borderColor = Asset.Colors.primary.color.cgColor
+            layer.masksToBounds = true
         }
     }
 
@@ -74,13 +91,16 @@ final class Button: UIButton {
     }
 
     override var isEnabled: Bool {
-        didSet {
-            UIView.animate(withDuration: 0.2) {
-                if self.isEnabled {
-                    self.alpha = 1.0
-                } else {
-                    self.alpha = 0.5
-                }
+        get {
+            return true
+        }
+        set {
+            switch type {
+            case .primary:
+                backgroundColor = newValue ? Asset.Colors.primary.color : Asset.Colors.disabledButtonBackground.color
+                setTitleColor(newValue ? .black : Asset.Colors.disabledButtonText.color, for: .normal)
+            default:
+                alpha = 0.5
             }
         }
     }
@@ -90,7 +110,9 @@ final class Button: UIButton {
 
         switch type {
         case .primary:
-            height = 50
+            height = 70
+        case .secondary:
+            height = 70
         }
         return CGSize(width: super.intrinsicContentSize.width, height: height)
     }
