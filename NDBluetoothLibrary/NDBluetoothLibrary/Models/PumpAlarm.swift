@@ -16,11 +16,23 @@ import Foundation
 ////////////////////////////////////////////////////////////////////////////////
 public struct PumpAlarm: Codable {
 
-    var alarmCode: UInt8?
-    var alarmDetailsCode: UInt8?
-    var isSoundEnabled: Bool = false
-    var noTreatmentDuration: UInt32?
-    var alarmDescription: String?
+    public var alarmCode: UInt8?
+    public var alarmDetailsCode: UInt8?
+    public var isSoundEnabled: Bool = false
+    public var noTreatmentDuration: UInt32?
+    public var alarmDescription: String?
+
+    init() {
+
+    }
+
+    public init(code: UInt8, detailsCode: UInt8?, isSoundEnabled: Bool, noTreatmentDuration: UInt32?, alarmDescription: String?) {
+        self.alarmCode = code
+        self.alarmDetailsCode = detailsCode
+        self.isSoundEnabled = isSoundEnabled
+        self.noTreatmentDuration = noTreatmentDuration
+        self.alarmDescription = alarmDescription
+    }
 
     // MARK: - Coding keys
 

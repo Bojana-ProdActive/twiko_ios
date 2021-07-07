@@ -16,17 +16,17 @@ import Foundation
 
 public final class BroadcastModel: Codable, Equatable {
 
-    var alarmCode: UInt8?
-    var alarmDetailsCode: UInt8 = 0
-    var timeUntilCartridgeReplacement: Int?
-    var batteryStatus: UInt8?
-    var activeRegimenFlow: Float?
-    var deliverDose: Float? // miliLiters
-    var maxDeliveredDose: Float?
-    var pumpName: String?
-    var pumpStatus: NDPumpStatus?
-    var timeUntilEndOfTreatment: Int?
-    var timeSinceDurationStopped: Int?
+    public var alarmCode: UInt8?
+    public var alarmDetailsCode: UInt8 = 0
+    public var timeUntilCartridgeReplacement: Int?
+    public var batteryStatus: UInt8?
+    public var activeRegimenFlow: Float?
+    public var deliverDose: Float? // miliLiters
+    public var maxDeliveredDose: Float?
+    public var pumpName: String?
+    public var pumpStatus: NDPumpStatus?
+    public var timeUntilEndOfTreatment: Int?
+    public var timeSinceDurationStopped: Int?
 
     var rawData: Data?
 

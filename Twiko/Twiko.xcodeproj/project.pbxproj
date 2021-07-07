@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		2B10CEA4265BAC4C00DC2771 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B10CEA3265BAC4C00DC2771 /* Button.swift */; };
 		2B10CEA6265BAFA700DC2771 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B10CEA5265BAFA700DC2771 /* Label.swift */; };
+		2B171B50268DF8BC0006D927 /* AlarmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B171B4F268DF8BC0006D927 /* AlarmManager.swift */; };
+		2B23F7992695A7D2006E9D28 /* AlarmPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B23F7982695A7D2006E9D28 /* AlarmPlayer.swift */; };
+		2B23F79B2695A7F8006E9D28 /* AlarmType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B23F79A2695A7F8006E9D28 /* AlarmType.swift */; };
+		2B29AC93269346C800B6AC72 /* AlertTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B29AC92269346C800B6AC72 /* AlertTest.swift */; };
 		2B46C841265BBB1B00A2581E /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B46C840265BBB1B00A2581E /* Colors.xcassets */; };
 		2B46C845265BBD0A00A2581E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B46C844265BBD0A00A2581E /* Images.xcassets */; };
 		2B55C19226564E6A0056CB21 /* Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C19126564E6A0056CB21 /* Decodable.swift */; };
@@ -35,8 +39,12 @@
 		2B6D8144268C7F8400D361CE /* TwikoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D8143268C7F8400D361CE /* TwikoTests.swift */; };
 		2B6D8147268C80EF00D361CE /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D8146268C80EF00D361CE /* KeychainManager.swift */; };
 		2B6D814A268C820400D361CE /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 2B6D8149268C820400D361CE /* KeychainAccess */; };
+		2B7934D0268F3032000D10EC /* AlarmManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7934CF268F3032000D10EC /* AlarmManagerTests.swift */; };
 		2BBDFAC3265F9AC900952BE6 /* NDBluetoothLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BBDFAC2265F9AC900952BE6 /* NDBluetoothLibrary.framework */; };
 		2BBDFAC4265F9AC900952BE6 /* NDBluetoothLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2BBDFAC2265F9AC900952BE6 /* NDBluetoothLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2BE4AA2726948F650051A94D /* nd_med_alarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2BE4AA2426948F650051A94D /* nd_med_alarm.mp3 */; };
+		2BE4AA2826948F650051A94D /* nd_lp_alarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2BE4AA2526948F650051A94D /* nd_lp_alarm.mp3 */; };
+		2BE4AA2926948F650051A94D /* nd_hp_alarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2BE4AA2626948F650051A94D /* nd_hp_alarm.mp3 */; };
 		368FD95E26932F8C00426E18 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368FD95D26932F8C00426E18 /* UIFont.swift */; };
 		368FD96426934D0600426E18 /* BarlowSemiCondensed-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 368FD96326934D0600426E18 /* BarlowSemiCondensed-SemiBold.otf */; };
 		368FD96626934E0700426E18 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368FD96526934E0700426E18 /* String.swift */; };
@@ -72,6 +80,12 @@
 /* Begin PBXFileReference section */
 		2B10CEA3265BAC4C00DC2771 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		2B10CEA5265BAFA700DC2771 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
+		2B171B4F268DF8BC0006D927 /* AlarmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmManager.swift; sourceTree = "<group>"; };
+		2B1D63FF2694481E00DEAA96 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		2B1D6403269448C500DEAA96 /* Twiko-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Twiko-Bridging-Header.h"; sourceTree = "<group>"; };
+		2B23F7982695A7D2006E9D28 /* AlarmPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmPlayer.swift; sourceTree = "<group>"; };
+		2B23F79A2695A7F8006E9D28 /* AlarmType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmType.swift; sourceTree = "<group>"; };
+		2B29AC92269346C800B6AC72 /* AlertTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertTest.swift; sourceTree = "<group>"; };
 		2B46C830265BB5FB00A2581E /* TwikoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwikoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B46C83B265BB62D00A2581E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B46C840265BBB1B00A2581E /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -101,7 +115,16 @@
 		2B6D0AFF26554AB900729E75 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		2B6D8143268C7F8400D361CE /* TwikoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwikoTests.swift; sourceTree = "<group>"; };
 		2B6D8146268C80EF00D361CE /* KeychainManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		2B7934CF268F3032000D10EC /* AlarmManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmManagerTests.swift; sourceTree = "<group>"; };
 		2BBDFAC2265F9AC900952BE6 /* NDBluetoothLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NDBluetoothLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BE4AA1A2694512B0051A94D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		2BE4AA1C269451340051A94D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		2BE4AA1E2694513D0051A94D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		2BE4AA20269451490051A94D /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		2BE4AA22269451500051A94D /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
+		2BE4AA2426948F650051A94D /* nd_med_alarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = nd_med_alarm.mp3; sourceTree = "<group>"; };
+		2BE4AA2526948F650051A94D /* nd_lp_alarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = nd_lp_alarm.mp3; sourceTree = "<group>"; };
+		2BE4AA2626948F650051A94D /* nd_hp_alarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = nd_hp_alarm.mp3; sourceTree = "<group>"; };
 		368FD95D26932F8C00426E18 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		368FD96326934D0600426E18 /* BarlowSemiCondensed-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BarlowSemiCondensed-SemiBold.otf"; sourceTree = "<group>"; };
 		368FD96526934E0700426E18 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -130,9 +153,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B1D63E22694365700DEAA96 /* Alarms */ = {
+			isa = PBXGroup;
+			children = (
+				2B171B4F268DF8BC0006D927 /* AlarmManager.swift */,
+				2B23F7982695A7D2006E9D28 /* AlarmPlayer.swift */,
+			);
+			path = Alarms;
+			sourceTree = "<group>";
+		};
+		2B1D63EC269447AB00DEAA96 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+		2B29AC8E2693468700B6AC72 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				2B23F79A2695A7F8006E9D28 /* AlarmType.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		2B29AC91269346A400B6AC72 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				2B29AC92269346C800B6AC72 /* AlertTest.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		2B46C831265BB5FB00A2581E /* TwikoTests */ = {
 			isa = PBXGroup;
 			children = (
+				2B29AC91269346A400B6AC72 /* Constants */,
+				2B7934CE268F3010000D10EC /* Managers */,
 				2B46C83B265BB62D00A2581E /* Info.plist */,
 				2B6D8143268C7F8400D361CE /* TwikoTests.swift */,
 			);
@@ -161,9 +218,22 @@
 		2B55C1E82656A39B0056CB21 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2BE4AA22269451500051A94D /* CoreMIDI.framework */,
+				2BE4AA20269451490051A94D /* Accelerate.framework */,
+				2BE4AA1E2694513D0051A94D /* CFNetwork.framework */,
+				2BE4AA1C269451340051A94D /* SystemConfiguration.framework */,
+				2BE4AA1A2694512B0051A94D /* AudioToolbox.framework */,
+				2B1D63FF2694481E00DEAA96 /* AVFoundation.framework */,
 				2BBDFAC2265F9AC900952BE6 /* NDBluetoothLibrary.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2B66A2F3268DE47E00504866 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		2B6D0AB62655404B00729E75 = {
@@ -188,6 +258,9 @@
 		2B6D0AC12655404B00729E75 /* Twiko */ = {
 			isa = PBXGroup;
 			children = (
+				2B1D63EC269447AB00DEAA96 /* Libraries */,
+				2B29AC8E2693468700B6AC72 /* Constants */,
+				2B66A2F3268DE47E00504866 /* Models */,
 				2B6D8145268C80CA00D361CE /* Managers */,
 				2B55C19026564CE50056CB21 /* App */,
 				2B55C1B626566C1B0056CB21 /* SwiftGen */,
@@ -245,11 +318,13 @@
 			isa = PBXGroup;
 			children = (
 				368FD9602693394000426E18 /* Fonts */,
+				2BE4AA1326944B0A0051A94D /* Audio */,
 				2B6D0ACD2655405000729E75 /* LaunchScreen.storyboard */,
 				2B6D0AC82655404B00729E75 /* Main.storyboard */,
 				2B6D0AD02655405000729E75 /* Info.plist */,
 				2B46C840265BBB1B00A2581E /* Colors.xcassets */,
 				2B46C844265BBD0A00A2581E /* Images.xcassets */,
+				2B1D6403269448C500DEAA96 /* Twiko-Bridging-Header.h */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -257,9 +332,28 @@
 		2B6D8145268C80CA00D361CE /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				2B1D63E22694365700DEAA96 /* Alarms */,
 				2B6D8146268C80EF00D361CE /* KeychainManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		2B7934CE268F3010000D10EC /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				2B7934CF268F3032000D10EC /* AlarmManagerTests.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		2BE4AA1326944B0A0051A94D /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				2BE4AA2626948F650051A94D /* nd_hp_alarm.mp3 */,
+				2BE4AA2526948F650051A94D /* nd_lp_alarm.mp3 */,
+				2BE4AA2426948F650051A94D /* nd_med_alarm.mp3 */,
+			);
+			path = Audio;
 			sourceTree = "<group>";
 		};
 		368FD9602693394000426E18 /* Fonts */ = {
@@ -369,7 +463,10 @@
 			files = (
 				368FD96426934D0600426E18 /* BarlowSemiCondensed-SemiBold.otf in Resources */,
 				2B6D0ACF2655405000729E75 /* LaunchScreen.storyboard in Resources */,
+				2BE4AA2726948F650051A94D /* nd_med_alarm.mp3 in Resources */,
 				2B46C845265BBD0A00A2581E /* Images.xcassets in Resources */,
+				2BE4AA2826948F650051A94D /* nd_lp_alarm.mp3 in Resources */,
+				2BE4AA2926948F650051A94D /* nd_hp_alarm.mp3 in Resources */,
 				2B46C841265BBB1B00A2581E /* Colors.xcassets in Resources */,
 				2B6D0ACA2655404B00729E75 /* Main.storyboard in Resources */,
 			);
@@ -422,6 +519,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B6D8144268C7F8400D361CE /* TwikoTests.swift in Sources */,
+				2B7934D0268F3032000D10EC /* AlarmManagerTests.swift in Sources */,
+				2B29AC93269346C800B6AC72 /* AlertTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,10 +531,12 @@
 				2B6D0AC72655404B00729E75 /* ViewController.swift in Sources */,
 				2B55C1AE265657B40056CB21 /* Constants.swift in Sources */,
 				2B55C1A2265651730056CB21 /* UIButton.swift in Sources */,
+				2B171B50268DF8BC0006D927 /* AlarmManager.swift in Sources */,
 				2B55C1A6265652CD0056CB21 /* UICollectionViewCell.swift in Sources */,
 				368FD96626934E0700426E18 /* String.swift in Sources */,
 				2B55C1A4265652050056CB21 /* UICollectionView.swift in Sources */,
 				368FD96C269460D100426E18 /* AudioButton.swift in Sources */,
+				2B23F7992695A7D2006E9D28 /* AlarmPlayer.swift in Sources */,
 				2B55C19C26564F090056CB21 /* Collection.swift in Sources */,
 				2B55C19626564E940056CB21 /* UITableViewCell.swift in Sources */,
 				368FD9682694485D00426E18 /* Assets.swift in Sources */,
@@ -456,6 +557,7 @@
 				2B6D0AC52655404B00729E75 /* SceneDelegate.swift in Sources */,
 				368FD96A2694486B00426E18 /* Fonts.swift in Sources */,
 				2B10CEA4265BAC4C00DC2771 /* Button.swift in Sources */,
+				2B23F79B2695A7F8006E9D28 /* AlarmType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -659,13 +761,23 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BEQYWPGH67;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Twiko/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Twiko/Libraries/APAudioPlayer/bass/plugins/bassflac",
+					"$(PROJECT_DIR)/Twiko/Libraries/APAudioPlayer/bass/plugins/basswv",
+					"$(PROJECT_DIR)/Twiko/Libraries/APAudioPlayer/bass/plugins/bassopus",
+					"$(PROJECT_DIR)/Twiko/Libraries/APAudioPlayer/bass",
+				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.prodactivesolutions.neuroderm.twikois;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Twiko/Supporting Files/Twiko-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -678,13 +790,23 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BEQYWPGH67;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Twiko/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Twiko/Libraries/APAudioPlayer/bass/plugins/bassflac",
+					"$(PROJECT_DIR)/Twiko/Libraries/APAudioPlayer/bass/plugins/basswv",
+					"$(PROJECT_DIR)/Twiko/Libraries/APAudioPlayer/bass/plugins/bassopus",
+					"$(PROJECT_DIR)/Twiko/Libraries/APAudioPlayer/bass",
+				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.prodactivesolutions.neuroderm.twikois;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Twiko/Supporting Files/Twiko-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

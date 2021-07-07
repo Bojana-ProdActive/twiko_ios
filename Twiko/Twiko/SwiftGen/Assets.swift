@@ -24,12 +24,12 @@ internal enum Asset {
   internal enum Colors {
     internal static let accentColor = ColorAsset(name: "AccentColor")
     internal static let ndPurple = ColorAsset(name: "NDPurple")
+    internal static let primary = ColorAsset(name: "Primary")
     internal static let alertColorHigh = ColorAsset(name: "alert_color_high")
     internal static let alertColorLow = ColorAsset(name: "alert_color_low")
     internal static let alertColorMedium = ColorAsset(name: "alert_color_medium")
     internal static let disabledButtonBackground = ColorAsset(name: "disabled-button-background")
     internal static let disabledButtonText = ColorAsset(name: "disabled-button-text")
-    internal static let primary = ColorAsset(name: "primary")
   }
   internal enum Images {
     internal static let defaultAudio = ImageAsset(name: "default-audio")

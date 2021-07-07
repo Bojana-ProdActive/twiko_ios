@@ -27,12 +27,12 @@ final class AudioButton: UIButton {
 
     // MARK: - Data
 
-    private let type: AlertPriority
+    private let type: AlarmPriority
     private var isButtonEnabled = true
 
     // MARK: - Initialization
 
-    init(type: AlertPriority) {
+    init(type: AlarmPriority) {
         self.type = type
         super.init(frame: .zero)
         commonInit()

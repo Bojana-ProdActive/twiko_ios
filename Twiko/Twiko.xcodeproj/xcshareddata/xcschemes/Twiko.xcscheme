@@ -26,13 +26,14 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2B6D0AD42655405100729E75"
+               BlueprintIdentifier = "2B46C82F265BB5FB00A2581E"
                BuildableName = "TwikoTests.xctest"
                BlueprintName = "TwikoTests"
                ReferencedContainer = "container:Twiko.xcodeproj">
