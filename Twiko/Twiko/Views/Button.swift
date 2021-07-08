@@ -14,7 +14,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 import UIKit
 ////////////////////////////////////////////////////////////////////////////////
-final class Button: UIButton {
+final class Button: BaseButton {
 
     // MARK: - Enums
 
@@ -79,16 +79,6 @@ final class Button: UIButton {
     }
 
     // MARK: - UIButton
-
-    override var isHighlighted: Bool {
-        didSet {
-            if isEnabled {
-                self.alpha = isHighlighted ? 0.5 : 1.0
-            } else {
-                self.alpha = 0.0
-            }
-        }
-    }
 
     override var isEnabled: Bool {
         get {

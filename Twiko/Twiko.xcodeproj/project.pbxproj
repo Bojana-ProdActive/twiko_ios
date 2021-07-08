@@ -12,7 +12,12 @@
 		2B171B50268DF8BC0006D927 /* AlarmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B171B4F268DF8BC0006D927 /* AlarmManager.swift */; };
 		2B23F7992695A7D2006E9D28 /* AlarmPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B23F7982695A7D2006E9D28 /* AlarmPlayer.swift */; };
 		2B23F79B2695A7F8006E9D28 /* AlarmType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B23F79A2695A7F8006E9D28 /* AlarmType.swift */; };
+		2B23F79E2695AFAF006E9D28 /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B23F79D2695AFAF006E9D28 /* NavigationView.swift */; };
+		2B23F7A02695B745006E9D28 /* NavigationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B23F79F2695B745006E9D28 /* NavigationButton.swift */; };
+		2B23F7A22695BFB4006E9D28 /* Barlow-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2B23F7A12695BFB4006E9D28 /* Barlow-Bold.otf */; };
+		2B23F7A62695D0A9006E9D28 /* BaseContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B23F7A52695D0A9006E9D28 /* BaseContentViewController.swift */; };
 		2B29AC93269346C800B6AC72 /* AlertTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B29AC92269346C800B6AC72 /* AlertTest.swift */; };
+		2B3387C026970AB1008608A0 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3387BF26970AB1008608A0 /* BaseButton.swift */; };
 		2B46C841265BBB1B00A2581E /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B46C840265BBB1B00A2581E /* Colors.xcassets */; };
 		2B46C845265BBD0A00A2581E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B46C844265BBD0A00A2581E /* Images.xcassets */; };
 		2B55C19226564E6A0056CB21 /* Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55C19126564E6A0056CB21 /* Decodable.swift */; };
@@ -85,7 +90,12 @@
 		2B1D6403269448C500DEAA96 /* Twiko-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Twiko-Bridging-Header.h"; sourceTree = "<group>"; };
 		2B23F7982695A7D2006E9D28 /* AlarmPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmPlayer.swift; sourceTree = "<group>"; };
 		2B23F79A2695A7F8006E9D28 /* AlarmType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmType.swift; sourceTree = "<group>"; };
+		2B23F79D2695AFAF006E9D28 /* NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
+		2B23F79F2695B745006E9D28 /* NavigationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationButton.swift; sourceTree = "<group>"; };
+		2B23F7A12695BFB4006E9D28 /* Barlow-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-Bold.otf"; sourceTree = "<group>"; };
+		2B23F7A52695D0A9006E9D28 /* BaseContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseContentViewController.swift; sourceTree = "<group>"; };
 		2B29AC92269346C800B6AC72 /* AlertTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertTest.swift; sourceTree = "<group>"; };
+		2B3387BF26970AB1008608A0 /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		2B46C830265BB5FB00A2581E /* TwikoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwikoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B46C83B265BB62D00A2581E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B46C840265BBB1B00A2581E /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -167,6 +177,16 @@
 			children = (
 			);
 			path = Libraries;
+			sourceTree = "<group>";
+		};
+		2B23F79C2695AD67006E9D28 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				2B6D0AFD26554A1400729E75 /* BaseViewController.swift */,
+				2B6D0AFF26554AB900729E75 /* BaseNavigationController.swift */,
+				2B23F7A52695D0A9006E9D28 /* BaseContentViewController.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		2B29AC8E2693468700B6AC72 /* Constants */ = {
@@ -276,8 +296,7 @@
 		2B6D0AF62655464100729E75 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2B6D0AFD26554A1400729E75 /* BaseViewController.swift */,
-				2B6D0AFF26554AB900729E75 /* BaseNavigationController.swift */,
+				2B23F79C2695AD67006E9D28 /* Base */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -310,6 +329,9 @@
 				2B10CEA3265BAC4C00DC2771 /* Button.swift */,
 				2B10CEA5265BAFA700DC2771 /* Label.swift */,
 				368FD96B269460D100426E18 /* AudioButton.swift */,
+				2B23F79D2695AFAF006E9D28 /* NavigationView.swift */,
+				2B23F79F2695B745006E9D28 /* NavigationButton.swift */,
+				2B3387BF26970AB1008608A0 /* BaseButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -359,6 +381,7 @@
 		368FD9602693394000426E18 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				2B23F7A12695BFB4006E9D28 /* Barlow-Bold.otf */,
 				368FD96326934D0600426E18 /* BarlowSemiCondensed-SemiBold.otf */,
 			);
 			path = Fonts;
@@ -469,6 +492,7 @@
 				2BE4AA2926948F650051A94D /* nd_hp_alarm.mp3 in Resources */,
 				2B46C841265BBB1B00A2581E /* Colors.xcassets in Resources */,
 				2B6D0ACA2655404B00729E75 /* Main.storyboard in Resources */,
+				2B23F7A22695BFB4006E9D28 /* Barlow-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,6 +563,7 @@
 				2B23F7992695A7D2006E9D28 /* AlarmPlayer.swift in Sources */,
 				2B55C19C26564F090056CB21 /* Collection.swift in Sources */,
 				2B55C19626564E940056CB21 /* UITableViewCell.swift in Sources */,
+				2B23F7A62695D0A9006E9D28 /* BaseContentViewController.swift in Sources */,
 				368FD9682694485D00426E18 /* Assets.swift in Sources */,
 				2B6D8147268C80EF00D361CE /* KeychainManager.swift in Sources */,
 				2B55C1A8265652FD0056CB21 /* UIEdgeInsets.swift in Sources */,
@@ -546,6 +571,7 @@
 				2B55C1A02656510D0056CB21 /* Error.swift in Sources */,
 				2B10CEA6265BAFA700DC2771 /* Label.swift in Sources */,
 				2B55C19E26564FDE0056CB21 /* Dictionary.swift in Sources */,
+				2B23F79E2695AFAF006E9D28 /* NavigationView.swift in Sources */,
 				2B55C1AC2656556D0056CB21 /* UITableViewHeaderFooterView.swift in Sources */,
 				2B6D0AFE26554A1400729E75 /* BaseViewController.swift in Sources */,
 				2B55C1AA2656553D0056CB21 /* UITableView.swift in Sources */,
@@ -556,6 +582,8 @@
 				368FD95E26932F8C00426E18 /* UIFont.swift in Sources */,
 				2B6D0AC52655404B00729E75 /* SceneDelegate.swift in Sources */,
 				368FD96A2694486B00426E18 /* Fonts.swift in Sources */,
+				2B23F7A02695B745006E9D28 /* NavigationButton.swift in Sources */,
+				2B3387C026970AB1008608A0 /* BaseButton.swift in Sources */,
 				2B10CEA4265BAC4C00DC2771 /* Button.swift in Sources */,
 				2B23F79B2695A7F8006E9D28 /* AlarmType.swift in Sources */,
 			);
@@ -761,19 +789,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BEQYWPGH67;
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "Twiko/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Twiko/Libraries/APAudioPlayer/bass/plugins/bassflac",
-					"$(PROJECT_DIR)/Twiko/Libraries/APAudioPlayer/bass/plugins/basswv",
-					"$(PROJECT_DIR)/Twiko/Libraries/APAudioPlayer/bass/plugins/bassopus",
-					"$(PROJECT_DIR)/Twiko/Libraries/APAudioPlayer/bass",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.prodactivesolutions.neuroderm.twikois;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -790,19 +813,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BEQYWPGH67;
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "Twiko/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Twiko/Libraries/APAudioPlayer/bass/plugins/bassflac",
-					"$(PROJECT_DIR)/Twiko/Libraries/APAudioPlayer/bass/plugins/basswv",
-					"$(PROJECT_DIR)/Twiko/Libraries/APAudioPlayer/bass/plugins/bassopus",
-					"$(PROJECT_DIR)/Twiko/Libraries/APAudioPlayer/bass",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.prodactivesolutions.neuroderm.twikois;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -32,6 +32,10 @@ internal enum Asset {
     internal static let disabledButtonText = ColorAsset(name: "disabled-button-text")
   }
   internal enum Images {
+    internal enum Navigation {
+      internal static let back = ImageAsset(name: "back")
+      internal static let menu = ImageAsset(name: "menu")
+    }
     internal static let defaultAudio = ImageAsset(name: "default-audio")
     internal static let group = ImageAsset(name: "group")
     internal static let highPriorityAudio = ImageAsset(name: "high-priority-audio")

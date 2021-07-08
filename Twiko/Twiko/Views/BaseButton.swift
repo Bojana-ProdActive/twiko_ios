@@ -6,20 +6,23 @@
 // Proprietary and Confidential - Not for Distribution
 // Written by NeuroDerm.
 //
-// BaseViewController.swift
+// BaseButton.swift
 //
 // AUTHOR IDENTITY:
-//        Goran Tokovic        19.5.21.
+//        Goran Tokovic        8.7.21.
 //
 ////////////////////////////////////////////////////////////////////////////////
 import UIKit
 ////////////////////////////////////////////////////////////////////////////////
-final class BaseViewController: UIViewController {
+class BaseButton: UIButton {
 
-    // MARK: - Life cycles
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    override var isHighlighted: Bool {
+        didSet {
+            if isEnabled {
+                self.alpha = isHighlighted ? 0.5 : 1.0
+            } else {
+                self.alpha = 0.0
+            }
+        }
     }
 }

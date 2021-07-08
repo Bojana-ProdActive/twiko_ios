@@ -16,27 +16,51 @@ import UIKit
 ////////////////////////////////////////////////////////////////////////////////
 extension UIFont {
 
-    /// Barlow font family
-        ///
-        /// - Parameters:
-        ///   - size: size of the font
-        ///   - weight: weight of the font
-        /// - Returns: formatted font
-        class func primary(size: CGFloat, weight: Weight) -> UIFont {
-            var font = FontFamily.BarlowSemiCondensed.semiBold
-            switch weight {
-            case .semibold:
-                font = FontFamily.BarlowSemiCondensed.semiBold
-            default:
-                break
-            }
-            guard let customFont = FontConvertible.Font(font: font, size: size) else {
-                fatalError("""
+    /// BarlowSemiCondensed font family
+    ///
+    /// - Parameters:
+    ///   - size: size of the font
+    ///   - weight: weight of the font
+    /// - Returns: formatted font
+    class func primary(size: CGFloat, weight: Weight) -> UIFont {
+        var font = FontFamily.BarlowSemiCondensed.semiBold
+        switch weight {
+        case .semibold:
+            font = FontFamily.BarlowSemiCondensed.semiBold
+        default:
+            break
+        }
+        guard let customFont = FontConvertible.Font(font: font, size: size) else {
+            fatalError("""
                     Failed to load the "\(font.name)" font.
                     Make sure the font file is included in the project and the font name is spelled correctly.
                     """
-                )
-            }
-            return customFont
+            )
         }
+        return customFont
+    }
+
+    /// Barlow font family
+    ///
+    /// - Parameters:
+    ///   - size: size of the font
+    ///   - weight: weight of the font
+    /// - Returns: formatted font
+    class func secondary(size: CGFloat, weight: Weight) -> UIFont {
+        var font = FontFamily.Barlow.bold
+        switch weight {
+        case .bold:
+            font = FontFamily.Barlow.bold
+        default:
+            break
+        }
+        guard let customFont = FontConvertible.Font(font: font, size: size) else {
+            fatalError("""
+                    Failed to load the "\(font.name)" font.
+                    Make sure the font file is included in the project and the font name is spelled correctly.
+                    """
+            )
+        }
+        return customFont
+    }
 }

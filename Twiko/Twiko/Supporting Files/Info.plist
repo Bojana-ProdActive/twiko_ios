@@ -7,6 +7,7 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>BarlowSemiCondensed-SemiBold.otf</string>
+		<string>Barlow-Bold.otf</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>

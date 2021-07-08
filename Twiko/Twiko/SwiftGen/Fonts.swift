@@ -18,11 +18,15 @@ internal typealias Font = FontConvertible.Font
 
 // swiftlint:disable identifier_name line_length type_body_length
 internal enum FontFamily {
+  internal enum Barlow {
+    internal static let bold = FontConvertible(name: "Barlow-Bold", family: "Barlow", path: "Barlow-Bold.otf")
+    internal static let all: [FontConvertible] = [bold]
+  }
   internal enum BarlowSemiCondensed {
     internal static let semiBold = FontConvertible(name: "BarlowSemiCondensed-SemiBold", family: "Barlow Semi Condensed", path: "BarlowSemiCondensed-SemiBold.otf")
     internal static let all: [FontConvertible] = [semiBold]
   }
-  internal static let allCustomFonts: [FontConvertible] = [BarlowSemiCondensed.all].flatMap { $0 }
+  internal static let allCustomFonts: [FontConvertible] = [Barlow.all, BarlowSemiCondensed.all].flatMap { $0 }
   internal static func registerAllCustomFonts() {
     allCustomFonts.forEach { $0.register() }
   }
