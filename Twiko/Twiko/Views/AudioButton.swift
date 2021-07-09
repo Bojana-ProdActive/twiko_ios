@@ -81,20 +81,20 @@ final class AudioButton: UIButton {
             isButtonEnabled = newValue
             switch type {
             case .high:
-                let color = newValue ? Asset.Colors.alertColorHigh.color : Asset.Colors.disabledButtonText.color
+                let color = newValue ? Asset.Colors.alertColorHigh.color : Asset.Colors.neutralColorDark.color
                 let title = newValue ? NSLocalizedString("Pause audio", comment: "").uppercased() : NSLocalizedString("Audio paused", comment: "").uppercased()
                 setupAudioButton(color: color, title: title)
-                backgroundColor = newValue ? .white : Asset.Colors.disabledButtonBackground.color
+                backgroundColor = newValue ? .white : Asset.Colors.neutralColorLight.color
             case .medium:
-                let color = newValue ? Asset.Colors.alertColorMedium.color : Asset.Colors.disabledButtonText.color
+                let color = newValue ? Asset.Colors.alertColorMedium.color : Asset.Colors.neutralColorDark.color
                 let title = newValue ? NSLocalizedString("Turn off audio", comment: "").uppercased() : NSLocalizedString("Audio off", comment: "").uppercased()
                 setupAudioButton(color: color, title: title)
-                backgroundColor = newValue ? .white : Asset.Colors.disabledButtonBackground.color
+                backgroundColor = newValue ? .white : Asset.Colors.neutralColorLight.color
             default:
-                let color = newValue ? Asset.Colors.alertColorLow.color : Asset.Colors.disabledButtonText.color
+                let color = newValue ? Asset.Colors.alertColorLow.color : Asset.Colors.neutralColorDark.color
                 let title = newValue ? NSLocalizedString("Turn off audio", comment: "").uppercased() : NSLocalizedString("Audio off", comment: "").uppercased()
                 setupAudioButton(color: color, title: title)
-                backgroundColor = newValue ? .white : Asset.Colors.disabledButtonBackground.color
+                backgroundColor = newValue ? .white : Asset.Colors.neutralColorLight.color
             }
         }
     }

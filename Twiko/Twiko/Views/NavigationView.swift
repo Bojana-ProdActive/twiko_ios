@@ -45,7 +45,7 @@ final class NavigationView: UIView {
 
     private lazy var bottomDividerView: UIView = {
         let view = UIView.newAutoLayoutView()
-        view.backgroundColor = Asset.Colors.disabledButtonText.color
+        view.backgroundColor = Asset.Colors.neutralColorDark.color
         return view
     }()
 

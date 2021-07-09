@@ -18,25 +18,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="vbn-yL-khY">
-                                <rect key="frame" x="429" y="359.5" width="508" height="305"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" secondItem="vbn-yL-khY" secondAttribute="width" multiplier="0.6" id="E2V-6s-umu"/>
-                                </constraints>
+                                <rect key="frame" x="341.5" y="256" width="683" height="512"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group" translatesAutoresizingMaskIntoConstraints="NO" id="qIi-5a-ebu">
-                                <rect key="frame" x="937" y="799" width="429" height="268"/>
+                                <rect key="frame" x="1024.5" y="853.5" width="341.5" height="213.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="qIi-5a-ebu" secondAttribute="height" multiplier="16:10" id="X3S-no-JMD"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" name="NDPurple"/>
+                        <color key="backgroundColor" name="primary_color"/>
                         <constraints>
+                            <constraint firstItem="vbn-yL-khY" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="0.5" id="20V-cH-zby"/>
                             <constraint firstItem="vbn-yL-khY" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="4SI-5y-s4K"/>
                             <constraint firstItem="vbn-yL-khY" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="7my-Uj-yAg"/>
                             <constraint firstItem="qIi-5a-ebu" firstAttribute="leading" secondItem="vbn-yL-khY" secondAttribute="trailing" id="S4S-IO-4Ez"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="qIi-5a-ebu" secondAttribute="bottom" constant="-43" id="fES-fJ-fSO"/>
+                            <constraint firstItem="vbn-yL-khY" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.5" id="jtH-fy-gs3"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qIi-5a-ebu" secondAttribute="trailing" id="mKd-pJ-mKb"/>
                         </constraints>
                     </view>
@@ -49,7 +48,7 @@
     <resources>
         <image name="group" width="310" height="233"/>
         <image name="logo" width="508" height="190"/>
-        <namedColor name="NDPurple">
+        <namedColor name="primary_color">
             <color red="0.42352941176470588" green="0.44313725490196076" blue="0.69019607843137254" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

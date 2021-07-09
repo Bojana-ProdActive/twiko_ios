@@ -23,13 +23,13 @@ internal typealias AssetImageTypeAlias = ImageAsset.Image
 internal enum Asset {
   internal enum Colors {
     internal static let accentColor = ColorAsset(name: "AccentColor")
-    internal static let ndPurple = ColorAsset(name: "NDPurple")
-    internal static let primary = ColorAsset(name: "Primary")
     internal static let alertColorHigh = ColorAsset(name: "alert_color_high")
     internal static let alertColorLow = ColorAsset(name: "alert_color_low")
     internal static let alertColorMedium = ColorAsset(name: "alert_color_medium")
-    internal static let disabledButtonBackground = ColorAsset(name: "disabled-button-background")
-    internal static let disabledButtonText = ColorAsset(name: "disabled-button-text")
+    internal static let neutralColorDark = ColorAsset(name: "neutral_color_dark")
+    internal static let neutralColorLight = ColorAsset(name: "neutral_color_light")
+    internal static let primaryColor = ColorAsset(name: "primary_color")
+    internal static let secondaryColor = ColorAsset(name: "secondary_color")
   }
   internal enum Images {
     internal enum Navigation {

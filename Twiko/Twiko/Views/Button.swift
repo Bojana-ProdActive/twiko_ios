@@ -61,7 +61,7 @@ final class Button: BaseButton {
         titleLabel?.font = UIFont.primary(size: 26, weight: .semibold)
         switch type {
         case .primary:
-            backgroundColor = Asset.Colors.primary.color
+            backgroundColor = Asset.Colors.primaryColor.color
 
             setAttributedTitle(titleText.uppercased().getAttributedStringWithSpacing(spacing: 1.43), for: .normal)
             setTitleColor(.black, for: .normal)
@@ -73,7 +73,7 @@ final class Button: BaseButton {
             setTitleColor(.black, for: .normal)
             layer.cornerRadius = 3
             layer.borderWidth = 1.5
-            layer.borderColor = Asset.Colors.primary.color.cgColor
+            layer.borderColor = Asset.Colors.primaryColor.color.cgColor
             layer.masksToBounds = true
         }
     }
@@ -87,8 +87,8 @@ final class Button: BaseButton {
         set {
             switch type {
             case .primary:
-                backgroundColor = newValue ? Asset.Colors.primary.color : Asset.Colors.disabledButtonBackground.color
-                setTitleColor(newValue ? .black : Asset.Colors.disabledButtonText.color, for: .normal)
+                backgroundColor = newValue ? Asset.Colors.primaryColor.color : Asset.Colors.neutralColorLight.color
+                setTitleColor(newValue ? .black : Asset.Colors.neutralColorDark.color, for: .normal)
             default:
                 alpha = 0.5
             }

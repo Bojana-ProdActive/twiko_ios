@@ -57,7 +57,7 @@ class BaseContentViewController: BaseViewController {
 
     private(set) lazy var informationPanelView: UIView = {
         let view = UIView.newAutoLayoutView()
-        view.backgroundColor = Asset.Colors.ndPurple.color
+        view.backgroundColor = Asset.Colors.primaryColor.color
         return view
     }()
 

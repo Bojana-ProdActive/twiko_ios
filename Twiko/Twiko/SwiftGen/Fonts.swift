@@ -20,11 +20,16 @@ internal typealias Font = FontConvertible.Font
 internal enum FontFamily {
   internal enum Barlow {
     internal static let bold = FontConvertible(name: "Barlow-Bold", family: "Barlow", path: "Barlow-Bold.otf")
-    internal static let all: [FontConvertible] = [bold]
+    internal static let medium = FontConvertible(name: "Barlow-Medium", family: "Barlow", path: "Barlow-Medium.otf")
+    internal static let semiBold = FontConvertible(name: "Barlow-SemiBold", family: "Barlow", path: "Barlow-SemiBold.otf")
+    internal static let all: [FontConvertible] = [bold, medium, semiBold]
   }
   internal enum BarlowSemiCondensed {
+    internal static let medium = FontConvertible(name: "BarlowSemiCondensed-Medium", family: "Barlow Semi Condensed", path: "BarlowSemiCondensed-Medium.otf")
+    internal static let mediumItalic = FontConvertible(name: "BarlowSemiCondensed-MediumItalic", family: "Barlow Semi Condensed", path: "barlowsemicondensed-mediumitalic.otf")
     internal static let semiBold = FontConvertible(name: "BarlowSemiCondensed-SemiBold", family: "Barlow Semi Condensed", path: "BarlowSemiCondensed-SemiBold.otf")
-    internal static let all: [FontConvertible] = [semiBold]
+    internal static let semiBoldItalic = FontConvertible(name: "BarlowSemiCondensed-SemiBoldItalic", family: "Barlow Semi Condensed", path: "BarlowSemiCondensed-SemiBoldItalic.otf")
+    internal static let all: [FontConvertible] = [medium, mediumItalic, semiBold, semiBoldItalic]
   }
   internal static let allCustomFonts: [FontConvertible] = [Barlow.all, BarlowSemiCondensed.all].flatMap { $0 }
   internal static func registerAllCustomFonts() {
