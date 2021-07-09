@@ -172,13 +172,6 @@
 			path = Alarms;
 			sourceTree = "<group>";
 		};
-		2B1D63EC269447AB00DEAA96 /* Libraries */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Libraries;
-			sourceTree = "<group>";
-		};
 		2B23F79C2695AD67006E9D28 /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -278,7 +271,6 @@
 		2B6D0AC12655404B00729E75 /* Twiko */ = {
 			isa = PBXGroup;
 			children = (
-				2B1D63EC269447AB00DEAA96 /* Libraries */,
 				2B29AC8E2693468700B6AC72 /* Constants */,
 				2B66A2F3268DE47E00504866 /* Models */,
 				2B6D8145268C80CA00D361CE /* Managers */,
