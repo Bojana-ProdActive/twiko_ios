@@ -32,6 +32,11 @@ internal enum Asset {
     internal static let secondaryColor = ColorAsset(name: "secondary_color")
   }
   internal enum Images {
+    internal enum Alarms {
+      internal static let highPriorityAlarm = ImageAsset(name: "high_priority_alarm")
+      internal static let lowPriorityAlarm = ImageAsset(name: "low_priority_alarm")
+      internal static let mediumPriorityAlarm = ImageAsset(name: "medium_priority_alarm")
+    }
     internal enum Navigation {
       internal static let back = ImageAsset(name: "back")
       internal static let menu = ImageAsset(name: "menu")

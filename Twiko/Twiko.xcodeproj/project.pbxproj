@@ -50,6 +50,7 @@
 		2BE4AA2726948F650051A94D /* nd_med_alarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2BE4AA2426948F650051A94D /* nd_med_alarm.mp3 */; };
 		2BE4AA2826948F650051A94D /* nd_lp_alarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2BE4AA2526948F650051A94D /* nd_lp_alarm.mp3 */; };
 		2BE4AA2926948F650051A94D /* nd_hp_alarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2BE4AA2626948F650051A94D /* nd_hp_alarm.mp3 */; };
+		3686BC68269C25D70087166C /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3686BC67269C25D70087166C /* UIImage.swift */; };
 		368FD95E26932F8C00426E18 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368FD95D26932F8C00426E18 /* UIFont.swift */; };
 		368FD96426934D0600426E18 /* BarlowSemiCondensed-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 368FD96326934D0600426E18 /* BarlowSemiCondensed-SemiBold.otf */; };
 		368FD96626934E0700426E18 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368FD96526934E0700426E18 /* String.swift */; };
@@ -62,6 +63,7 @@
 		36C0E3122698443400BFCF6D /* barlowsemicondensed-mediumitalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 36C0E3112698443400BFCF6D /* barlowsemicondensed-mediumitalic.otf */; };
 		36C0E3142698445100BFCF6D /* Barlow-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 36C0E3132698445100BFCF6D /* Barlow-Medium.otf */; };
 		36C0E3162698446A00BFCF6D /* BarlowSemiCondensed-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 36C0E3152698446A00BFCF6D /* BarlowSemiCondensed-Medium.otf */; };
+		36DD17C52698874C006E0A2C /* AlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DD17C42698874C006E0A2C /* AlarmView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +143,7 @@
 		2BE4AA2426948F650051A94D /* nd_med_alarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = nd_med_alarm.mp3; sourceTree = "<group>"; };
 		2BE4AA2526948F650051A94D /* nd_lp_alarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = nd_lp_alarm.mp3; sourceTree = "<group>"; };
 		2BE4AA2626948F650051A94D /* nd_hp_alarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = nd_hp_alarm.mp3; sourceTree = "<group>"; };
+		3686BC67269C25D70087166C /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		368FD95D26932F8C00426E18 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		368FD96326934D0600426E18 /* BarlowSemiCondensed-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BarlowSemiCondensed-SemiBold.otf"; sourceTree = "<group>"; };
 		368FD96526934E0700426E18 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -153,6 +156,7 @@
 		36C0E3112698443400BFCF6D /* barlowsemicondensed-mediumitalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "barlowsemicondensed-mediumitalic.otf"; sourceTree = "<group>"; };
 		36C0E3132698445100BFCF6D /* Barlow-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-Medium.otf"; sourceTree = "<group>"; };
 		36C0E3152698446A00BFCF6D /* BarlowSemiCondensed-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BarlowSemiCondensed-Medium.otf"; sourceTree = "<group>"; };
+		36DD17C42698874C006E0A2C /* AlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,6 +328,7 @@
 				2B55C1AB2656556D0056CB21 /* UITableViewHeaderFooterView.swift */,
 				368FD95D26932F8C00426E18 /* UIFont.swift */,
 				368FD96526934E0700426E18 /* String.swift */,
+				3686BC67269C25D70087166C /* UIImage.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -337,6 +342,7 @@
 				2B23F79D2695AFAF006E9D28 /* NavigationView.swift */,
 				2B23F79F2695B745006E9D28 /* NavigationButton.swift */,
 				2B3387BF26970AB1008608A0 /* BaseButton.swift */,
+				36DD17C42698874C006E0A2C /* AlarmView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -580,6 +586,7 @@
 				2B55C1A2265651730056CB21 /* UIButton.swift in Sources */,
 				2B171B50268DF8BC0006D927 /* AlarmManager.swift in Sources */,
 				2B55C1A6265652CD0056CB21 /* UICollectionViewCell.swift in Sources */,
+				36DD17C52698874C006E0A2C /* AlarmView.swift in Sources */,
 				368FD96626934E0700426E18 /* String.swift in Sources */,
 				2B55C1A4265652050056CB21 /* UICollectionView.swift in Sources */,
 				368FD96C269460D100426E18 /* AudioButton.swift in Sources */,
@@ -608,6 +615,7 @@
 				368FD96A2694486B00426E18 /* Fonts.swift in Sources */,
 				2B23F7A02695B745006E9D28 /* NavigationButton.swift in Sources */,
 				2B3387C026970AB1008608A0 /* BaseButton.swift in Sources */,
+				3686BC68269C25D70087166C /* UIImage.swift in Sources */,
 				2B10CEA4265BAC4C00DC2771 /* Button.swift in Sources */,
 				2B23F79B2695A7F8006E9D28 /* AlarmType.swift in Sources */,
 			);

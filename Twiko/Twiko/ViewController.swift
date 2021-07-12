@@ -19,6 +19,13 @@ class ViewController: UIViewController {
         return tableView
     }()
 
+    private lazy var alarmView: AlarmView = {
+        let alarmView = AlarmView(type: .connected)
+        let pumpAlarm = PumpAlarm(code: 1, detailsCode: 0, isSoundEnabled: true, noTreatmentDuration: UInt32(78585), alarmDescription: "")
+        alarmView.setupViewWithAlarm(pumpAlarm)
+        return alarmView
+    }()
+
     private lazy var scanButton: UIBarButtonItem = UIBarButtonItem(title: "Scan", style: .plain, target: self, action: #selector(scanButtonTapper))
 
     private lazy var commandButton: UIBarButtonItem = UIBarButtonItem(title: "Turn Off", style: .plain, target: self, action: #selector(commandButtonTapped))
@@ -48,6 +55,11 @@ class ViewController: UIViewController {
         view.addSubview(tableView)
         tableView.pinToSafeArea(ofView: view)
 
+        view.addSubview(alarmView)
+        NSLayoutConstraint.activate([
+            alarmView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            alarmView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
         navigationItem.rightBarButtonItem = scanButton
 
         if pumpIdentifier != nil {

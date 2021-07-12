@@ -114,8 +114,8 @@ final class AlertHelper {
     }
     // swiftlint:enable cyclomatic_complexity
 
-    static func colorForPriority(_ priority: AlarmPriority) -> UIColor {
-        switch priority {
+    static func colorForAlert(_ alert: AlarmType) -> UIColor {
+        switch alert.getAlertPriority() {
         case .high:
             return Asset.Colors.alertColorHigh.color
         case .medium:
@@ -124,6 +124,28 @@ final class AlertHelper {
             return Asset.Colors.alertColorLow.color
         default:
             return .white
+        }
+    }
+
+    static func titleColorOfAlert(_ alert: AlarmType) -> UIColor {
+        switch alert.getAlertPriority() {
+        case .high:
+            return Asset.Colors.alertColorHigh.color
+        default:
+            return .black
+        }
+    }
+
+    static func iconForAlert(_ alert: AlarmType) -> UIImage {
+        switch alert.getAlertPriority() {
+        case .high:
+            return Asset.Images.Alarms.highPriorityAlarm.image
+        case .medium:
+            return Asset.Images.Alarms.mediumPriorityAlarm.image
+        case .low:
+            return Asset.Images.Alarms.lowPriorityAlarm.image
+        default:
+            return Asset.Images.Alarms.highPriorityAlarm.image
         }
     }
 }
