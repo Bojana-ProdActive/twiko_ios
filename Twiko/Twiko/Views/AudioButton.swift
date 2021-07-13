@@ -52,7 +52,7 @@ final class AudioButton: UIButton {
     private func commonInit() {
         translatesAutoresizingMaskIntoConstraints = false
 
-        layer.cornerRadius = 3
+        layer.cornerRadius = 5
         layer.borderWidth = 1.5
         layer.masksToBounds = true
 
@@ -78,35 +78,42 @@ final class AudioButton: UIButton {
             guard let alarmPriority = alarmPriority else {
                 return
             }
+            alpha = isEnabled ? 1 : 0.5
             switch alarmPriority {
             case .high:
                 let color = isEnabled ? Asset.Colors.alertColorHigh.color : Asset.Colors.neutralColorDark.color
                 let title = isEnabled ? NSLocalizedString("Pause audio", comment: "").uppercased() : NSLocalizedString("Audio paused", comment: "").uppercased()
                 setupButtonDetails(color: color, title: title)
-                backgroundColor = isEnabled ? .white : Asset.Colors.neutralColorLight.color
             case .medium:
                 let color = isEnabled ? Asset.Colors.alertColorMedium.color : Asset.Colors.neutralColorDark.color
                 let title = isEnabled ? NSLocalizedString("Turn off audio", comment: "").uppercased() : NSLocalizedString("Audio off", comment: "").uppercased()
                 setupButtonDetails(color: color, title: title)
-                backgroundColor = isEnabled ? .white : Asset.Colors.neutralColorLight.color
             default:
                 let color = isEnabled ? Asset.Colors.alertColorLow.color : Asset.Colors.neutralColorDark.color
                 let title = isEnabled ? NSLocalizedString("Turn off audio", comment: "").uppercased() : NSLocalizedString("Audio off", comment: "").uppercased()
                 setupButtonDetails(color: color, title: title)
-                backgroundColor = isEnabled ? .white : Asset.Colors.neutralColorLight.color
             }
         }
     }
 
     override var intrinsicContentSize: CGSize {
         let height: CGFloat = 50
-        return CGSize(width: super.intrinsicContentSize.width, height: height)
+        var width: CGFloat = 237
+
+        switch UIDevice.current.userInterfaceIdiom {
+        case .pad:
+            width = alarmPriority == .high ? 198 : 237
+        default:
+            width = 180
+        }
+        return CGSize(width: width, height: height)
     }
 
     // MARK: - Helpers
 
     private func setupButtonDetails(color: UIColor, title: String) {
-        let attributedButtonTitle = title.uppercased().getAttributedStringWithSpacing(spacing: 1.37)
+        let attributedButtonTitle = title.uppercased().getAttributedStringWithSpacing(spacing: 0.37)
+        attributedButtonTitle.addAttribute(NSAttributedString.Key.font, value: UIFont.secondary(size: 22, weight: .semibold), range: NSRange(location: 0, length: attributedButtonTitle.length))
         buttonTitleLabel.attributedText = attributedButtonTitle
         layer.borderColor = color.cgColor
         audioImageView.tintColor = color

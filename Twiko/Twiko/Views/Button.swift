@@ -61,11 +61,12 @@ final class Button: BaseButton {
         titleLabel?.font = UIFont.primary(size: 26, weight: .semibold)
         switch type {
         case .primary:
-            backgroundColor = Asset.Colors.primaryColor.color
+            backgroundColor = Asset.Colors.secondaryColor.color
 
             setAttributedTitle(titleText.uppercased().getAttributedStringWithSpacing(spacing: 1.43), for: .normal)
             setTitleColor(.black, for: .normal)
             layer.cornerRadius = 3
+            titleEdgeInsets = UIEdgeInsets(top: 0.0, left: 20.0, bottom: 0.0, right: 20.0)
         case .secondary:
             backgroundColor = .white
 
@@ -73,8 +74,9 @@ final class Button: BaseButton {
             setTitleColor(.black, for: .normal)
             layer.cornerRadius = 3
             layer.borderWidth = 1.5
-            layer.borderColor = Asset.Colors.primaryColor.color.cgColor
+            layer.borderColor = Asset.Colors.secondaryColor.color.cgColor
             layer.masksToBounds = true
+            titleEdgeInsets = UIEdgeInsets(top: 0.0, left: 20.0, bottom: 0.0, right: 20.0)
         }
     }
 
@@ -104,6 +106,6 @@ final class Button: BaseButton {
         case .secondary:
             height = 70
         }
-        return CGSize(width: super.intrinsicContentSize.width, height: height)
+        return CGSize(width: super.intrinsicContentSize.width + 40, height: height)
     }
 }

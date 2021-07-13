@@ -61,7 +61,7 @@ final class Label: UILabel {
             default:
                 spacing = 0.45
             }
-            attributedText = labelText?.uppercased().getAttributedStringWithSpacing(spacing: spacing)
+            attributedText = labelText?.getAttributedStringWithSpacing(spacing: spacing)
         }
     }
 

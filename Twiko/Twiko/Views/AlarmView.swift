@@ -17,16 +17,10 @@ import UIKit
 ////////////////////////////////////////////////////////////////////////////////
 class AlarmView: UIView {
 
-    enum ConnectionType {
-        case broadcast
-        case connected
-    }
-
     // MARK: - UI components
 
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
-
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.tintColor = .white
         imageView.contentMode = .scaleAspectFit
@@ -38,15 +32,38 @@ class AlarmView: UIView {
     private lazy var infoLabel = Label(type: .alertInfo)
     private lazy var audioButton = AudioButton()
 
-    // MARK: - UI offset data
+    // MARK: - UI data
 
-    private lazy var offset: CGFloat = 20
+    private var offset: CGFloat = 30
+
+    private var viewHeight: CGFloat {
+        switch UIDevice.current.userInterfaceIdiom {
+        case .pad:
+            return 320
+        default:
+            return 250
+        }
+    }
+
+    private var viewWidth: CGFloat {
+        switch UIDevice.current.userInterfaceIdiom {
+        case .pad:
+            return 944
+        default:
+            return 650
+        }
+    }
+
+    // MARK: - Data
+
     private var connectionType: ConnectionType = .broadcast
+    private var alarm: PumpAlarm?
 
     // MARK: - Initialization
 
-    init(type: ConnectionType) {
+    init(type: ConnectionType, alarm: PumpAlarm) {
         self.connectionType = type
+        self.alarm = alarm
         super.init(frame: .zero)
         commonInit()
     }
@@ -64,11 +81,38 @@ class AlarmView: UIView {
     private func commonInit() {
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .white
-        layer.cornerRadius = 50
+        layer.cornerRadius = 15
 
+        layer.shadowColor = Asset.Colors.neutralColorDark.color.cgColor
+        layer.shadowOpacity = 2
+        layer.shadowOffset = .zero
+        layer.shadowRadius = 15
+
+        guard let alarm = alarm, let alarmCode = alarm.alarmCode, let alarmType = AlarmType(rawValue: alarmCode) else {
+            return
+        }
+
+        titleLabel.text = AlertHelper.alertTitle(alarmType).uppercased()
+        titleLabel.textColor = AlertHelper.titleColorOfAlert(alarmType)
+        imageView.backgroundColor = AlertHelper.colorForAlert(alarmType)
+
+        if let image = AlertHelper.iconForAlert(alarmType).imageWithInsets(insets: UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)) {
+            imageView.image = image.withRenderingMode(.alwaysTemplate)
+        }
+        descriptionLabel.text = AlertHelper.alertDescription(alarmType)
+        audioButton.setupAudioButtonForAlarmPriority(alarmPriority: alarmType.getAlertPriority())
+        reloadInputViews()
+        audioButton.isEnabled = alarm.isSoundEnabled
+
+        audioButton.isHidden = connectionType == .broadcast
+
+        setupConstraints()
+    }
+
+    private func setupConstraints() {
         NSLayoutConstraint.activate([
-            heightAnchor.constraint(equalToConstant: 382),
-            widthAnchor.constraint(equalToConstant: 840)
+            heightAnchor.constraint(equalToConstant: viewHeight),
+            widthAnchor.constraint(equalToConstant: viewWidth)
         ])
 
         addSubview(imageView)
@@ -76,7 +120,7 @@ class AlarmView: UIView {
             imageView.topAnchor.constraint(equalTo: topAnchor),
             imageView.bottomAnchor.constraint(equalTo: bottomAnchor),
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            imageView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.42)
+            imageView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.32)
         ])
 
         addSubview(titleLabel)
@@ -106,25 +150,5 @@ class AlarmView: UIView {
             descriptionLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
             descriptionLabel.bottomAnchor.constraint(equalTo: audioButton.topAnchor, constant: -offset)
         ])
-
-        audioButton.isHidden = connectionType == .broadcast
-    }
-
-    func setupViewWithAlarm(_ alarm: PumpAlarm) {
-        guard let alarmCode = alarm.alarmCode,  let alarmType = AlarmType(rawValue: alarmCode) else {
-            return
-        }
-
-        titleLabel.text = AlertHelper.alertTitle(alarmType)
-        titleLabel.textColor = AlertHelper.titleColorOfAlert(alarmType)
-        imageView.backgroundColor = AlertHelper.colorForAlert(alarmType)
-
-        if let image = AlertHelper.iconForAlert(alarmType).imageWithInsets(insets: UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)) {
-            imageView.image = image.withRenderingMode(.alwaysTemplate)
-        }
-        descriptionLabel.text = AlertHelper.alertDescription(alarmType)
-        audioButton.setupAudioButtonForAlarmPriority(alarmPriority: alarmType.getAlertPriority())
-        reloadInputViews()
-        audioButton.isEnabled = alarm.isSoundEnabled
     }
 }
