@@ -115,13 +115,18 @@ final class AlertHelper {
     // swiftlint:enable cyclomatic_complexity
 
     static func colorForAlert(_ alert: AlarmType) -> UIColor {
-        switch alert.getAlertPriority() {
+        let alertPriority = alert.getAlertPriority()
+        switch alertPriority {
         case .high:
             return Asset.Colors.alertColorHigh.color
         case .medium:
             return Asset.Colors.alertColorMedium.color
         case .low:
             return Asset.Colors.alertColorLow.color
+        case .maintanceNotification:
+            return Asset.Colors.secondaryColor.color
+        case .warningNotification:
+            return Asset.Colors.primaryColor.color
         default:
             return .white
         }
@@ -144,6 +149,10 @@ final class AlertHelper {
             return Asset.Images.Alarms.mediumPriorityAlarm.image
         case .low:
             return Asset.Images.Alarms.lowPriorityAlarm.image
+        case .maintanceNotification:
+            return Asset.Images.maintanceNotification.image
+        case .warningNotification:
+            return Asset.Images.warningNotification.image
         default:
             return Asset.Images.Alarms.highPriorityAlarm.image
         }

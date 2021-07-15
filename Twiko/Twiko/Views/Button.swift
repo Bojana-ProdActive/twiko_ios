@@ -28,6 +28,15 @@ final class Button: BaseButton {
     private let type: ButtonType
     private var titleText: String = ""
 
+    private var inset: CGFloat = {
+        switch UIDevice.current.userInterfaceIdiom {
+        case .pad:
+            return 70
+        default:
+            return 10
+        }
+    }()
+
     // MARK: - Initialization
 
     init(type: ButtonType, titleText: String? = "") {
@@ -58,25 +67,26 @@ final class Button: BaseButton {
     }
 
     private func setAppearanceByType() {
-        titleLabel?.font = UIFont.primary(size: 26, weight: .semibold)
+        titleLabel?.font = UIFont.secondary(size: UIDevice.current.userInterfaceIdiom == .pad ? 26 : 16, weight: .semibold)
         switch type {
         case .primary:
             backgroundColor = Asset.Colors.secondaryColor.color
-
-            setAttributedTitle(titleText.uppercased().getAttributedStringWithSpacing(spacing: 1.43), for: .normal)
+            let attributedButtonTitle = titleText.uppercased().getAttributedStringWithSpacing(spacing: 0.43)
+            setAttributedTitle(attributedButtonTitle, for: .normal)
             setTitleColor(.black, for: .normal)
-            layer.cornerRadius = 3
-            titleEdgeInsets = UIEdgeInsets(top: 0.0, left: 20.0, bottom: 0.0, right: 20.0)
+            layer.cornerRadius = 8
+            titleEdgeInsets = UIEdgeInsets(top: 0.0, left: inset, bottom: 0.0, right: inset)
         case .secondary:
             backgroundColor = .white
-
-            setAttributedTitle(titleText.uppercased().getAttributedStringWithSpacing(spacing: 1.37), for: .normal)
+            let attributedButtonTitle = titleText.uppercased().getAttributedStringWithSpacing(spacing: 0.37)
+            setAttributedTitle(attributedButtonTitle, for: .normal)
+            titleLabel?.font = UIFont.secondary(size: 22, weight: .semibold)
             setTitleColor(.black, for: .normal)
-            layer.cornerRadius = 3
+            layer.cornerRadius = 8
             layer.borderWidth = 1.5
             layer.borderColor = Asset.Colors.secondaryColor.color.cgColor
             layer.masksToBounds = true
-            titleEdgeInsets = UIEdgeInsets(top: 0.0, left: 20.0, bottom: 0.0, right: 20.0)
+            titleEdgeInsets = UIEdgeInsets(top: 0.0, left: inset, bottom: 0.0, right: inset)
         }
     }
 
@@ -102,10 +112,10 @@ final class Button: BaseButton {
 
         switch type {
         case .primary:
-            height = 70
+            height = UIDevice.current.userInterfaceIdiom == .pad ? 70 : 50
         case .secondary:
-            height = 70
+            height = UIDevice.current.userInterfaceIdiom == .pad ? 70 : 50
         }
-        return CGSize(width: super.intrinsicContentSize.width + 40, height: height)
+        return CGSize(width: super.intrinsicContentSize.width + 2 * inset, height: height)
     }
 }

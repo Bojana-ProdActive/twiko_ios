@@ -185,7 +185,7 @@ final class AlarmManager: AlarmManagerInterface {
             alarmPlayer.playHighPriorityAlert()
         case .noAlert:
             break
-        case .notDefined:
+        default:
             break
         }
     }

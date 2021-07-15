@@ -126,10 +126,10 @@ final class Label: UILabel {
             textColor = .black
         case .alarmTitle:
             numberOfLines = 1
-            font = UIFont.secondary(size: 34, weight: .semibold)
+            font = UIFont.secondary(size: UIDevice.current.userInterfaceIdiom == .pad ? 34 : 22, weight: .semibold)
             textAlignment = .natural
         case .alarmDescription:
-            font = FontFamily.BarlowSemiCondensed.mediumItalic.font(size: 30)
+            font = FontFamily.BarlowSemiCondensed.mediumItalic.font(size: UIDevice.current.userInterfaceIdiom == .pad ? 30 : 19)
             textAlignment = .natural
             textColor = .black
         case .alertInfo:

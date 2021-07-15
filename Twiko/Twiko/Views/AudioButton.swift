@@ -37,9 +37,12 @@ final class AudioButton: UIButton {
     private var alarmPriority: AlarmPriority?
     private var isButtonEnabled = true
 
+    private var btnHeight: CGFloat = 50
+
     // MARK: - Initialization
 
-    init() {
+    init(_ setupHeight: CGFloat? = 50) {
+        self.btnHeight = setupHeight ?? 50
         super.init(frame: .zero)
         commonInit()
     }
@@ -55,6 +58,11 @@ final class AudioButton: UIButton {
         layer.cornerRadius = 5
         layer.borderWidth = 1.5
         layer.masksToBounds = true
+
+        NSLayoutConstraint.activate([
+            heightAnchor.constraint(equalToConstant: UIDevice.current.userInterfaceIdiom == .pad ? btnHeight : 50),
+            widthAnchor.constraint(equalToConstant: Dimensions.audioButtonWidth)
+        ])
 
         addSubview(audioImageView)
         NSLayoutConstraint.activate([
@@ -96,24 +104,11 @@ final class AudioButton: UIButton {
         }
     }
 
-    override var intrinsicContentSize: CGSize {
-        let height: CGFloat = 50
-        var width: CGFloat = 237
-
-        switch UIDevice.current.userInterfaceIdiom {
-        case .pad:
-            width = alarmPriority == .high ? 198 : 237
-        default:
-            width = 180
-        }
-        return CGSize(width: width, height: height)
-    }
-
     // MARK: - Helpers
 
     private func setupButtonDetails(color: UIColor, title: String) {
         let attributedButtonTitle = title.uppercased().getAttributedStringWithSpacing(spacing: 0.37)
-        attributedButtonTitle.addAttribute(NSAttributedString.Key.font, value: UIFont.secondary(size: 22, weight: .semibold), range: NSRange(location: 0, length: attributedButtonTitle.length))
+        attributedButtonTitle.addAttribute(NSAttributedString.Key.font, value: UIFont.secondary(size: UIDevice.current.userInterfaceIdiom == .pad ? 22 : 16, weight: .semibold), range: NSRange(location: 0, length: attributedButtonTitle.length))
         buttonTitleLabel.attributedText = attributedButtonTitle
         layer.borderColor = color.cgColor
         audioImageView.tintColor = color
@@ -131,6 +126,7 @@ final class AudioButton: UIButton {
         case .medium:
             audioImageView.image = Asset.Images.defaultAudio.image.withRenderingMode(.alwaysTemplate)
             setupButtonDetails(color: Asset.Colors.alertColorMedium.color, title: NSLocalizedString("Turn off audio", comment: "").uppercased())
+
         default:
             audioImageView.image = Asset.Images.defaultAudio.image.withRenderingMode(.alwaysTemplate)
             setupButtonDetails(color: Asset.Colors.alertColorLow.color, title: NSLocalizedString("Turn off audio", comment: "").uppercased())

@@ -28,6 +28,7 @@ internal enum Asset {
     internal static let alertColorMedium = ColorAsset(name: "alert_color_medium")
     internal static let neutralColorDark = ColorAsset(name: "neutral_color_dark")
     internal static let neutralColorLight = ColorAsset(name: "neutral_color_light")
+    internal static let neutralColorMedium = ColorAsset(name: "neutral_color_medium")
     internal static let primaryColor = ColorAsset(name: "primary_color")
     internal static let secondaryColor = ColorAsset(name: "secondary_color")
   }
@@ -45,6 +46,8 @@ internal enum Asset {
     internal static let group = ImageAsset(name: "group")
     internal static let highPriorityAudio = ImageAsset(name: "high-priority-audio")
     internal static let logo = ImageAsset(name: "logo")
+    internal static let maintanceNotification = ImageAsset(name: "maintance-notification")
+    internal static let warningNotification = ImageAsset(name: "warning-notification")
   }
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name

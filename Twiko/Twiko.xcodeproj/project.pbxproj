@@ -59,6 +59,10 @@
 		368FD9682694485D00426E18 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368FD9672694485D00426E18 /* Assets.swift */; };
 		368FD96A2694486B00426E18 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368FD9692694486B00426E18 /* Fonts.swift */; };
 		368FD96C269460D100426E18 /* AudioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368FD96B269460D100426E18 /* AudioButton.swift */; };
+		36B0FF0A269EF4B000A6CE7E /* Dimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B0FF09269EF4B000A6CE7E /* Dimensions.swift */; };
+		36B19ED6269D909F005D5472 /* AlarmDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B19ED5269D909F005D5472 /* AlarmDialogViewController.swift */; };
+		36B19ED8269D994A005D5472 /* AlarmDialogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B19ED7269D994A005D5472 /* AlarmDialogViewModel.swift */; };
+		36BCD02E269DC6D900221550 /* AlarmDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BCD02D269DC6D900221550 /* AlarmDialogView.swift */; };
 		36C0E30C269842B100BFCF6D /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C0E30B269842B100BFCF6D /* AlertHelper.swift */; };
 		36C0E30E2698440200BFCF6D /* BarlowSemiCondensed-SemiBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 36C0E30D2698440200BFCF6D /* BarlowSemiCondensed-SemiBoldItalic.otf */; };
 		36C0E3102698441500BFCF6D /* Barlow-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 36C0E30F2698441500BFCF6D /* Barlow-SemiBold.otf */; };
@@ -154,6 +158,10 @@
 		368FD9672694485D00426E18 /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		368FD9692694486B00426E18 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		368FD96B269460D100426E18 /* AudioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioButton.swift; sourceTree = "<group>"; };
+		36B0FF09269EF4B000A6CE7E /* Dimensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimensions.swift; sourceTree = "<group>"; };
+		36B19ED5269D909F005D5472 /* AlarmDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmDialogViewController.swift; sourceTree = "<group>"; };
+		36B19ED7269D994A005D5472 /* AlarmDialogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmDialogViewModel.swift; sourceTree = "<group>"; };
+		36BCD02D269DC6D900221550 /* AlarmDialogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmDialogView.swift; sourceTree = "<group>"; };
 		36C0E30B269842B100BFCF6D /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		36C0E30D2698440200BFCF6D /* BarlowSemiCondensed-SemiBoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BarlowSemiCondensed-SemiBoldItalic.otf"; sourceTree = "<group>"; };
 		36C0E30F2698441500BFCF6D /* Barlow-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-SemiBold.otf"; sourceTree = "<group>"; };
@@ -349,6 +357,7 @@
 				2B23F79F2695B745006E9D28 /* NavigationButton.swift */,
 				2B3387BF26970AB1008608A0 /* BaseButton.swift */,
 				36DD17C42698874C006E0A2C /* AlarmView.swift */,
+				36BCD02D269DC6D900221550 /* AlarmDialogView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -399,6 +408,7 @@
 			isa = PBXGroup;
 			children = (
 				3686BC6A269C88000087166C /* AlarmViewController.swift */,
+				36B19ED5269D909F005D5472 /* AlarmDialogViewController.swift */,
 			);
 			path = Alarms;
 			sourceTree = "<group>";
@@ -407,6 +417,7 @@
 			isa = PBXGroup;
 			children = (
 				3686BC6D269C8B550087166C /* AlarmViewModel.swift */,
+				36B19ED7269D994A005D5472 /* AlarmDialogViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -429,6 +440,7 @@
 			isa = PBXGroup;
 			children = (
 				36C0E30B269842B100BFCF6D /* AlertHelper.swift */,
+				36B0FF09269EF4B000A6CE7E /* Dimensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -609,6 +621,7 @@
 				2B171B50268DF8BC0006D927 /* AlarmManager.swift in Sources */,
 				3686BC6E269C8B550087166C /* AlarmViewModel.swift in Sources */,
 				2B55C1A6265652CD0056CB21 /* UICollectionViewCell.swift in Sources */,
+				36BCD02E269DC6D900221550 /* AlarmDialogView.swift in Sources */,
 				36DD17C52698874C006E0A2C /* AlarmView.swift in Sources */,
 				368FD96626934E0700426E18 /* String.swift in Sources */,
 				2B55C1A4265652050056CB21 /* UICollectionView.swift in Sources */,
@@ -623,8 +636,10 @@
 				2B55C19426564E810056CB21 /* Encodable.swift in Sources */,
 				2B55C1A02656510D0056CB21 /* Error.swift in Sources */,
 				2B10CEA6265BAFA700DC2771 /* Label.swift in Sources */,
+				36B19ED8269D994A005D5472 /* AlarmDialogViewModel.swift in Sources */,
 				36C0E30C269842B100BFCF6D /* AlertHelper.swift in Sources */,
 				2B55C19E26564FDE0056CB21 /* Dictionary.swift in Sources */,
+				36B19ED6269D909F005D5472 /* AlarmDialogViewController.swift in Sources */,
 				2B23F79E2695AFAF006E9D28 /* NavigationView.swift in Sources */,
 				2B55C1AC2656556D0056CB21 /* UITableViewHeaderFooterView.swift in Sources */,
 				2B6D0AFE26554A1400729E75 /* BaseViewController.swift in Sources */,
@@ -637,6 +652,7 @@
 				368FD95E26932F8C00426E18 /* UIFont.swift in Sources */,
 				2B6D0AC52655404B00729E75 /* SceneDelegate.swift in Sources */,
 				368FD96A2694486B00426E18 /* Fonts.swift in Sources */,
+				36B0FF0A269EF4B000A6CE7E /* Dimensions.swift in Sources */,
 				2B23F7A02695B745006E9D28 /* NavigationButton.swift in Sources */,
 				2B3387C026970AB1008608A0 /* BaseButton.swift in Sources */,
 				3686BC68269C25D70087166C /* UIImage.swift in Sources */,

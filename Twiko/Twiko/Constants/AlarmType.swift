@@ -20,6 +20,9 @@ enum AlarmPriority: Int {
     case medium
     case low
     case notDefined
+
+    case warningNotification
+    case maintanceNotification
 }
 
 enum AlarmType: UInt8, CaseIterable {
@@ -83,6 +86,18 @@ enum AlarmType: UInt8, CaseIterable {
             return AlarmPriority.medium
         case .pumpBatteryLow, .drugDeliveryWillStopScan:
             return AlarmPriority.low
+        case .fsFillProcessIncompleteNotification:
+            return AlarmPriority.warningNotification
+        case .fsMalfuncionNotification,
+             .fsFillProcessInterruptedNotification,
+             .csCpuTemeratureCriticalNotification,
+             .csBattTempertureHighNotification,
+             .csCpuTemperatureHighNotification,
+             .csWcTemperatureHeighNotification,
+             .csBattFailNotification,
+             .csBattLowNotification,
+             .csWcErrorNotification:
+            return AlarmPriority.maintanceNotification
         default:
             return AlarmPriority.notDefined
         }
